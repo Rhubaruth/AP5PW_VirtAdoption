@@ -40,3 +40,4 @@ Databáze + přidat obrázky/schéma
 -users -> informace o uživatelých (mimo návštěvníky)
 -language -> překlady webových elementů (pořešit)
 -log -> ukládání logů
+-users&pets -> propojení tabulky uživatelů a petů
