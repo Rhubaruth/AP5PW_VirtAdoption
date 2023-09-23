@@ -67,3 +67,6 @@
 - _**language:** překlady webových elementů (pořešit)_
 - **log:** aktivity pracovníků
 - **users&pets:** propojení tabulky uživatelů a petů
+
+[DB Scheme Users & Pets](./UsersAndPetsScheme.png)
+
