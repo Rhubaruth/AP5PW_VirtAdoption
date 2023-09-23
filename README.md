@@ -68,5 +68,6 @@
 - **log:** aktivity pracovníků
 - **users&pets:** propojení tabulky uživatelů a petů
 
-[DB Scheme Users & Pets](./UsersAndPetsScheme.png)
-
+<p align="center">
+  <img src="./UsersAndPetsScheme.png" width="350" title="hover text">
+</p>
