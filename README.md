@@ -69,5 +69,5 @@
 - **users&pets:** propojení tabulky uživatelů a petů
 
 <p align="center">
-  <img src="./UsersAndPetsScheme.png" width="350" title="hover text">
+  <img src="./UsersAndPetsScheme.png" width="550" title="Scheme Users & Pets">
 </p>
