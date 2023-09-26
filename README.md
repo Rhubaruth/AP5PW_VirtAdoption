@@ -24,15 +24,15 @@
   - spravovat role
   - _přístup k logům akcí pracovníků (třeba pro odměnu za aktivitu a správu)_
   - _+ to co pracovník_
-3. pracovník
+2. pracovník
   - přidávat a odebírat mazlíčky
   - měnit informace
   - _(+ spravovat novinky)_
   - _+ to co zákazník_
-4. zákazík
+3. zákazík
   - adoptovat
   - zobrazit adaptované mazlíčky, vidět informace
-5. návštěvník
+4. návštěvník
   - **nepřihlášený** uživatel
   - pouze zobrazovat informace a mazlíčky k adopci
 
