@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\VanaKrizan.Utulek.Web.props" />
+</Project>
