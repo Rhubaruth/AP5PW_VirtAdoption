@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace VanaKrizan.Utulek.Domain.Entities
 {
-    public class Dog : Entity<int>
+    public class Dog : Entity<int>, Pet
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string ImageSrc { get; set; }
 
+    public int SizeId { get; set; }
+    public bool chip { get; set; }
 
-
+    // public double Cost { get; set; }
 
     }
 }
