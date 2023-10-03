@@ -47,7 +47,7 @@
 # Mazlíčci
 - body
   - informace o mazlíčcíh
-    - (animace = obrázek se jménem -> najetí obrázek do pozadí, jméno nahoru a zobtazí se informace)
+    - (animace = obrázek se jménem -> najetí obrázek do pozadí, jméno nahoru a zobrazí se informace)
   - stránky po př 9 mazlíčcích a pak možnost dalšího načtení
   - filtr na vyhledávání
   - na obr mazlíčka proklik na více infa
