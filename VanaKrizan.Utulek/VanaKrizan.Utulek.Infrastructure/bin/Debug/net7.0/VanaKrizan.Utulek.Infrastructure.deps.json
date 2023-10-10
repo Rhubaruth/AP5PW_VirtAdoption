@@ -7,14 +7,27 @@
   "targets": {
     ".NETCoreApp,Version=v7.0": {
       "VanaKrizan.Utulek.Infrastructure/1.0.0": {
+        "dependencies": {
+          "VanaKrizan.Utulek.Domain": "1.0.0"
+        },
         "runtime": {
           "VanaKrizan.Utulek.Infrastructure.dll": {}
+        }
+      },
+      "VanaKrizan.Utulek.Domain/1.0.0": {
+        "runtime": {
+          "VanaKrizan.Utulek.Domain.dll": {}
         }
       }
     }
   },
   "libraries": {
     "VanaKrizan.Utulek.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "VanaKrizan.Utulek.Domain/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

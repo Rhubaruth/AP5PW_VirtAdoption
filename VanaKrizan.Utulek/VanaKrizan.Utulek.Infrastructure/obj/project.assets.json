@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {}
+    "net7.0": {
+      "VanaKrizan.Utulek.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/VanaKrizan.Utulek.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/VanaKrizan.Utulek.Domain.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "VanaKrizan.Utulek.Domain/1.0.0": {
+      "type": "project",
+      "path": "../VanaKrizan.Utulek.Domain/VanaKrizan.Utulek.Domain.csproj",
+      "msbuildProject": "../VanaKrizan.Utulek.Domain/VanaKrizan.Utulek.Domain.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net7.0": []
+    "net7.0": [
+      "VanaKrizan.Utulek.Domain >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\j_vana\\.nuget\\packages\\": {}
@@ -33,7 +52,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\j_vana\\source\\repos\\AP5PW_VirtAdoption\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Domain\\VanaKrizan.Utulek.Domain.csproj": {
+              "projectPath": "C:\\Users\\j_vana\\source\\repos\\AP5PW_VirtAdoption\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Domain\\VanaKrizan.Utulek.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -1,13 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VanaKrizan.Utulek.Domain.Entities;
+using VanaKrizan.Utulek.Infrastructure.Database;
+using VanaKrizan.Utulek.Application.Abstraction;
 
 namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 {
     [Area("admin")] // napojení Controller - Area
     public class PetController : Controller
     {
+        IPetService _petService;
+        public PetController(IPetService petService)
+        {
+            _petService = petService;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            IList<Pet> pets = _petService.Select();
+            return View(pets);
         }
     }
 }

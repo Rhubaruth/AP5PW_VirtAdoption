@@ -144,7 +144,11 @@
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\j_vana\\source\\repos\\AP5PW_VirtAdoption\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Domain\\VanaKrizan.Utulek.Domain.csproj": {
+                "projectPath": "C:\\Users\\j_vana\\source\\repos\\AP5PW_VirtAdoption\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Domain\\VanaKrizan.Utulek.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

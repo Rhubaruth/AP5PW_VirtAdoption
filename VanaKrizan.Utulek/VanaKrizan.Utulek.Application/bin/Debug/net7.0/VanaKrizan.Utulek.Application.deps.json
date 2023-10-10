@@ -21,6 +21,9 @@
         }
       },
       "VanaKrizan.Utulek.Infrastructure/1.0.0": {
+        "dependencies": {
+          "VanaKrizan.Utulek.Domain": "1.0.0"
+        },
         "runtime": {
           "VanaKrizan.Utulek.Infrastructure.dll": {}
         }

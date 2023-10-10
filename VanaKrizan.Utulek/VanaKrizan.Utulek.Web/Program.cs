@@ -1,7 +1,13 @@
+using VanaKrizan.Utulek.Application.Abstraction;
+using VanaKrizan.Utulek.Application.Implementation;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// propojení interface s implementací v Applications
+builder.Services.AddScoped<IPetService, PetDFService>();
 
 var app = builder.Build();
 

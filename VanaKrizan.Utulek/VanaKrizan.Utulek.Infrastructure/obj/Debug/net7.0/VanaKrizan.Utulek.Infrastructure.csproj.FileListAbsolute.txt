@@ -9,3 +9,7 @@ C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utu
 C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Infrastructure\obj\Debug\net7.0\refint\VanaKrizan.Utulek.Infrastructure.dll
 C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Infrastructure\obj\Debug\net7.0\VanaKrizan.Utulek.Infrastructure.pdb
 C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Infrastructure\obj\Debug\net7.0\ref\VanaKrizan.Utulek.Infrastructure.dll
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Infrastructure\bin\Debug\net7.0\VanaKrizan.Utulek.Domain.dll
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Infrastructure\bin\Debug\net7.0\VanaKrizan.Utulek.Domain.pdb
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Infrastructure\obj\Debug\net7.0\VanaKrizan.Utulek.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Infrastructure\obj\Debug\net7.0\VanaKrizan.Utulek.Infrastructure.csproj.CopyComplete
