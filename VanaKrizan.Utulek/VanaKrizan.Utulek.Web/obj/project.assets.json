@@ -3242,6 +3242,40 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "VanaKrizan.Utulek.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "VanaKrizan.Utulek.Domain": "1.0.0",
+          "VanaKrizan.Utulek.Infrastructure": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/VanaKrizan.Utulek.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/VanaKrizan.Utulek.Application.dll": {}
+        }
+      },
+      "VanaKrizan.Utulek.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/VanaKrizan.Utulek.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/VanaKrizan.Utulek.Domain.dll": {}
+        }
+      },
+      "VanaKrizan.Utulek.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/VanaKrizan.Utulek.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/VanaKrizan.Utulek.Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -9651,11 +9685,29 @@
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "VanaKrizan.Utulek.Application/1.0.0": {
+      "type": "project",
+      "path": "../VanaKrizan.Utulek.Application/VanaKrizan.Utulek.Application.csproj",
+      "msbuildProject": "../VanaKrizan.Utulek.Application/VanaKrizan.Utulek.Application.csproj"
+    },
+    "VanaKrizan.Utulek.Domain/1.0.0": {
+      "type": "project",
+      "path": "../VanaKrizan.Utulek.Domain/VanaKrizan.Utulek.Domain.csproj",
+      "msbuildProject": "../VanaKrizan.Utulek.Domain/VanaKrizan.Utulek.Domain.csproj"
+    },
+    "VanaKrizan.Utulek.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../VanaKrizan.Utulek.Infrastructure/VanaKrizan.Utulek.Infrastructure.csproj",
+      "msbuildProject": "../VanaKrizan.Utulek.Infrastructure/VanaKrizan.Utulek.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 7.0.9"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 7.0.9",
+      "VanaKrizan.Utulek.Application >= 1.0.0",
+      "VanaKrizan.Utulek.Domain >= 1.0.0",
+      "VanaKrizan.Utulek.Infrastructure >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -9684,7 +9736,17 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\j_vana\\source\\repos\\AP5PW_VirtAdoption\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Application\\VanaKrizan.Utulek.Application.csproj": {
+              "projectPath": "C:\\Users\\j_vana\\source\\repos\\AP5PW_VirtAdoption\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Application\\VanaKrizan.Utulek.Application.csproj"
+            },
+            "C:\\Users\\j_vana\\source\\repos\\AP5PW_VirtAdoption\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Domain\\VanaKrizan.Utulek.Domain.csproj": {
+              "projectPath": "C:\\Users\\j_vana\\source\\repos\\AP5PW_VirtAdoption\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Domain\\VanaKrizan.Utulek.Domain.csproj"
+            },
+            "C:\\Users\\j_vana\\source\\repos\\AP5PW_VirtAdoption\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Infrastructure\\VanaKrizan.Utulek.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\j_vana\\source\\repos\\AP5PW_VirtAdoption\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Infrastructure\\VanaKrizan.Utulek.Infrastructure.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

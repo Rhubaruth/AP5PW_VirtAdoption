@@ -1,0 +1,17 @@
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Application\bin\Debug\net7.0\VanaKrizan.Utulek.Application.deps.json
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Application\bin\Debug\net7.0\VanaKrizan.Utulek.Application.dll
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Application\bin\Debug\net7.0\VanaKrizan.Utulek.Application.pdb
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Application\bin\Debug\net7.0\VanaKrizan.Utulek.Domain.dll
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Application\bin\Debug\net7.0\VanaKrizan.Utulek.Infrastructure.dll
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Application\bin\Debug\net7.0\VanaKrizan.Utulek.Domain.pdb
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Application\bin\Debug\net7.0\VanaKrizan.Utulek.Infrastructure.pdb
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Application\obj\Debug\net7.0\VanaKrizan.Utulek.Application.csproj.AssemblyReference.cache
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Application\obj\Debug\net7.0\VanaKrizan.Utulek.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Application\obj\Debug\net7.0\VanaKrizan.Utulek.Application.AssemblyInfoInputs.cache
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Application\obj\Debug\net7.0\VanaKrizan.Utulek.Application.AssemblyInfo.cs
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Application\obj\Debug\net7.0\VanaKrizan.Utulek.Application.csproj.CoreCompileInputs.cache
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Application\obj\Debug\net7.0\VanaKrizan.Utulek.Application.csproj.CopyComplete
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Application\obj\Debug\net7.0\VanaKrizan.Utulek.Application.dll
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Application\obj\Debug\net7.0\refint\VanaKrizan.Utulek.Application.dll
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Application\obj\Debug\net7.0\VanaKrizan.Utulek.Application.pdb
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Application\obj\Debug\net7.0\ref\VanaKrizan.Utulek.Application.dll

@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace VanaKrizan.Utulek.Domain.Entities
 {
-    public class Pet
+    public class Pet: Entity<int>
     {
-        protected string Name { get; set; }
-        protected DateTime Birth { get; set; }
-        protected int BreedId { get; set; }
-        protected char Sex { get; set; }
+        public string Name { get; set; }
+        public DateTime Birth { get; set; }
+        public int BreedId { get; set; }
+        public char Sex { get; set; }
 
-        protected DateTime InShelterSince { get; set; }
+        public DateTime InShelterSince { get; set; }
 
         // public double Cost { get; set; }
 
-        protected string ImageSrc { get; set; }
-        protected string Info { get; set; }
+        public string ImageSrc { get; set; }
+        public string Info { get; set; }
 
         
 

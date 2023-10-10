@@ -1,6 +1,37 @@
-﻿@{
+﻿@model IList<Pet>
+
+@{
     ViewData["Title"] = "Pet Admin";
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Here is some stuff.</p>
+@{
+    if (Model != null && Model.Count > 0)
+    {
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">@nameof(Pet.Id)</th>
+                    <th scope="col">@nameof(Pet.Name)</th>
+                    <th scope="col">@nameof(Pet.Sex)</th>
+                    <th scope="col">@nameof(Pet.Birth)</th>
+                    <th scope="col">@nameof(Pet.InShelterSince)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <th scope="row">@Model[i].Id</th>
+                        <td>@Model[i].Name</td>
+                        <td>@Model[i].Sex</td>
+                        <td>@Model[i].Birth</td>
+                        <td>@Model[i].InShelterSince</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+
