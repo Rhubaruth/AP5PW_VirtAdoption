@@ -1,0 +1,11 @@
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Domain\obj\Debug\net7.0\VanaKrizan.Utulek.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Domain\obj\Debug\net7.0\VanaKrizan.Utulek.Domain.AssemblyInfoInputs.cache
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Domain\obj\Debug\net7.0\VanaKrizan.Utulek.Domain.AssemblyInfo.cs
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Domain\obj\Debug\net7.0\VanaKrizan.Utulek.Domain.csproj.CoreCompileInputs.cache
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Domain\bin\Debug\net7.0\VanaKrizan.Utulek.Domain.deps.json
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Domain\bin\Debug\net7.0\VanaKrizan.Utulek.Domain.dll
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Domain\bin\Debug\net7.0\VanaKrizan.Utulek.Domain.pdb
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Domain\obj\Debug\net7.0\VanaKrizan.Utulek.Domain.dll
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Domain\obj\Debug\net7.0\refint\VanaKrizan.Utulek.Domain.dll
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Domain\obj\Debug\net7.0\VanaKrizan.Utulek.Domain.pdb
+C:\Users\j_vana\source\repos\AP5PW_VirtAdoption\VanaKrizan.Utulek\VanaKrizan.Utulek.Domain\obj\Debug\net7.0\ref\VanaKrizan.Utulek.Domain.dll

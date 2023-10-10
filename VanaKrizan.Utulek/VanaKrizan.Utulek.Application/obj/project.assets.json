@@ -15,9 +15,6 @@
       "VanaKrizan.Utulek.Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "VanaKrizan.Utulek.Domain": "1.0.0"
-        },
         "compile": {
           "bin/placeholder/VanaKrizan.Utulek.Infrastructure.dll": {}
         },
@@ -51,11 +48,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\j_vana\\source\\repos\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Application\\VanaKrizan.Utulek.Application.csproj",
+      "projectUniqueName": "C:\\Users\\j_vana\\source\\repos\\AP5PW_VirtAdoption\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Application\\VanaKrizan.Utulek.Application.csproj",
       "projectName": "VanaKrizan.Utulek.Application",
-      "projectPath": "C:\\Users\\j_vana\\source\\repos\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Application\\VanaKrizan.Utulek.Application.csproj",
+      "projectPath": "C:\\Users\\j_vana\\source\\repos\\AP5PW_VirtAdoption\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Application\\VanaKrizan.Utulek.Application.csproj",
       "packagesPath": "C:\\Users\\j_vana\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\j_vana\\source\\repos\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Application\\obj\\",
+      "outputPath": "C:\\Users\\j_vana\\source\\repos\\AP5PW_VirtAdoption\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\j_vana\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -72,11 +69,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\j_vana\\source\\repos\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Domain\\VanaKrizan.Utulek.Domain.csproj": {
-              "projectPath": "C:\\Users\\j_vana\\source\\repos\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Domain\\VanaKrizan.Utulek.Domain.csproj"
+            "C:\\Users\\j_vana\\source\\repos\\AP5PW_VirtAdoption\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Domain\\VanaKrizan.Utulek.Domain.csproj": {
+              "projectPath": "C:\\Users\\j_vana\\source\\repos\\AP5PW_VirtAdoption\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Domain\\VanaKrizan.Utulek.Domain.csproj"
             },
-            "C:\\Users\\j_vana\\source\\repos\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Infrastructure\\VanaKrizan.Utulek.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\j_vana\\source\\repos\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Infrastructure\\VanaKrizan.Utulek.Infrastructure.csproj"
+            "C:\\Users\\j_vana\\source\\repos\\AP5PW_VirtAdoption\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Infrastructure\\VanaKrizan.Utulek.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\j_vana\\source\\repos\\AP5PW_VirtAdoption\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Infrastructure\\VanaKrizan.Utulek.Infrastructure.csproj"
             }
           }
         }

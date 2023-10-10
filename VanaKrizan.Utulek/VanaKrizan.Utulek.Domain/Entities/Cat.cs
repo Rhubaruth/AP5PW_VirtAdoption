@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VanaKrizan.Utulek.Domain.Entities
 {
-    public class Cat : Entity<int>, Pet
+    public class Cat : Pet
     {
 
     public int SizeId { get; set; }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PQBwaJ+PbrDU4FEszD2Mqb+tuxndyD/ufJpX2NjEIWGVb0Un106kXtI5J3PZDzR9x7Q62Fzf3+NFhSZoJxsEEw==",
+  "dgSpecHash": "J9Dl8nYDXmbWncJFJK/aC5rwVruNPwPgP/FNfMVxVl48UpzH4GlgZcw9czjCAs/puOBD2zmmaBu+2yl4rF3JuQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\j_vana\\source\\repos\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Tests\\VanaKrizan.Utulek.Tests.csproj",
+  "projectFilePath": "C:\\Users\\j_vana\\source\\repos\\AP5PW_VirtAdoption\\VanaKrizan.Utulek\\VanaKrizan.Utulek.Tests\\VanaKrizan.Utulek.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\j_vana\\.nuget\\packages\\coverlet.collector\\3.2.0\\coverlet.collector.3.2.0.nupkg.sha512",
     "C:\\Users\\j_vana\\.nuget\\packages\\microsoft.codecoverage\\17.7.1\\microsoft.codecoverage.17.7.1.nupkg.sha512",
