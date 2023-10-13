@@ -1,5 +1,7 @@
+# Folder for VS settings
 .vs/
 
+# Automatically created files on build
 VanaKrizan.Utulek/VanaKrizan.Utulek.Application/bin
 VanaKrizan.Utulek/VanaKrizan.Utulek.Application/obj
 VanaKrizan.Utulek/VanaKrizan.Utulek.Domain/bin
@@ -10,3 +12,5 @@ VanaKrizan.Utulek/VanaKrizan.Utulek.Tests/bin
 VanaKrizan.Utulek/VanaKrizan.Utulek.Tests/obj
 VanaKrizan.Utulek/VanaKrizan.Utulek.Web/bin
 VanaKrizan.Utulek/VanaKrizan.Utulek.Web/obj
+
+VanaKrizan.Utulek/VanaKrizan.Utulek.Web/VanaKrizan.Utulek.Web.csproj.user
