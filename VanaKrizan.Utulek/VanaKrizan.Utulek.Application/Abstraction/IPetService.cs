@@ -13,6 +13,7 @@ namespace VanaKrizan.Utulek.Application.Abstraction
         IList<Pet> Select();
 
         void Create(Pet pet);
+        bool Delete(int id);
 
     }
 }

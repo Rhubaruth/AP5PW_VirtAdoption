@@ -19,6 +19,7 @@
                     <th scope="col">@nameof(Pet.Sex)</th>
                     <th scope="col">@nameof(Pet.Birth)</th>
                     <th scope="col">@nameof(Pet.InShelterSince)</th>
+                    <th scope="col"> Delete </th>
                 </tr>
             </thead>
             <tbody>
@@ -30,6 +31,7 @@
                         <td>@Model[i].Sex</td>
                         <td>@Model[i].Birth</td>
                         <td>@Model[i].InShelterSince</td>
+                        <td><a asp-action="Delete" asp-route-id="@Model[i].Id" onclick="return ConfirmDelete();">X</a></td>
                     </tr>
                 }
             </tbody>
@@ -37,3 +39,8 @@
     }
 }
 
+
+@section Scripts {
+    <script src="~/js/dialogs.js"></script>
+
+}

@@ -32,5 +32,14 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 
             return RedirectToAction(nameof(PetController.Index));
         }
+
+        public IActionResult Delete(int id)
+        {
+            bool deleted = _petService.Delete(id);
+            
+            if(deleted)
+                return RedirectToAction(nameof(PetController.Index));
+            return NotFound();
+        }
     }
 }

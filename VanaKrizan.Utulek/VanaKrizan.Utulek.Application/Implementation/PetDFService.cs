@@ -33,5 +33,20 @@ namespace VanaKrizan.Utulek.Application.Implementation
             DatabaseFake.Pets.Add(pet);
         }
 
+        public bool Delete(int id)
+        {
+            bool deleted = false;
+
+            Pet? pet = DatabaseFake.Pets.FirstOrDefault(prod => prod.Id == id);
+            if (pet != null)
+            {
+                deleted = DatabaseFake.Pets.Remove(pet);
+            }
+
+
+            return deleted;
+        }
+
+
     }
 }
