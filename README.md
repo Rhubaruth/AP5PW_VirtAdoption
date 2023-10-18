@@ -24,15 +24,15 @@
   - spravovat role
   - _přístup k logům akcí pracovníků (třeba pro odměnu za aktivitu a správu)_
   - _+ to co pracovník_
-3. pracovník
+2. pracovník
   - přidávat a odebírat mazlíčky
   - měnit informace
   - _(+ spravovat novinky)_
   - _+ to co zákazník_
-4. zákazík
+3. zákazík
   - adoptovat
   - zobrazit adaptované mazlíčky, vidět informace
-5. návštěvník
+4. návštěvník
   - **nepřihlášený** uživatel
   - pouze zobrazovat informace a mazlíčky k adopci
 
@@ -47,7 +47,7 @@
 # Mazlíčci
 - body
   - informace o mazlíčcíh
-    - (animace = obrázek se jménem -> najetí obrázek do pozadí, jméno nahoru a zobtazí se informace)
+    - (animace = obrázek se jménem -> najetí obrázek do pozadí, jméno nahoru a zobrazí se informace)
   - stránky po př 9 mazlíčcích a pak možnost dalšího načtení
   - filtr na vyhledávání
   - na obr mazlíčka proklik na více infa

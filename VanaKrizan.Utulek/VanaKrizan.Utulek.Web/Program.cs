@@ -1,7 +1,13 @@
+using VanaKrizan.Utulek.Application.Abstraction;
+using VanaKrizan.Utulek.Application.Implementation;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// propojení interface s implementací v Applications
+builder.Services.AddScoped<IPetService, PetDFService>();
 
 var app = builder.Build();
 
@@ -19,6 +25,13 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+// pøipojení Areas (upravené z ScaffoldingReadMe.txt)
+app.MapControllerRoute(
+      name: "areas",
+      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    );
+
 
 app.MapControllerRoute(
     name: "default",

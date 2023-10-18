@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VanaKrizan.Utulek.Web", "VanaKrizan.Utulek.Web\VanaKrizan.Utulek.Web.csproj", "{55BC6AE7-C069-4007-84D8-E831D41C2CC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VanaKrizan.Utulek.Web", "VanaKrizan.Utulek.Web\VanaKrizan.Utulek.Web.csproj", "{55BC6AE7-C069-4007-84D8-E831D41C2CC4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VanaKrizan.Utulek.Application", "VanaKrizan.Utulek.Application\VanaKrizan.Utulek.Application.csproj", "{8098DE9A-B6B2-4797-8695-CDDD0D9D3160}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VanaKrizan.Utulek.Domain", "VanaKrizan.Utulek.Domain\VanaKrizan.Utulek.Domain.csproj", "{59552C0D-DCDA-444C-966D-FCCC7AB7CB24}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VanaKrizan.Utulek.Infrastructure", "VanaKrizan.Utulek.Infrastructure\VanaKrizan.Utulek.Infrastructure.csproj", "{3459DDD3-14A5-4E04-BE46-43752445499F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VanaKrizan.Utulek.Tests", "VanaKrizan.Utulek.Tests\VanaKrizan.Utulek.Tests.csproj", "{DC7D507A-82F6-46F3-A2FC-21A5EF7FE9E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{55BC6AE7-C069-4007-84D8-E831D41C2CC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55BC6AE7-C069-4007-84D8-E831D41C2CC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55BC6AE7-C069-4007-84D8-E831D41C2CC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8098DE9A-B6B2-4797-8695-CDDD0D9D3160}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8098DE9A-B6B2-4797-8695-CDDD0D9D3160}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8098DE9A-B6B2-4797-8695-CDDD0D9D3160}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8098DE9A-B6B2-4797-8695-CDDD0D9D3160}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59552C0D-DCDA-444C-966D-FCCC7AB7CB24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59552C0D-DCDA-444C-966D-FCCC7AB7CB24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59552C0D-DCDA-444C-966D-FCCC7AB7CB24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59552C0D-DCDA-444C-966D-FCCC7AB7CB24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3459DDD3-14A5-4E04-BE46-43752445499F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3459DDD3-14A5-4E04-BE46-43752445499F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3459DDD3-14A5-4E04-BE46-43752445499F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3459DDD3-14A5-4E04-BE46-43752445499F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC7D507A-82F6-46F3-A2FC-21A5EF7FE9E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC7D507A-82F6-46F3-A2FC-21A5EF7FE9E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC7D507A-82F6-46F3-A2FC-21A5EF7FE9E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC7D507A-82F6-46F3-A2FC-21A5EF7FE9E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

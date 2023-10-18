@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\VanaKrizan.Utulek.Web.props" />
-</Project>
