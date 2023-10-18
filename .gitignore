@@ -13,4 +13,4 @@ VanaKrizan.Utulek/VanaKrizan.Utulek.Tests/obj
 VanaKrizan.Utulek/VanaKrizan.Utulek.Web/bin
 VanaKrizan.Utulek/VanaKrizan.Utulek.Web/obj
 
-VanaKrizan.Utulek/VanaKrizan.Utulek.Web/VanaKrizan.Utulek.Web.csproj.user
+*.user
