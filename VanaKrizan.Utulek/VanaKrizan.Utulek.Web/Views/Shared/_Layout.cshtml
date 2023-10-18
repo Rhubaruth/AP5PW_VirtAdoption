@@ -11,15 +11,18 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <div class="hiding">
+            <div class="container headercon">
+                <div class="logo col-sm-7">
                     <a class="navbar-brand" asp-area="" asp-page="/Index">Logo útulek</a>
+                    <div class="floatL">
+                        <h2>Útulek pro zvířata v nouzi Zlín Vršava</h2>
+                    </div>
                     @*<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>*@
                 </div>
-                <div class="sticky">
+                <div class="navigace col-sm-5">
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
@@ -62,7 +65,26 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
+        <div class="container allFooter">
+            <div class="row footerText">
+                <article class="col-sm-3">
+                    <h4>Útulek pro zvířata v nouzi ve Zlíně</h4>
+                    <p>Útulek je situován nedaleko zastavěné části Zlína a je přístupný městskou hromadnou dopravou. Kapacita útulku umožňuje umístit zde až 80 psů a 40 koček.</p>
+                </article>
+
+                <article class="col-sm-3">
+                    <h4>Chcete být pravidelně informování?</h4>
+                    <p>Zadejte váš e-mail a my vás zařadíme do našeho newsletteru.</p>
+                </article>
+
+                <article class="col-sm-3">
+                    <h4>Kontaktní údaje</h4>
+                    <p>Útulek pro zvířata v nouzi Vršava</p>
+                    <div class="nopad"><p>Mezilesí 628</p><p>763 14 Zlín-Kostelec</p></div>
+                    <p>Tel.: +420 577 244 444</p>
+                    <p>E-mail: utulekzlin@utulekzlin.cz</p>
+                </article>
+            </div>
             &copy; 2023 - VanaKrizan.Utulek.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>

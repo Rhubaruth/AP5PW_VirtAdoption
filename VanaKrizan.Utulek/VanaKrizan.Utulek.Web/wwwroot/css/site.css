@@ -22,27 +22,71 @@ body {
 }
 
 
-.sticky {
+.navigace {
     transition: all 0.5s;
     z-index: 997;
     padding: 20px 0;
+    margin-right: 5%;
 }
 
-.hiding {
+.logo {
     padding: 20px 0;
+    margin-left: 10%;
+    float:left;
+    padding-right:20%
 }
+
 
 .articles {
-    padding-top: 7%;
+    margin-top: 7%;
+    margin-bottom: 7%;
 }
 
 .pozdrav{
     padding: 5%;
 }
 
-article {
+.main {
     padding: 15px;
     margin: auto;
     border: 1px solid #ccc !important;
     border-radius: 10px;
+}
+
+.headercon {
+    margin-left: unset;
+    margin-right: unset;
+    gap: 30%;
+}
+
+.headercon h2 {
+    font-size: 18px;
+    float: left;
+    margin-right: 80%;
+    text-align: left;
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+}
+
+.floatL {
+    float: right;
+}
+
+.footerText article {
+    line-height: 20px;
+    padding: 15px;
+    margin: auto;
+}
+
+.footerText p {
+    white-space: pre-wrap;
+}
+
+.allFooter {
+    margin: auto;
+}
+
+.nopad {
+    line-height: 5px;
 }
