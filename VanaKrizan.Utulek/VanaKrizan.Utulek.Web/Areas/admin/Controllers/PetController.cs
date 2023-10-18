@@ -19,5 +19,27 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
             IList<Pet> pets = _petService.Select();
             return View(pets);
         }
+
+        public IActionResult Create()
+        {
+            return View();  // vrací view s návem "Create" 
+        }
+
+        [HttpPost]      // default atribut = "HttpGet"
+        public IActionResult Create(Pet pet)
+        {
+            _petService.Create(pet);
+
+            return RedirectToAction(nameof(PetController.Index));
+        }
+
+        public IActionResult Delete(int id)
+        {
+            bool deleted = _petService.Delete(id);
+            
+            if(deleted)
+                return RedirectToAction(nameof(PetController.Index));
+            return NotFound();
+        }
     }
 }
