@@ -1,19 +1,19 @@
 ﻿@model Pet
 
 @{
-    ViewData["Title"] = "Pet - Create";
+    int thisPetId = 0;
+    ViewData["Title"] = "Pet [" + thisPetId + "] edit";
 }
 <h1>@ViewData["Title"]</h1>
 
-@* prej jiný create *@
-<form asp-action="Create" method="post"> 
+<form asp-action="Edit" method="post">
     <div class="mb-3">
         <label class="form-label" asp-for="Name"> Name </label>
         <input class="form-control" asp-for="Name">
 
         <label class="form-label" asp-for="Birth"> Birth </label>
         <input class="form-control" asp-for="Birth">
-        
+
         <label class="form-label" asp-for="Sex"> Sex </label>
         <input class="form-control" asp-for="Sex">
 

@@ -20,6 +20,8 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
             return View(pets);
         }
 
+        /* Funcs for Create */
+
         public IActionResult Create()
         {
             return View();  // vrací view s návem "Create" 
@@ -32,6 +34,31 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 
             return RedirectToAction(nameof(PetController.Index));
         }
+
+        /* Funcs for Edit */
+
+        public IActionResult Edit()
+        {
+            return View();  // vrací view s návem "Create" 
+        }
+
+        [HttpPost]      // default atribut = "HttpGet"
+        public IActionResult Edit(int id)
+        {
+            Pet? pet = _petService.SelectById(id);
+            if (pet == null)
+            {
+                return NotFound();
+            }
+
+            bool isEdited = _petService.Edit(pet);
+
+            if (isEdited)
+                return RedirectToAction(nameof(PetController.Index));
+            return NotFound();
+        }
+
+        /* Funcs for Delete */
 
         public IActionResult Delete(int id)
         {

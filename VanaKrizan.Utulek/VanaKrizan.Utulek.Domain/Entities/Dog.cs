@@ -10,7 +10,7 @@ namespace VanaKrizan.Utulek.Domain.Entities
     {
 
     public int SizeId { get; set; }
-    public bool chip { get; set; }
+    public bool Chip { get; set; }
 
     // public double Cost { get; set; }
 
