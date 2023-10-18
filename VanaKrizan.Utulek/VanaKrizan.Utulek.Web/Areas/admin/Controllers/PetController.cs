@@ -37,12 +37,6 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 
         /* Funcs for Edit */
 
-        public IActionResult Edit()
-        {
-            return View();  // vrací view s návem "Create" 
-        }
-
-        [HttpPost]      // default atribut = "HttpGet"
         public IActionResult Edit(int id)
         {
             Pet? pet = _petService.SelectById(id);
@@ -51,7 +45,14 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
                 return NotFound();
             }
 
-            bool isEdited = _petService.Edit(pet);
+            return View(pet);  // vrací view s návem "Create" 
+        }
+
+        [HttpPost]      // default atribut = "HttpGet"
+        public IActionResult Edit(Pet updatedPet)
+        {
+
+            bool isEdited = _petService.Edit(updatedPet);
 
             if (isEdited)
                 return RedirectToAction(nameof(PetController.Index));
