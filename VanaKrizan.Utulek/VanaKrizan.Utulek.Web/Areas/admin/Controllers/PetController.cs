@@ -22,17 +22,29 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 
         /* Funcs for Create */
 
-        public IActionResult Create()
+        public IActionResult ChooseType()
         {
             return View();  // vrací view s návem "Create" 
         }
 
         [HttpPost]      // default atribut = "HttpGet"
-        public IActionResult Create(Pet pet)
+        public IActionResult ChooseType(ChosenType chosenType)
         {
-            _petService.Create(pet);
+            //_petService.Create(type);
 
-            return RedirectToAction(nameof(PetController.Index));
+            switch (chosenType.Type)
+            {
+                case PetType.Dog:
+                    return RedirectToAction(
+                        nameof(CreatorController.CreateDog), "Creator");
+                case PetType.Cat:
+                    return RedirectToAction(
+                        nameof(CreatorController.CreateCat), "Creator");
+                default:
+                    break;
+            }
+
+            return NotFound();
         }
 
         /* Funcs for Edit */
@@ -45,7 +57,7 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
                 return NotFound();
             }
 
-            return View(pet);  // vrací view s návem "Create" 
+            return View(pet);  // vrací view s návem "Edit" 
         }
 
         [HttpPost]      // default atribut = "HttpGet"

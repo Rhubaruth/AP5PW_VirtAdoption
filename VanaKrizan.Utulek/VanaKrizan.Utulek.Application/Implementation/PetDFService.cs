@@ -58,20 +58,18 @@ namespace VanaKrizan.Utulek.Application.Implementation
 
         public bool Edit(Pet pet)
         {
-            bool isEdited = false;
+            bool _isEdited = false;
 
             Pet? existingPet = DatabaseFake.Pets.FirstOrDefault(p => p.Id == pet.Id);
             if (existingPet == null)
-                return isEdited;
-
-            isEdited = true;
+                return false;
 
             existingPet.Name = pet.Name;
             existingPet.Birth = pet.Birth;
             existingPet.Sex = pet.Sex;
             existingPet.Info = pet.Info;
 
-            return isEdited;
+            return true;
         }
 
     }

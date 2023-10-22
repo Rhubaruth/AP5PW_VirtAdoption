@@ -1,12 +1,11 @@
-﻿@model Dog
+﻿@model Cat
 
 @{
-    ViewData["Title"] = "Přidat pesa";
+    ViewData["Title"] = "Přidat kočika";
 }
 <h2>@ViewData["Title"]</h2>
 
-@* prej jiný create *@
-<form asp-action="Create" method="post">
+<form asp-action="CreateCat" method="post">
     <div class="mb-3">
         <label class="form-label" asp-for="Name"> Name </label>
         <input class="form-control" asp-for="Name">
@@ -20,8 +19,8 @@
         <label class="form-label" asp-for="Info"> Info </label>
         <input class="form-control" asp-for="Info">
 
-        <label class="form-label" asp-for="SizeId"> Velikost </label>
-        <input class="form-control" asp-for="SizeId">
+        <label class="form-label" asp-for="Chip"> Očipovaný/á </label>
+        <input class="form-control" asp-for="Chip">
 
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
