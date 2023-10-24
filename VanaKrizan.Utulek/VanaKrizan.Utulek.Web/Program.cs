@@ -8,6 +8,7 @@ builder.Services.AddControllersWithViews();
 
 // propojení interface s implementací v Applications
 builder.Services.AddScoped<IPetService, PetDFService>();
+builder.Services.AddScoped<IHomeService, HomeService>();
 
 var app = builder.Build();
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VanaKrizan.Utulek.Domain.Entities;
+using VanaKrizan.Utulek.Infrastructure.Database;
 
 namespace VanaKrizan.Utulek.Infrastructure.Database
 {
@@ -13,42 +14,20 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
         public static List<Dog> Dogs {  get; set; }
         public static List<Cat> Cats {  get; set; }
 
+        public static List<Pet> Carousels { get; set; }
+
         static DatabaseFake()
         {
-            Pets = new List<Pet>();
-            
-            Dogs = new List<Dog>();
-            Cats = new List<Cat>();
+            DatabaseInit dbInit = new DatabaseInit();
+
+            Pets = dbInit.GetPets();
+            Carousels = dbInit.GetCarousels();
+
+            //Dogs = new List<Dog>();
+            //Cats = new List<Cat>();
 
 
-            Pets.Add(new Dog
-            {
-                Id = 1,
-                Name = "Doggo",
-                Sex = 'M',
-                Birth = DateTime.Now,
-                InShelterSince = DateTime.Now,
-                Chip = false,
-                SizeId = 1,
-            });
 
-            Pets.Add(new Dog
-            {
-                Id = 2,
-                Name = "Oggod",
-                Sex = 'M',
-                InShelterSince = DateTime.Now,
-                Chip = true,
-                SizeId = 2,
-            });
-
-            Pets.Add(new Cat
-            {
-                Id = 3,
-                Name = "Kitty",
-                Birth = DateTime.Now,
-                Chip = true,
-            });
 
         }
 
