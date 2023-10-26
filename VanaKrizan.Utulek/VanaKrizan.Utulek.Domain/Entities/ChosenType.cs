@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace VanaKrizan.Utulek.Domain.Entities
 {
-    public class Dog : Pet
+    public enum PetType {
+        Error,
+        Dog,
+        Cat, 
+        Rabbit,
+    }
+
+    public class ChosenType
     {
-
-    public int SizeId { get; set; }
-    public bool Chip { get; set; }
-
-    // public double Cost { get; set; }
-
+        public PetType Type { get; set; }
     }
 }

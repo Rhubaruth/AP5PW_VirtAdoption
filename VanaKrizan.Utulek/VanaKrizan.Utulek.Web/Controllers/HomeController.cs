@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using VanaKrizan.Utulek.Application.Abstraction;
+using VanaKrizan.Utulek.Application.ViewModels;
 using VanaKrizan.Utulek.Web.Models;
 
 namespace VanaKrizan.Utulek.Web.Controllers

@@ -16,6 +16,15 @@ namespace VanaKrizan.Utulek.Application.Implementation
             return DatabaseFake.Pets;
         }
 
+        Pet? IPetService.SelectById(int id)
+        {
+            foreach(Pet pet in DatabaseFake.Pets)
+            {
+                if(pet.Id == id) return pet;
+            }
+            return null;
+        }
+
         public void Create(Pet pet)
         {
             // fake id
@@ -47,6 +56,21 @@ namespace VanaKrizan.Utulek.Application.Implementation
             return deleted;
         }
 
+        public bool Edit(Pet pet)
+        {
+            bool _isEdited = false;
+
+            Pet? existingPet = DatabaseFake.Pets.FirstOrDefault(p => p.Id == pet.Id);
+            if (existingPet == null)
+                return false;
+
+            existingPet.Name = pet.Name;
+            existingPet.Birth = pet.Birth;
+            existingPet.Sex = pet.Sex;
+            existingPet.Info = pet.Info;
+
+            return true;
+        }
 
     }
 }

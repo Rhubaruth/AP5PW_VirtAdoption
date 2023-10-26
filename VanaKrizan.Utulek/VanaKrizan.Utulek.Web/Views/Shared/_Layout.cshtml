@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/VanaKrizan.Utulek.Web.styles.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
     <header>
@@ -22,12 +23,36 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" asp-area="" asp-page="/Index">Domů</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-area="admin" asp-controller="Pet" asp-action="Index">Mazlíčci</a></li>  @*+virtuální adopce + ztráty a nálezy*@
-                        <li class="nav-item"><a class="nav-link" asp-area="" asp-page="/Privacy">Aktuality</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-area="" asp-page="/Index">Informace</a></li> @*+kontakt*@
-                        <li class="nav-item"><a class="nav-link" asp-area="" asp-page="/Index">Má adopce</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-area="" asp-page="/Index">Přihlásit se</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Domů</a>
+                            </li>
+                           @*  <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Virtuální adopce</a>
+                            </li> *@
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Mazlicci" asp-controller="Mazlicci" asp-action="Index">Mazlíčci</a> @*+virtuální adopce + ztráty a nálezy*@
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Aktuality</a>
+                            </li>
+                            @* <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Ztráty a nálezy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Kontakt</a>
+                            </li> *@
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Informace</a> @*+kontakt*@
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Má adopce</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Přihlásit se</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="admin" asp-controller="Pet" asp-action="Index">Admin</a> @*pak někam schovat*@
+                            </li>
                     </ul>
                 </div>
             </div>

@@ -4,32 +4,46 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VanaKrizan.Utulek.Domain.Entities;
+using VanaKrizan.Utulek.Infrastructure.Database;
 
 namespace VanaKrizan.Utulek.Infrastructure.Database
 {
     public class DatabaseFake
     {
         public static List<Pet> Pets {  get; set; }
+        public static List<Dog> Dogs {  get; set; }
+        public static List<Cat> Cats {  get; set; }
+
+        public static List<Pet> Carousels { get; set; }
 
         static DatabaseFake()
         {
-            Pets= new List<Pet>();
+            DatabaseInit dbInit = new DatabaseInit();
 
-            Pets.Add(new Pet {
-                Id = 1,
-                Name = "Test Rat",
-                Sex = 'M',
-                Birth = DateTime.Now,
-                InShelterSince = DateTime.Now,
-            });
-            Pets.Add(new Pet
+            Pets = dbInit.GetPets();
+            Carousels = dbInit.GetCarousels();
+
+            //Dogs = new List<Dog>();
+            //Cats = new List<Cat>();
+
+
+
+
+        }
+
+        public static List<Pet> SelectAll()
+        {
+            List<Pet> concatPets = new();
+            concatPets.Clear();
+            foreach(var pet in Dogs) {
+                concatPets.Add(pet);
+            }
+            foreach (var pet in Cats)
             {
-                Id = 2,
-                Name = "Test Rat 2",
-                Sex = 'F',
-                Birth = DateTime.Now,
-                InShelterSince = DateTime.Now,
-            });
+                concatPets.Add(pet);
+            }
+
+            return concatPets;
         }
 
     }
