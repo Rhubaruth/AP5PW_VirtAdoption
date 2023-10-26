@@ -11,18 +11,18 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <div class="hiding">
-                    <a class="navbar-brand" asp-area="" asp-page="/Index">Logo útulek</a>
-                    @*<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    </button>*@
-                </div>
-                <div class="sticky">
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top row" id="mainNav">
+            <div class="logo col-sm-5">
+                <a class="navbar-brand" href="#page-top"><img src="https://www.utulekzlin.cz/image/images/templates/utulek-zlin.png/" alt="..." /></a>
+                <h2>Útulek pro zvířata v nouzi Zlín Vršava</h2>
+            </div>
+            <div class="navigace col-sm-5">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Domů</a>
                             </li>
@@ -53,20 +53,36 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="admin" asp-controller="Pet" asp-action="Index">Admin</a> @*pak někam schovat*@
                             </li>
-                        </ul>
-                    </div>
-                </div> @*sticky*@
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+@*     <div class="container"> *@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div>
+   @*  </div> *@
 
     <footer class="border-top footer text-muted">
-        <div class="container">
+        <div class="container allFooter">
+            <div class="row footerText">
+                <article class="col-sm-5">
+                    <h4>Kapacita</h4>
+                    <div class="pad">
+                        <p>Kapacita útulku umožňuje umístit zde až 80 psů a 40 koček.</p>
+                    </div>
+                </article>
+
+                <article class="col-sm-5">
+                    <h4>Kontaktní údaje</h4>
+                    <div class="kontakt">
+                        <p>Tel.: +420 577 244 444</p>
+                        <p>E-mail: utulekzlin@utulekzlin.cz</p>
+                    </div>
+                </article>
+
+            </div>
             &copy; 2023 - VanaKrizan.Utulek.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
