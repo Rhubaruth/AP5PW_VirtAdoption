@@ -52,7 +52,6 @@ body {
 .navbar-brand {
     padding-top: 1%;
     padding-bottom: 1%;
-    margin-right: 2%;
     float:left;
 }
 
@@ -60,10 +59,14 @@ body {
     color: var(--bs-navbar-brand-hover-color);
 }
 
+.prava{
+    margin-right:6%;
+}
+
 .navbar-nav {
     --bs-nav-link-padding-x: 0;
     --bs-nav-link-padding-y: 0.5rem;
-/*    --bs-nav-link-font-weight:;
+    /*    --bs-nav-link-font-weight:;
     --bs-nav-link-color: var(--bs-navbar-color);
     --bs-nav-link-hover-color: var(--bs-navbar-hover-color);
     --bs-nav-link-disabled-color: var(--bs-navbar-disabled-color);*/
@@ -72,7 +75,7 @@ body {
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
-    font-size:20px;
+    font-size: 16px;
 }
 
 .navbar-nav .show > .nav-link,
@@ -263,7 +266,7 @@ body {
 
     .navbar-expand-lg .navbar-nav .nav-link {
       /*  padding-right: 5rem;*/
-        padding-left: 2rem;
+        padding-left: 1rem;
     }
 
     .navbar-expand-lg .navbar-nav-scroll {
@@ -484,7 +487,7 @@ body {
 }
 
 .navbar-brand img {
-    width: 50%;
+    width: 40%;
     height: auto;
 }
 
@@ -503,9 +506,9 @@ body {
 }
 
 .logo h2 {
-    font-size: 25px;
-    margin-top: 8%;
-    width: 75%;
+    font-size: 22px;
+    margin-top: 9%;
+    width: 90%;
     padding-right: 0;
     margin-right: 0;
     color: #EDF6F9;
@@ -536,7 +539,7 @@ body {
 
 #mainNav .navbar-nav .nav-item .nav-link {
     font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-size: 20px;
+   
     color: #fff;
     letter-spacing: 0.0625em;
     padding-right:5px;
