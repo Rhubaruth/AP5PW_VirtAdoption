@@ -1,6 +1,7 @@
 ﻿@model CarouselProductViewModel
-
-<h1> su kokot </h1>
+<div class="nadpis">
+    <h1>Naši mazlíččci, kteří hledají domov</h1>
+</div>
 
 @* @{
     if (Model != null && Model.Carousels != null && Model.Carousels.Count > 0)
@@ -36,17 +37,14 @@
 @{
     if (Model != null && Model.Pets != null && Model.Pets.Count > 0)
     {
-
-
-
-        <section class="py-5">
+        <section class="py-5 mazlici">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
                     @foreach (var pet in Model.Pets)
                     {
                         <div class="col mb-5">
-                            <div class="card h-100">
+                            <div class="card h-100 mazlik">
                                 <!-- Product image-->
                                 <img class="card-img-top" src="@pet.ImageSrc" alt="@pet.Name" />
                                 <!-- Product details-->
@@ -74,6 +72,6 @@
 
 
 @section Styles {
-    <link rel="stylesheet" href="~/css/shop_home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/mazlicci.css" asp-append-version="true" />
 
 }
