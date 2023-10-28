@@ -3,9 +3,11 @@
 @{
     ViewData["Title"] = "Přidat pesa";
 }
-<h2>@ViewData["Title"]</h2>
+<div class="titulpridani">
+    <h2>@ViewData["Title"]</h2>
+</div>
 
-<form asp-action="ChooseType" method="post">
+<form asp-action="ChooseType" method="post" class="choose">
     <div class="mb-3">
         <label class="form-label" asp-for="Type"> Zvolte typ </label>
         <select class="form-control" asp-for="Type">
@@ -17,3 +19,9 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+
+}
