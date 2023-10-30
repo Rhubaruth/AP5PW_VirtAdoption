@@ -108,6 +108,21 @@ tr:hover {
     text-align: center;
 }
 
-.titulKocka h2 {
+    .titulKocka h2 {
+        margin-top: 4%;
+    }
+/***************************************/
+.petEdit {
+    width: 60%;
+    margin: auto;
+}
+
+.titulEdit {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
+
+.titulEdit h2 {
     margin-top: 4%;
 }
