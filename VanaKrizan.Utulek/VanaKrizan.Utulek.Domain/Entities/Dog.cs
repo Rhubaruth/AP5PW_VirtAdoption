@@ -9,8 +9,8 @@ namespace VanaKrizan.Utulek.Domain.Entities
     public class Dog : Pet
     {
 
-    public int SizeId { get; set; }
-    public bool Chip { get; set; }
+    public int? SizeId { get; set; }
+    public bool? Chip { get; set; }
 
     // public double Cost { get; set; }
 

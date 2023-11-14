@@ -15,35 +15,35 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
             List<Pet> pets = new List<Pet>();
 
             #region Hardcoded adding pets
-            pets.Add(new Dog
+            pets.Add(new Pet
             {
                 Id = 1,
                 Name = "Doggo",
                 Sex = 'M',
                 Birth = DateTime.Now,
                 InShelterSince = DateTime.Now,
-                Chip = false,
-                SizeId = 1,
+                //Chip = false,
+                //SizeId = 1,
                 ImageSrc = "/img/pets/produkty-01.jpg",
             });
 
-            pets.Add(new Dog
+            pets.Add(new Pet
             {
                 Id = 2,
                 Name = "Oggod",
                 Sex = 'M',
                 InShelterSince = DateTime.Now,
-                Chip = true,
-                SizeId = 2,
+                //Chip = true,
+                //SizeId = 2,
                 ImageSrc = "/img/pets/produkty-02.jpg",
             });
 
-            pets.Add(new Cat
+            pets.Add(new Pet
             {
                 Id = 3,
                 Name = "Kitty",
                 Birth = DateTime.Now,
-                Chip = true,
+                //Chip = true,
                 ImageSrc = "/img/pets/produkty-03.jpg",
             });
             #endregion
@@ -56,14 +56,14 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
             List<Pet> carousel = new List<Pet>();
 
             #region Hardcoded adding
-            carousel.Add(new Cat
+            carousel.Add(new Pet
             {
                 Id = 1,
                 Name = "ahoj",
                 Sex = 'M',
                 Birth = DateTime.Now,
                 InShelterSince = DateTime.Now,
-                Chip = false,
+                //Chip = false,
                 ImageSrc = "/img/carousel/produkty-08.jpg",
             });
 

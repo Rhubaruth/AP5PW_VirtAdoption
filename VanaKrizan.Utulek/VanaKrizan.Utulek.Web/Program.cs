@@ -1,10 +1,24 @@
+using Microsoft.EntityFrameworkCore;
 using VanaKrizan.Utulek.Application.Abstraction;
 using VanaKrizan.Utulek.Application.Implementation;
+using VanaKrizan.Utulek.Infrastructure.Database;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// config Databáze
+string connectionString = builder.Configuration.GetConnectionString("MySQL");
+ServerVersion serverVersion = new MySqlServerVersion("8.0.34");
+
+builder.Services.AddDbContext<UtulekDbContext>(
+    optionsBuilder => optionsBuilder.UseMySql(connectionString, serverVersion));    
+        // popø nahradit builder.Services.AddMySql<UtulekDbContext>(connectionString, serverVersion)
+
+// migrace Databází
+
+
 
 // propojení interface s implementací v Applications
 builder.Services.AddScoped<IPetService, PetDFService>();
