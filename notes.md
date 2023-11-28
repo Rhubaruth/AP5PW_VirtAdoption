@@ -12,13 +12,14 @@ install:
     - Microsoft.EntityFrameworkCore.Design
 
 
-# config DB 
+# DB
+## config DB 
 pridana class UtulekDbContext
 
 propojeni: v Program.cs
 db location string: appsettings.json
 
-# add Migrations
+## add Migrations
 view > other windows > PackageManagerConsole
 change Web -> Infrastructure 
 ''' Add-Migration "<name of migration>" '''
@@ -27,12 +28,21 @@ change Web -> Infrastructure
 ''' Update-Database '''
 nahraje migraci na db
 
-# Popis property
+## Popis property
 [Key]               - Primární klíč
 [ForeignKey()]      - Cizí klíč
 [Required]          - Povinné               (nadřazené nad nullable)
 <T>?                - volitelné/nullable    (? za dat. typ)
 [StringLength()]    - omezení délky
+
+
+# Identity Roles
+    - dependencies > Manage NuGet Package
+install:
+    - Microsoft.AspNetCore.Identity.EntityFrameworkCore
+include:
+    - FrameworkReference Include="Microsoft.AspNetCore.App"
+
 
 
 

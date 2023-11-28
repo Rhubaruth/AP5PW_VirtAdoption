@@ -1,12 +1,48 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using VanaKrizan.Utulek.Application.Abstraction;
 using VanaKrizan.Utulek.Application.Implementation;
 using VanaKrizan.Utulek.Infrastructure.Database;
+using VanaKrizan.Utulek.Infrastructure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// add Identity (úèty, role)
+builder.Services.AddIdentity<User, Role>()
+     .AddEntityFrameworkStores<UtulekDbContext>()
+     .AddDefaultTokenProviders();
+// config Identity (úèty, role)
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    #region Pravidla Hesla
+    options.Password.RequireDigit = false;
+    options.Password.RequiredLength = 1;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequiredUniqueChars = 1;
+    #endregion
+    options.Lockout.AllowedForNewUsers = true;
+    options.Lockout.MaxFailedAccessAttempts = 10;
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
+    options.User.RequireUniqueEmail = true;
+});
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+    options.LoginPath = "/Security/Account/Login";
+    options.LogoutPath = "/Security/Account/Logout";
+    options.SlidingExpiration = true;
+});
+
+builder.Services.AddScoped<IAccountService, AccountIdentityService>();
+
+
 
 // config Databáze
 string connectionString = builder.Configuration.GetConnectionString("MySQL");
@@ -39,6 +75,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 // pøipojení Areas (upravené z ScaffoldingReadMe.txt)
