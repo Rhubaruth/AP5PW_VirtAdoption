@@ -9,7 +9,7 @@ using VanaKrizan.Utulek.Application.ViewModels;
 using VanaKrizan.Utulek.Infrastructure.Identity.Enums;
 using VanaKrizan.Utulek.Web.Controllers;
 
-namespace UTB.Eshop.Web.Areas.Security.Controllers
+namespace VanaKrizan.Utulek.Web.Areas.Security.Controllers
 {
     [Area("Security")]
     public class AccountController : Controller
