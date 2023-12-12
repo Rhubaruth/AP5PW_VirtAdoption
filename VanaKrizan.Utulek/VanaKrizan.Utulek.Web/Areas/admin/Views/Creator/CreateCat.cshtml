@@ -3,9 +3,13 @@
 @{
     ViewData["Title"] = "Přidat kočika";
 }
-<h2>@ViewData["Title"]</h2>
 
-<form asp-action="CreateCat" method="post">
+<div class="titulKocka">
+    <h2>@ViewData["Title"]</h2>
+</div>
+
+
+<form asp-action="CreateCat" method="post" class="pridaniKocka">
     <div class="mb-3">
         <label class="form-label" asp-for="Name"> Name </label>
         <input class="form-control" asp-for="Name">
@@ -25,3 +29,9 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+
+}

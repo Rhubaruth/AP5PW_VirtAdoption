@@ -5,13 +5,15 @@
 }
 <h1>@ViewData["Title"]</h1>
 
-<a asp-action="ChooseType"> Create Pet </a>
+<div class="createPet">
+    <a asp-action="ChooseType"> Create Pet </a>
+</div>
 
 @{
     if (Model != null && Model.Count > 0)
     {
 
-        <table class="table">
+        <table class="tableAdmin">
             <thead>
                 <tr>
                     <th scope="col">@nameof(Pet.Id)</th>
@@ -44,5 +46,11 @@
 
 @section Scripts {
     <script src="~/js/dialogs.js"></script>
+
+}
+
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
 
 }
