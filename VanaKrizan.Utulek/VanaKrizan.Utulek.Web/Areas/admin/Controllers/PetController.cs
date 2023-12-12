@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using VanaKrizan.Utulek.Domain.Entities;
 using VanaKrizan.Utulek.Infrastructure.Database;
 using VanaKrizan.Utulek.Application.Abstraction;
+using VanaKrizan.Utulek.Infrastructure.Identity.Enums;
 
 namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 {
     [Area("admin")] // napojení Controller - Area
+    [Authorize(Roles = nameof(Roles.Admin) + ", " + nameof(Roles.Manager))]
     public class PetController : Controller
     {
         IPetService _petService;

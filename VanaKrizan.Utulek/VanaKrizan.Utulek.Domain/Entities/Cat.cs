@@ -9,7 +9,7 @@ namespace VanaKrizan.Utulek.Domain.Entities
     public class Cat : Pet
     {
 
-    public bool Chip { get; set; }
+    public bool? Chip { get; set; }
 
     // public double Cost { get; set; }
 
