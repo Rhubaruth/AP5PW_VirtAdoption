@@ -42,6 +42,10 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
             modelBuilder.Entity<IdentityUserRole<int>>().HasData(adminUserRoles);
             modelBuilder.Entity<IdentityUserRole<int>>().HasData(managerUserRoles);
 
+
+            //configuration of User entity using IUser interface property inside Order entity
+            // modelBuilder.Entity<Order>().HasOne<User>(e => e.User as User);
+
         }
 
     }
