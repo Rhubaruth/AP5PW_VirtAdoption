@@ -44,7 +44,10 @@ include:
     - FrameworkReference Include="Microsoft.AspNetCore.App"
 
 
-
+# Test
+install:
+    - Moq
+    - Microsoft.EntityFrameworkCore.InMemory
 
 
 
