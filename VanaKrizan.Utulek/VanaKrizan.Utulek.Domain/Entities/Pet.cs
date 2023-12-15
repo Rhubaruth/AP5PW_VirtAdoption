@@ -18,7 +18,7 @@ namespace VanaKrizan.Utulek.Domain.Entities
         public int? BreedId { get; set; }
 
         [StringLength(1)]
-        public char Sex { get; set; }
+        public string? Sex { get; set; }
 
         [Required]
         public DateTime InShelterSince { get; set; }

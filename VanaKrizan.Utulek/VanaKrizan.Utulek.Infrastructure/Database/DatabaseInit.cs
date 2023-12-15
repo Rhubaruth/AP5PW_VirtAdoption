@@ -22,7 +22,7 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
             {
                 Id = 1,
                 Name = "Doggo",
-                Sex = 'M',
+                Sex = "M",
                 Birth = DateTime.Now,
                 InShelterSince = DateTime.Now,
                 //Chip = false,
@@ -34,7 +34,7 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
             {
                 Id = 2,
                 Name = "Oggod",
-                Sex = 'M',
+                Sex = "M",
                 InShelterSince = DateTime.Now,
                 //Chip = true,
                 //SizeId = 2,
@@ -63,7 +63,7 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
             {
                 Id = 1,
                 Name = "ahoj",
-                Sex = 'M',
+                Sex = "M",
                 Birth = DateTime.Now,
                 InShelterSince = DateTime.Now,
                 //Chip = false,
@@ -74,7 +74,7 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
             {
                 Id = 1,
                 Name = "xd",
-                Sex = 'M',
+                Sex = "M",
                 Birth = DateTime.Now,
                 InShelterSince = DateTime.Now,
                 ImageSrc = "/img/carousel/produkty-09.jpg",
@@ -84,7 +84,7 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
             {
                 Id = 1,
                 Name = "riii",
-                Sex = 'F',
+                Sex = "F",
                 Birth = DateTime.Now,
                 InShelterSince = DateTime.Now,
                 ImageSrc = "/img/pets/produkty-03.jpg",
