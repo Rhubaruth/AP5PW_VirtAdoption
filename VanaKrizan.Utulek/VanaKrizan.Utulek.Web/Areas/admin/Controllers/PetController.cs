@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using VanaKrizan.Utulek.Domain.Entities;
 using VanaKrizan.Utulek.Infrastructure.Database;
 using VanaKrizan.Utulek.Application.Abstraction;
+using VanaKrizan.Utulek.Infrastructure.Identity.Enums;
 
 namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 {
     [Area("admin")] // napojení Controller - Area
+    [Authorize(Roles = nameof(Roles.Admin) + ", " + nameof(Roles.Manager))]
     public class PetController : Controller
     {
         IPetService _petService;
@@ -20,18 +23,58 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
             return View(pets);
         }
 
-        public IActionResult Create()
+        /* Funcs for Create */
+
+        public IActionResult ChooseType()
         {
             return View();  // vrací view s návem "Create" 
         }
 
         [HttpPost]      // default atribut = "HttpGet"
-        public IActionResult Create(Pet pet)
+        public IActionResult ChooseType(ChosenType chosenType)
         {
-            _petService.Create(pet);
+            //_petService.Create(type);
 
-            return RedirectToAction(nameof(PetController.Index));
+            switch (chosenType.Type)
+            {
+                case PetType.Dog:
+                    return RedirectToAction(
+                        nameof(CreatorController.CreateDog), "Creator");
+                case PetType.Cat:
+                    return RedirectToAction(
+                        nameof(CreatorController.CreateCat), "Creator");
+                default:
+                    break;
+            }
+
+            return NotFound();
         }
+
+        /* Funcs for Edit */
+        
+        public IActionResult Edit(int id)
+        {
+            Pet? pet = _petService.SelectById(id);
+            if (pet == null)
+            {
+                return NotFound();
+            }
+
+            return View(pet);  // vrací view s návem "Edit" 
+        }
+
+        [HttpPost]      // default atribut = "HttpGet"
+        public IActionResult Edit(Pet updatedPet)
+        {
+
+            bool isEdited = _petService.Edit(updatedPet);
+
+            if (isEdited)
+                return RedirectToAction(nameof(PetController.Index));
+            return NotFound();
+        }
+
+        /* Funcs for Delete */
 
         public IActionResult Delete(int id)
         {

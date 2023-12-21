@@ -5,13 +5,15 @@
 }
 <h1>@ViewData["Title"]</h1>
 
-<a asp-action="Create"> Create Pet </a>
+<div class="createPet">
+    <a asp-action="ChooseType"> Create Pet </a>
+</div>
 
 @{
     if (Model != null && Model.Count > 0)
     {
 
-        <table class="table">
+        <table class="tableAdmin">
             <thead>
                 <tr>
                     <th scope="col">@nameof(Pet.Id)</th>
@@ -20,6 +22,7 @@
                     <th scope="col">@nameof(Pet.Birth)</th>
                     <th scope="col">@nameof(Pet.InShelterSince)</th>
                     <th scope="col"> Delete </th>
+                    <th scope="col">  </th>
                 </tr>
             </thead>
             <tbody>
@@ -32,6 +35,7 @@
                         <td>@Model[i].Birth</td>
                         <td>@Model[i].InShelterSince</td>
                         <td><a asp-action="Delete" asp-route-id="@Model[i].Id" onclick="return ConfirmDelete();">X</a></td>
+                        <td><a asp-action="Edit" asp-route-id="@Model[i].Id">Edit</a></td>
                     </tr>
                 }
             </tbody>
@@ -42,5 +46,11 @@
 
 @section Scripts {
     <script src="~/js/dialogs.js"></script>
+
+}
+
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
 
 }

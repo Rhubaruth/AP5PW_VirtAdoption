@@ -11,9 +11,13 @@ namespace VanaKrizan.Utulek.Application.Abstraction
     public interface IPetService
     {
         IList<Pet> Select();
+        Pet? SelectById(int id);
 
         void Create(Pet pet);
         bool Delete(int id);
+
+        bool Edit(Pet pet);
+
 
     }
 }

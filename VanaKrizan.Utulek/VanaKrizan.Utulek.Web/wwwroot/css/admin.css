@@ -1,0 +1,128 @@
+
+/***********************************************************************************************************************************************************************/
+
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    
+}
+
+h1 {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+    margin-top: 2%;
+}
+
+.createPet {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
+
+
+.tableAdmin {
+    margin: auto; /*
+    background-color: #EDF6F9;*/
+    margin-top: 2%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    width: 60%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr {
+    /*border-radius: 10px;*/
+}
+
+thead {
+    background-color: #EDF6F9;
+}
+
+tr:hover {
+    background-color: #FFDDD2;
+    border-radius: 10px;
+}
+/********************************************************************************************************************************************************/
+.choose{
+    width:60%;
+    margin:auto;
+}
+
+.titulpridani {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
+
+.titulpridani h2 {
+    margin-top: 4%;
+}
+/********************************************************************************************************************************************************/
+.pridaniPeso {
+    width: 60%;
+    margin: auto;
+}
+
+.titulPeso {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
+
+.titulPeso h2 {
+    margin-top: 4%;
+}
+/***************************************/
+.pridaniKocka {
+    width: 60%;
+    margin: auto;
+}
+
+.titulKocka {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
+
+    .titulKocka h2 {
+        margin-top: 4%;
+    }
+/***************************************/
+.petEdit {
+    width: 60%;
+    margin: auto;
+}
+
+.titulEdit {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
+
+.titulEdit h2 {
+    margin-top: 4%;
+}
