@@ -27,7 +27,7 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
                 InShelterSince = DateTime.Now,
                 //Chip = false,
                 //SizeId = 1,
-                ImageSrc = "/img/pets/produkty-01.jpg",
+                ImageSrc = "/img/pets/peso1.jpg",
             });
 
             pets.Add(new Pet
@@ -38,7 +38,7 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
                 InShelterSince = DateTime.Now,
                 //Chip = true,
                 //SizeId = 2,
-                ImageSrc = "/img/pets/produkty-02.jpg",
+                ImageSrc = "/img/pets/peso2.jpg",
             });
 
             pets.Add(new Pet
@@ -47,7 +47,7 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
                 Name = "Kitty",
                 Birth = DateTime.Now,
                 //Chip = true,
-                ImageSrc = "/img/pets/produkty-03.jpg",
+                ImageSrc = "/img/pets/kocka1.jpg",
             });
             #endregion
 

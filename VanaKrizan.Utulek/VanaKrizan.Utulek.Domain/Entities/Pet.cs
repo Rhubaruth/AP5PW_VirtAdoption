@@ -25,8 +25,7 @@ namespace VanaKrizan.Utulek.Domain.Entities
 
         // public double Cost { get; set; }
 
-        [Required]
-        public string ImageSrc { get; set; }
+        public string? ImageSrc { get; set; }
         public string? Info { get; set; }
 
         

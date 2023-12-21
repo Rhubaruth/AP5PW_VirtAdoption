@@ -158,7 +158,6 @@ namespace VanaKrizan.Utulek.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ImageSrc")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("InShelterSince")
@@ -183,25 +182,25 @@ namespace VanaKrizan.Utulek.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            Birth = new DateTime(2023, 12, 15, 13, 1, 40, 127, DateTimeKind.Local).AddTicks(3456),
-                            ImageSrc = "/img/pets/produkty-01.jpg",
-                            InShelterSince = new DateTime(2023, 12, 15, 13, 1, 40, 127, DateTimeKind.Local).AddTicks(3510),
+                            Birth = new DateTime(2023, 12, 21, 16, 52, 48, 317, DateTimeKind.Local).AddTicks(8837),
+                            ImageSrc = "/img/pets/peso1.jpg",
+                            InShelterSince = new DateTime(2023, 12, 21, 16, 52, 48, 317, DateTimeKind.Local).AddTicks(8888),
                             Name = "Doggo",
                             Sex = "M"
                         },
                         new
                         {
                             Id = 2,
-                            ImageSrc = "/img/pets/produkty-02.jpg",
-                            InShelterSince = new DateTime(2023, 12, 15, 13, 1, 40, 127, DateTimeKind.Local).AddTicks(3516),
+                            ImageSrc = "/img/pets/peso2.jpg",
+                            InShelterSince = new DateTime(2023, 12, 21, 16, 52, 48, 317, DateTimeKind.Local).AddTicks(8896),
                             Name = "Oggod",
                             Sex = "M"
                         },
                         new
                         {
                             Id = 3,
-                            Birth = new DateTime(2023, 12, 15, 13, 1, 40, 127, DateTimeKind.Local).AddTicks(3519),
-                            ImageSrc = "/img/pets/produkty-03.jpg",
+                            Birth = new DateTime(2023, 12, 21, 16, 52, 48, 317, DateTimeKind.Local).AddTicks(8898),
+                            ImageSrc = "/img/pets/kocka1.jpg",
                             InShelterSince = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Kitty"
                         });
