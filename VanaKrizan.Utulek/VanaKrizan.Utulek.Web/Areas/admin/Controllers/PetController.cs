@@ -23,35 +23,24 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
             return View(pets);
         }
 
-        /* Funcs for Create */
 
-        public IActionResult ChooseType()
+        #region Funcs for Create 
+        public IActionResult Create()
         {
-            return View();  // vrací view s návem "Create" 
+
+            return View();
         }
 
         [HttpPost]      // default atribut = "HttpGet"
-        public IActionResult ChooseType(ChosenType chosenType)
+        public IActionResult Create(Pet pet)
         {
-            //_petService.Create(type);
+            _petService.Create(pet);
 
-            switch (chosenType.Type)
-            {
-                case PetType.Dog:
-                    return RedirectToAction(
-                        nameof(CreatorController.CreateDog), "Creator");
-                case PetType.Cat:
-                    return RedirectToAction(
-                        nameof(CreatorController.CreateCat), "Creator");
-                default:
-                    break;
-            }
-
-            return NotFound();
+            return RedirectToAction(nameof(PetController.Index), "Pet");
         }
+        #endregion
 
-        /* Funcs for Edit */
-        
+        #region Funcs for Edit
         public IActionResult Edit(int id)
         {
             Pet? pet = _petService.SelectById(id);
@@ -73,9 +62,9 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
                 return RedirectToAction(nameof(PetController.Index));
             return NotFound();
         }
+        #endregion
 
-        /* Funcs for Delete */
-
+        #region Funcs for Delete
         public IActionResult Delete(int id)
         {
             bool deleted = _petService.Delete(id);
@@ -84,5 +73,6 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
                 return RedirectToAction(nameof(PetController.Index));
             return NotFound();
         }
+        #endregion
     }
 }

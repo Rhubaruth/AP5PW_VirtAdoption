@@ -31,7 +31,13 @@ namespace VanaKrizan.Utulek.Application.Implementation
         {
             try
             {
-                _utulekDbContext.Remove(id);
+                Pet? pet = SelectById(id);
+                if (pet == null)
+                {
+                    return false;
+                }
+
+                _utulekDbContext.Remove(pet);
                 _utulekDbContext.SaveChanges();
                 return true;
             }
