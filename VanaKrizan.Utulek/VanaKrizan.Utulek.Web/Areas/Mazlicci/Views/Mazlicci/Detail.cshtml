@@ -1,47 +1,48 @@
-﻿
+﻿@using VanaKrizan.Utulek.Domain.Entities;
+@model Pet
+
 @{
     <div class="containerMazl">
         <section class="info">
             <div class="row">
                 <div class="mazel">
-                    <h1>Andy</h1>
+                    <h1>@Model.Name</h1>
                     <div class="zaklInfo">
                         <dl class="zaklad">
                             <fieldset>
                                 <legend>Základní údaje</legend>
                                 <dl>
                                     <dt class="hl">Velikost:</dt>
-                                    <dd class="data">Střední</dd>
+                                    <dd class="data">[not in db yet]</dd>
                                 </dl>
                                 <dl>
                                     <dt class="hl">Plemeno:</dt>
-                                    <dd class="data">Kříženec labradora</dd>
+                                    <dd class="data">[not in db yet]</dd>
                                 </dl>
                                 <dl>
                                     <dt class="hl">Stáří:</dt>
-                                    <dd class="data">narozen 2013</dd>
+                                    <dd class="data">@Model.Birth</dd>
                                 </dl>
                                 <dl>
                                     <dt class="hl">Pohlaví:</dt>
-                                    <dd class="data">pes</dd>
+                                    <dd class="data">@Model.Sex</dd>
                                 </dl>
                                 <dl>
                                     <dt class="hl">V útulku od:</dt>
-                                    <dd class="data">26.5.2022</dd>
+                                    <dd class="data">@Model.InShelterSince</dd>
                                 </dl>
                                 <dl>
                                     <dt class="hl">Čip:</dt>
-                                    <dd class="data">ano</dd>
+                                    <dd class="data">[not in db yet]</dd>
                                 </dl>
                             </fieldset>
                         </dl>
                         <div class="obr">
-                            <img src="~/img/pets/Andy.jpg">
+                            <img src=@Model.ImageSrc>
                         </div>
                     </div>
                     <div class="popis">
-                        <p>Andy je kříženec labradora a border kolie. Má 9 let. Vyrůstal v rodině, kde se narodilo dítě a bohužel se stalo, že Andy na něho zavrčel a rodina se začala obávat. Byl zvyklý žít v bytě, chodili s ním na vycházky a zná i náhubek. Byl by možná vhodný do rodiny, kde by měl svůj klid a věděli, jak zvládat konfliktní situace. Je to ještě vitální psík, přijděte se na něho podívat na útulek…..</p>
-                        <p>9/2022 Během pobytu u nás Andy výrazně zhubnul a trápí ho průjmy, již několikátý měsíc žere intestinální granule, zatím veškerá léčba nebyla úspěšná, váha někdy šla mírně nahoru, vzápětí však zase klesla… jako na houpačce. Koncem září podstoupil na klinice ve Slušovicích kompletní rozbor krve, RTG vyšetření, SONO dutiny břišní a ukázalo se, že jeho slezina je patologicky zvětšená, což potvrdil také krevní obraz. Doporučena byla případná operace ještě do konce roku – odstranění sleziny. Děkujeme za Vaši podporu, bez ní by to nešlo…. </p>
+                        @Model.Info
                     </div>
                     
                 </div>

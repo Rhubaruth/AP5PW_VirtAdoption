@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VanaKrizan.Utulek.Infrastructure.Database;
 
@@ -10,9 +11,11 @@ using VanaKrizan.Utulek.Infrastructure.Database;
 namespace VanaKrizan.Utulek.Infrastructure.Migrations
 {
     [DbContext(typeof(UtulekDbContext))]
-    partial class UtulekDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231226121256_isMixed_not_required")]
+    partial class isMixed_not_required
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VanaKrizan.Utulek.Infrastructure.Database;
 
@@ -10,9 +11,11 @@ using VanaKrizan.Utulek.Infrastructure.Database;
 namespace VanaKrizan.Utulek.Infrastructure.Migrations
 {
     [DbContext(typeof(UtulekDbContext))]
-    partial class UtulekDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231226121129_Sizes_Breeds")]
+    partial class Sizes_Breeds
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -155,7 +158,7 @@ namespace VanaKrizan.Utulek.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<bool?>("isMixed")
+                    b.Property<bool>("isMixed")
                         .HasColumnType("tinyint(1)");
 
                     b.HasKey("Id");
@@ -203,9 +206,9 @@ namespace VanaKrizan.Utulek.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            Birth = new DateTime(2023, 12, 26, 13, 12, 56, 119, DateTimeKind.Local).AddTicks(4371),
+                            Birth = new DateTime(2023, 12, 26, 13, 11, 28, 870, DateTimeKind.Local).AddTicks(7588),
                             ImageSrc = "/img/pets/peso1.jpg",
-                            InShelterSince = new DateTime(2023, 12, 26, 13, 12, 56, 119, DateTimeKind.Local).AddTicks(4422),
+                            InShelterSince = new DateTime(2023, 12, 26, 13, 11, 28, 870, DateTimeKind.Local).AddTicks(7648),
                             Name = "Doggo",
                             Sex = "M"
                         },
@@ -213,14 +216,14 @@ namespace VanaKrizan.Utulek.Infrastructure.Migrations
                         {
                             Id = 2,
                             ImageSrc = "/img/pets/peso2.jpg",
-                            InShelterSince = new DateTime(2023, 12, 26, 13, 12, 56, 119, DateTimeKind.Local).AddTicks(4428),
+                            InShelterSince = new DateTime(2023, 12, 26, 13, 11, 28, 870, DateTimeKind.Local).AddTicks(7654),
                             Name = "Oggod",
                             Sex = "M"
                         },
                         new
                         {
                             Id = 3,
-                            Birth = new DateTime(2023, 12, 26, 13, 12, 56, 119, DateTimeKind.Local).AddTicks(4430),
+                            Birth = new DateTime(2023, 12, 26, 13, 11, 28, 870, DateTimeKind.Local).AddTicks(7657),
                             ImageSrc = "/img/pets/kocka1.jpg",
                             InShelterSince = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Kitty"

@@ -31,7 +31,7 @@ namespace VanaKrizan.Utulek.Web.Areas.Mazlicci.Controllers
             {
                 return RedirectToAction(nameof(MazlicciController.Index), "Mazlicci");
             }
-            return View();
+            return View(pet);
         }
     }
 }

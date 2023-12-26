@@ -224,5 +224,35 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
         }
 
 
+        public List<Size> GetSizes()
+        {
+            List<Size> sizes = new List<Size>();
+
+            #region Hardcoded adding sizes
+            sizes.Add(new Size
+            {
+                Id = -1,
+                Name = "Nezadáno",
+            });
+            sizes.Add(new Size
+            {
+                Id = 1,
+                Name = "malá",
+            });
+            sizes.Add(new Size
+            {
+                Id = 2,
+                Name = "střední",
+            });
+            sizes.Add(new Size
+            {
+                Id = 3,
+                Name = "velká",
+            });
+            #endregion
+
+            return sizes;
+        }
+
     }
 }

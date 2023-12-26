@@ -25,6 +25,8 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
             DatabaseInit dbInit = new DatabaseInit();
             // nevkládá se neustále, pouze poprvé za migraci
             modelBuilder.Entity<Pet>().HasData(dbInit.GetPets());
+            modelBuilder.Entity<Size>().HasData(dbInit.GetSizes());
+            modelBuilder.Entity<Breed>();
 
 
             //Identity - User and Role initialization
