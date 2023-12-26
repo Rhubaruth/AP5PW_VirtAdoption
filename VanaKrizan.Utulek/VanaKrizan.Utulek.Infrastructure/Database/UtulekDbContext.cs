@@ -15,6 +15,9 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
     public class UtulekDbContext : IdentityDbContext<User, Role, int>
     {
         public DbSet<Pet> Pets { get; set; }
+        public DbSet<Size> Sizes { get; set; }
+        public DbSet<Breed> Breeds { get; set; }
+
 
         public UtulekDbContext(DbContextOptions options) : base(options) { }
 

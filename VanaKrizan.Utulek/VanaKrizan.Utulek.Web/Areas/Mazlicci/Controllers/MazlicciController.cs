@@ -26,12 +26,16 @@ namespace VanaKrizan.Utulek.Web.Areas.Mazlicci.Controllers
 
         public IActionResult Detail(int id)
         {
-            Pet? pet = _petService.SelectById(id);
+            Pet? pet = _petService.PetSelectById(id);
             if (pet == null)
             {
                 return RedirectToAction(nameof(MazlicciController.Index), "Mazlicci");
             }
-            return View(pet);
+
+            Size? size = _petService.SizeSelectById(pet.SizeId);
+            Breed? breed = _petService.BreedSelectById(pet.BreedId);
+
+            return View(new PetConjoined(pet, size, breed));
         }
     }
 }

@@ -20,18 +20,18 @@ namespace VanaKrizan.Utulek.Application.Implementation
             _utulekDbContext = dbContext;
         }
 
-
-        public void Create(Pet pet)
+        #region Tabulka Pets
+        public void PetCreate(Pet pet)
         {
             _utulekDbContext.Pets.Add(pet);
             _utulekDbContext.SaveChanges();
         }
 
-        public bool Delete(int id)
+        public bool PetDelete(int id)
         {
             try
             {
-                Pet? pet = SelectById(id);
+                Pet? pet = PetSelectById(id);
                 if (pet == null)
                 {
                     return false;
@@ -47,7 +47,7 @@ namespace VanaKrizan.Utulek.Application.Implementation
             }
         }
 
-        public bool Edit(Pet pet)
+        public bool PetEdit(Pet pet)
         {
             try
             {
@@ -61,14 +61,41 @@ namespace VanaKrizan.Utulek.Application.Implementation
             }
         }
 
-        public IList<Pet> Select()
+        public IList<Pet> PetSelectAll()
         {
             return _utulekDbContext.Pets.ToList();
         }
 
-        public Pet? SelectById(int id)
+        public Pet? PetSelectById(int id)
         {
             return _utulekDbContext.Pets.Where(pet  => pet.Id == id).FirstOrDefault();
         }
+        #endregion
+
+        #region Tabulka Sizes
+        public IList<Size> SizeSelectAll()
+        {
+            return _utulekDbContext.Sizes.ToList();
+        }
+
+        public Size? SizeSelectById(int? id)
+        {
+            if (id == null) return new Size { Id = -1, Name = "Nedefinováno"};
+            return _utulekDbContext.Sizes.Where(size => size.Id == id).FirstOrDefault();
+        }
+        #endregion
+
+        #region Tabulka Breeds
+        public IList<Breed> BreedSelectAll()
+        {
+            return _utulekDbContext.Breeds.ToList();
+        }
+
+        public Breed? BreedSelectById(int? id)
+        {
+            if (id == null) return new Breed { Id = -1, Name = "Nedefinováno"};
+            return _utulekDbContext.Breeds.Where(size => size.Id == id).FirstOrDefault();
+        }
+        #endregion
     }
 }

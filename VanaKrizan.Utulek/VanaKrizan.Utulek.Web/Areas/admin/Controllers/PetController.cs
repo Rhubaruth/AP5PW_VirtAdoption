@@ -19,7 +19,7 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 
         public IActionResult Index()
         {
-            IList<Pet> pets = _petService.Select();
+            IList<Pet> pets = _petService.PetSelectAll();
             return View(pets);
         }
 
@@ -34,7 +34,7 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
         [HttpPost]      // default atribut = "HttpGet"
         public IActionResult Create(Pet pet)
         {
-            _petService.Create(pet);
+            _petService.PetCreate(pet);
 
             return RedirectToAction(nameof(PetController.Index), "Pet");
         }
@@ -43,7 +43,7 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
         #region Funcs for Edit
         public IActionResult Edit(int id)
         {
-            Pet? pet = _petService.SelectById(id);
+            Pet? pet = _petService.PetSelectById(id);
             if (pet == null)
             {
                 return NotFound();
@@ -56,7 +56,7 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
         public IActionResult Edit(Pet updatedPet)
         {
 
-            bool isEdited = _petService.Edit(updatedPet);
+            bool isEdited = _petService.PetEdit(updatedPet);
 
             if (isEdited)
                 return RedirectToAction(nameof(PetController.Index));
@@ -67,7 +67,7 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
         #region Funcs for Delete
         public IActionResult Delete(int id)
         {
-            bool deleted = _petService.Delete(id);
+            bool deleted = _petService.PetDelete(id);
             
             if(deleted)
                 return RedirectToAction(nameof(PetController.Index));

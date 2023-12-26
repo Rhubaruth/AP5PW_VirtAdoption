@@ -11,12 +11,12 @@ namespace VanaKrizan.Utulek.Application.Implementation
 {
     public class PetDFService : IPetService
     {
-        IList<Pet> IPetService.Select()
+        IList<Pet> IPetService.PetSelectAll()
         {
             return DatabaseFake.Pets;
         }
 
-        Pet? IPetService.SelectById(int id)
+        Pet? IPetService.PetSelectById(int id)
         {
             foreach(Pet pet in DatabaseFake.Pets)
             {
@@ -25,7 +25,7 @@ namespace VanaKrizan.Utulek.Application.Implementation
             return null;
         }
 
-        public void Create(Pet pet)
+        public void PetCreate(Pet pet)
         {
             // fake id
             if (DatabaseFake.Pets != null && DatabaseFake.Pets.Count > 0) {
@@ -42,7 +42,7 @@ namespace VanaKrizan.Utulek.Application.Implementation
             DatabaseFake.Pets.Add(pet);
         }
 
-        public bool Delete(int id)
+        public bool PetDelete(int id)
         {
             bool deleted = false;
 
@@ -56,7 +56,7 @@ namespace VanaKrizan.Utulek.Application.Implementation
             return deleted;
         }
 
-        public bool Edit(Pet pet)
+        public bool PetEdit(Pet pet)
         {
             bool _isEdited = false;
 
@@ -72,5 +72,39 @@ namespace VanaKrizan.Utulek.Application.Implementation
             return true;
         }
 
+        void IPetService.PetCreate(Pet pet)
+        {
+            throw new NotImplementedException();
+        }
+
+        bool IPetService.PetDelete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        bool IPetService.PetEdit(Pet pet)
+        {
+            throw new NotImplementedException();
+        }
+
+        IList<Size> IPetService.SizeSelectAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        Size? IPetService.SizeSelectById(int? id)
+        {
+            throw new NotImplementedException();
+        }
+
+        IList<Breed> IPetService.BreedSelectAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        Breed? IPetService.BreedSelectById(int? id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

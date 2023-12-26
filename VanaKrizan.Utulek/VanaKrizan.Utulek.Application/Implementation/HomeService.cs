@@ -16,7 +16,7 @@ namespace VanaKrizan.Utulek.Application.Implementation
         public CarouselProductViewModel GetHomeIndexViewModel(IPetService petService)
         {
             CarouselProductViewModel viewModel = new CarouselProductViewModel();
-            viewModel.Pets = petService.Select();
+            viewModel.Pets = petService.PetSelectAll();
             //viewModel.Carousels = DatabaseFake.Carousels;
 
             return viewModel;
