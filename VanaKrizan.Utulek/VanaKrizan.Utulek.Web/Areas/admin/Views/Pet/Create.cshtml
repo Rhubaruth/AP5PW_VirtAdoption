@@ -2,6 +2,11 @@
 
 @{
     ViewData["Title"] = "Pet - Create";
+
+    string Greet()
+    {
+        return "hello";
+    }
 }
 
 <div class="titulPeso">
@@ -23,6 +28,14 @@
 
         <label class="form-label" asp-for="Info"> Info </label>
         <input class="form-control" asp-for="Info">
+
+        <label class="form-label" asp-for="BreedId"> Breed </label>
+        <select class="form-control" asp-for="BreedId" asp-items="@(new SelectList(ViewBag.Breeds, "Id", "Name"))"></select>
+
+        <label class="form-label" asp-for="SizeId"> Size </label>
+        <select class="form-control" asp-for="SizeId" asp-items="@(new SelectList(ViewBag.Sizes, "Id", "Name"))"></select>
+
+    
     </div>
     <div class="mb-3">
         <label class="form-label" asp-for="ImageSrc"> Image Source </label>

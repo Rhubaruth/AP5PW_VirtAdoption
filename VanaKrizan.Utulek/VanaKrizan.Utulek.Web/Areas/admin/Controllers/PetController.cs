@@ -4,6 +4,7 @@ using VanaKrizan.Utulek.Domain.Entities;
 using VanaKrizan.Utulek.Infrastructure.Database;
 using VanaKrizan.Utulek.Application.Abstraction;
 using VanaKrizan.Utulek.Infrastructure.Identity.Enums;
+using Microsoft.EntityFrameworkCore;
 
 namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 {
@@ -27,7 +28,8 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
         #region Funcs for Create 
         public IActionResult Create()
         {
-
+            ViewBag.Sizes = _petService.SizeSelectAll();
+            ViewBag.Breeds = _petService.BreedSelectAll();
             return View();
         }
 
@@ -49,6 +51,8 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
                 return NotFound();
             }
 
+            ViewBag.Sizes = _petService.SizeSelectAll();
+            ViewBag.Breeds = _petService.BreedSelectAll();
             return View(pet);  // vrací view s návem "Edit" 
         }
 
