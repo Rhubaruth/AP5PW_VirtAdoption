@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using VanaKrizan.Utulek.Domain.Entities;
 using VanaKrizan.Utulek.Infrastructure.Identity;
+using VanaKrizan.Utulek.Infrastructure.Database.Classes;
 
 
 namespace VanaKrizan.Utulek.Infrastructure.Database
 {
     internal class DatabaseInit
     {
-        public List<Pet> GetPets() 
-        { 
-            
+        public List<Pet> GetPets()
+        {
+
             List<Pet> pets = new List<Pet>();
 
             #region Hardcoded adding pets
@@ -127,7 +128,7 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
             roles.Add(roleAdmin);
             roles.Add(roleManager);
             roles.Add(roleCustomer);
-            
+
 
             return roles;
         }
@@ -252,6 +253,28 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
             #endregion
 
             return sizes;
+        }
+
+        public List<UserHasPet> CreateUserWithPet()
+        {
+            List<UserHasPet> list = new List<UserHasPet>();
+
+            #region init data
+            list.Add(new UserHasPet
+            {
+                Id = 1,
+                UserId = 1,
+                PetId = 1,
+            });
+            list.Add(new UserHasPet
+            {
+                Id = 2,
+                UserId = 1,
+                PetId = 3,
+            });
+            #endregion
+
+            return list;
         }
 
     }

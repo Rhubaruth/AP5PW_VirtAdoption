@@ -7,6 +7,7 @@ using VanaKrizan.Utulek.Application.Abstraction;
 using VanaKrizan.Utulek.Application.ViewModels;
 using VanaKrizan.Utulek.Domain.Entities;
 using VanaKrizan.Utulek.Infrastructure.Database;
+using VanaKrizan.Utulek.Infrastructure.Identity;
 
 namespace VanaKrizan.Utulek.Application.Implementation
 {
@@ -17,7 +18,7 @@ namespace VanaKrizan.Utulek.Application.Implementation
         {
             CarouselProductViewModel viewModel = new CarouselProductViewModel();
             viewModel.Pets = petService.PetSelectAll();
-            //viewModel.Carousels = DatabaseFake.Carousels;
+            viewModel.Carousels = new List<Pet>();
 
             return viewModel;
         }

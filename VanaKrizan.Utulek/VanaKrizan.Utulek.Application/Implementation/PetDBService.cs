@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using VanaKrizan.Utulek.Application.Abstraction;
 using VanaKrizan.Utulek.Domain.Entities;
 using VanaKrizan.Utulek.Infrastructure.Database;
-
-
+using VanaKrizan.Utulek.Infrastructure.Database.Classes;
 
 namespace VanaKrizan.Utulek.Application.Implementation
 {
@@ -97,5 +96,15 @@ namespace VanaKrizan.Utulek.Application.Implementation
             return _utulekDbContext.Breeds.Where(size => size.Id == id).FirstOrDefault();
         }
         #endregion
+
+        public IList<Pet> UserGetPetsAll(int userId)
+        {
+            IList<int> petIds = _utulekDbContext.UserHasPet.
+                Where(user => user.UserId == userId).
+                Select(pet => pet.PetId).ToList();
+            IList<Pet> pets = _utulekDbContext.Pets.Where(pet => petIds.Contains(pet.Id)).ToList();
+
+            return pets;
+        }
     }
 }
