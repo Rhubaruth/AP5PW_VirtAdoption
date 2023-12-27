@@ -618,12 +618,14 @@ body {
     color: #ffc800;
 }
 /********************************************************************************************************************************************************/
-
+.footer {
+    bottom: 0;
+}
 
 .articles {
     padding-top: 10%;
     padding-bottom: 15%;
-    width: 80%;
+    width: 90%;
     margin:auto;
 }
 
@@ -671,7 +673,7 @@ article .kontakt {
     text-align: left;
     margin-right: 20%;
     margin-top: 5%;
-    width:40%;
+    width:50%;
 }
 
 .peso{

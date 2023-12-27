@@ -4,50 +4,119 @@
         <section class="info">
             <div class="row">
                 <div class="mazel">
-                    <h1>Andy</h1>
-                    <div class="zaklInfo">
-                        <dl class="zaklad">
-                            <fieldset>
-                                <legend>Základní údaje</legend>
-                                <dl>
-                                    <dt class="hl">Velikost:</dt>
-                                    <dd class="data">Střední</dd>
-                                </dl>
-                                <dl>
-                                    <dt class="hl">Plemeno:</dt>
-                                    <dd class="data">Kříženec labradora</dd>
-                                </dl>
-                                <dl>
-                                    <dt class="hl">Stáří:</dt>
-                                    <dd class="data">narozen 2013</dd>
-                                </dl>
-                                <dl>
-                                    <dt class="hl">Pohlaví:</dt>
-                                    <dd class="data">pes</dd>
-                                </dl>
-                                <dl>
-                                    <dt class="hl">V útulku od:</dt>
-                                    <dd class="data">26.5.2022</dd>
-                                </dl>
-                                <dl>
-                                    <dt class="hl">Čip:</dt>
-                                    <dd class="data">ano</dd>
-                                </dl>
-                            </fieldset>
-                        </dl>
-                        <div class="obr">
-                            <img src="~/img/pets/Andy.jpg">
+                    <div class="barva">
+                        <h1>Andy</h1>
+                        <div class="container">
+                            <div class="button-container">
+                                <div class="dog">
+                                    <div class="tail"></div>
+                                    <div class="body"></div>
+                                    <div class="head">
+                                        <div class="eyes">
+                                            <div class="left"></div>
+                                            <div class="right"></div>
+                                        </div>
+                                        <div class="nuzzle">
+                                            <div class="mouth">
+                                                <div class="tongue"></div>
+                                            </div>
+                                            <div class="nose">
+                                                <div class="nostrils"></div>
+                                                <div class="highlight"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ears">
+                                        <div class="left"></div>
+                                        <div class="right"></div>
+                                    </div>
+                                </div>
+                                <button class="adoptuj" onclick="document.getElementById('id01').style.display='block'"> Adoptuj mě</button>
+                                <div class="paw"></div>
+                                <div class="paw top"></div>
+                            </div>
+                        </div>
+
+                        <div id="id01" class="modal">
+                            <form class="modal-content animate" action="/action_page.php" method="post">
+                                <div class="imgcontainer">
+                                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                                    <h2>Andy</h2>
+                                    <img src="~/img/pets/Andy.jpg" class="pet">
+                                </div>
+
+                                <div class="container">
+                                    <div class="castka">
+                                        <label>Chci přispět virtuální adopcí částkou </label>
+                                        <input type="number" placeholder="Adopční přísěvek" name="prispevek" required min="50" id="hodnota">
+                                    </div>
+                                </div>
+
+                                <div class="container">
+                                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                                    <button type="submit" class="submitbtn">Souhlasím</button>
+                                    <a class="submitbtn" asp-area="Mazlicci" asp-controller="Mazlicci" asp-action="Platba" >Souhlasím</a>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="zaklInfo">
+                            <dl class="zaklad">
+                                <fieldset>
+                                    <legend>Základní údaje</legend>
+                                    <dl>
+                                        <dt class="hl">Velikost:</dt>
+                                        <dd class="data">Střední</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt class="hl">Plemeno:</dt>
+                                        <dd class="data">Kříženec labradora</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt class="hl">Stáří:</dt>
+                                        <dd class="data">narozen 2013</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt class="hl">Pohlaví:</dt>
+                                        <dd class="data">pes</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt class="hl">V útulku od:</dt>
+                                        <dd class="data">26.5.2022</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt class="hl">Čip:</dt>
+                                        <dd class="data">ano</dd>
+                                    </dl>
+                                </fieldset>
+                            </dl>
+                            <div class="obr">
+                                <img src="~/img/pets/Andy.jpg">
+                            </div>
                         </div>
                     </div>
                     <div class="popis">
-                        <p>Andy je kříženec labradora a border kolie. Má 9 let. Vyrůstal v rodině, kde se narodilo dítě a bohužel se stalo, že Andy na něho zavrčel a rodina se začala obávat. Byl zvyklý žít v bytě, chodili s ním na vycházky a zná i náhubek. Byl by možná vhodný do rodiny, kde by měl svůj klid a věděli, jak zvládat konfliktní situace. Je to ještě vitální psík, přijděte se na něho podívat na útulek…..</p>
-                        <p>9/2022 Během pobytu u nás Andy výrazně zhubnul a trápí ho průjmy, již několikátý měsíc žere intestinální granule, zatím veškerá léčba nebyla úspěšná, váha někdy šla mírně nahoru, vzápětí však zase klesla… jako na houpačce. Koncem září podstoupil na klinice ve Slušovicích kompletní rozbor krve, RTG vyšetření, SONO dutiny břišní a ukázalo se, že jeho slezina je patologicky zvětšená, což potvrdil také krevní obraz. Doporučena byla případná operace ještě do konce roku – odstranění sleziny. Děkujeme za Vaši podporu, bez ní by to nešlo…. </p>
+                        <div class="color">
+                            <p>Andy je kříženec labradora a border kolie. Má 9 let. Vyrůstal v rodině, kde se narodilo dítě a bohužel se stalo, že Andy na něho zavrčel a rodina se začala obávat. Byl zvyklý žít v bytě, chodili s ním na vycházky a zná i náhubek. Byl by možná vhodný do rodiny, kde by měl svůj klid a věděli, jak zvládat konfliktní situace. Je to ještě vitální psík, přijděte se na něho podívat na útulek…..</p>
+                            <p>9/2022 Během pobytu u nás Andy výrazně zhubnul a trápí ho průjmy, již několikátý měsíc žere intestinální granule, zatím veškerá léčba nebyla úspěšná, váha někdy šla mírně nahoru, vzápětí však zase klesla… jako na houpačce. Koncem září podstoupil na klinice ve Slušovicích kompletní rozbor krve, RTG vyšetření, SONO dutiny břišní a ukázalo se, že jeho slezina je patologicky zvětšená, což potvrdil také krevní obraz. Doporučena byla případná operace ještě do konce roku – odstranění sleziny. Děkujeme za Vaši podporu, bez ní by to nešlo…. </p>
+                        </div>
                     </div>
-                    
                 </div>
             </div>
         </section>
     </div>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 }
 
 @section Styles {
