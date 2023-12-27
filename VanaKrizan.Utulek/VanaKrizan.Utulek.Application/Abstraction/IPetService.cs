@@ -23,6 +23,7 @@ namespace VanaKrizan.Utulek.Application.Abstraction
         public Breed? BreedSelectById(int? id);
 
         public IList<Pet> UserGetPetsAll(int id);
+        public bool UserAdoptPet(int petId, int userId);
 
     }
 }

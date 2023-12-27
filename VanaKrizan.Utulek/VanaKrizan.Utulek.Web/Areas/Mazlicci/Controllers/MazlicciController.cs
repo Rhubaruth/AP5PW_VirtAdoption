@@ -5,6 +5,7 @@ using VanaKrizan.Utulek.Application.Abstraction;
 using VanaKrizan.Utulek.Application.ViewModels;
 using VanaKrizan.Utulek.Domain.Entities;
 using VanaKrizan.Utulek.Infrastructure.Identity;
+using VanaKrizan.Utulek.Web.Areas.admin.Controllers;
 
 namespace VanaKrizan.Utulek.Web.Areas.Mazlicci.Controllers
 {
@@ -50,6 +51,21 @@ namespace VanaKrizan.Utulek.Web.Areas.Mazlicci.Controllers
             Breed? breed = _petService.BreedSelectById(pet.BreedId);
 
             return View(new PetConjoined(pet, size, breed));
+        }
+
+        public IActionResult AdoptPet(int petId)
+        {
+            var user = _userManager.GetUserAsync(User).Result;
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var result = _petService.UserAdoptPet(petId, user.Id);
+         
+            if(result)
+                return RedirectToAction(nameof(MazlicciController.Index), "Mazlicci");
+            return NotFound();
         }
     }
 }

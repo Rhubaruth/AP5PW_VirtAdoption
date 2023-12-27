@@ -97,6 +97,7 @@ namespace VanaKrizan.Utulek.Application.Implementation
         }
         #endregion
 
+        #region Users
         public IList<Pet> UserGetPetsAll(int userId)
         {
             IList<int> petIds = _utulekDbContext.UserHasPet.
@@ -106,5 +107,26 @@ namespace VanaKrizan.Utulek.Application.Implementation
 
             return pets;
         }
+
+        bool IPetService.UserAdoptPet(int petId, int userId)
+        {
+            bool isnotPetInDb = _utulekDbContext.Pets.Where(p => p.Id == petId).FirstOrDefault() == null;
+            bool isUserHavePet = _utulekDbContext.UserHasPet.Where(line => line.UserId == userId && line.PetId == petId).FirstOrDefault() != null;
+
+            if ( isnotPetInDb || isUserHavePet)
+                return false;
+
+
+            UserHasPet line = new UserHasPet {
+                UserId = userId,
+                PetId = petId,
+            };
+            _utulekDbContext.UserHasPet.Add(line);
+            _utulekDbContext.SaveChanges();
+           
+
+            return true;
+        }
+        #endregion
     }
 }
