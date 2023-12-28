@@ -1,12 +1,17 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VanaKrizan.Utulek.Application.Abstraction;
 using VanaKrizan.Utulek.Domain.Entities;
+using VanaKrizan.Utulek.Domain.Entities.Interface;
 using VanaKrizan.Utulek.Infrastructure.Database;
 using VanaKrizan.Utulek.Infrastructure.Database.Classes;
+using VanaKrizan.Utulek.Infrastructure.Identity;
+using VanaKrizan.Utulek.Infrastructure.Identity.Enums;
 
 namespace VanaKrizan.Utulek.Application.Implementation
 {
@@ -28,15 +33,13 @@ namespace VanaKrizan.Utulek.Application.Implementation
 
         public bool PetDelete(int id)
         {
+            Pet? pet = PetSelectById(id);
+            if (pet == null)
+                return false;
+
             try
             {
-                Pet? pet = PetSelectById(id);
-                if (pet == null)
-                {
-                    return false;
-                }
-
-                _utulekDbContext.Remove(pet);
+                _utulekDbContext.Pets.Remove(pet);
                 _utulekDbContext.SaveChanges();
                 return true;
             }
@@ -98,6 +101,11 @@ namespace VanaKrizan.Utulek.Application.Implementation
         #endregion
 
         #region Users
+        public IList<User> UserSelectAll()
+        {
+            return _utulekDbContext.Users.ToList();
+        }
+
         public IList<Pet> UserGetPetsAll(int userId)
         {
             IList<int> petIds = _utulekDbContext.UserHasPet.
@@ -108,7 +116,7 @@ namespace VanaKrizan.Utulek.Application.Implementation
             return pets;
         }
 
-        bool IPetService.UserAdoptPet(int petId, int userId)
+        public bool UserAdoptPet(int petId, int userId)
         {
             bool isnotPetInDb = _utulekDbContext.Pets.Where(p => p.Id == petId).FirstOrDefault() == null;
             bool isUserHavePet = _utulekDbContext.UserHasPet.Where(line => line.UserId == userId && line.PetId == petId).FirstOrDefault() != null;
@@ -127,6 +135,89 @@ namespace VanaKrizan.Utulek.Application.Implementation
 
             return true;
         }
+
+        public User? UserSelectById(int id)
+        {
+            return _utulekDbContext.Users.Where(u  => u.Id == id).FirstOrDefault();
+        }
+
+        public bool UserDelete(int id)
+        {
+            User? user = UserSelectById(id);
+            if(user == null)
+                return false;
+
+            try
+            {
+                _utulekDbContext.Users.Remove(user);
+                _utulekDbContext.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool UserEdit(User user)
+        {
+            try
+            {
+                if(user.Email != null)
+                    user.NormalizedEmail = user.Email.ToUpper();
+                if(user.UserName != null)
+                    user.NormalizedUserName = user.UserName.ToUpper();
+
+                _utulekDbContext.Users.Update(user);
+                _utulekDbContext.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public IList<int> UserGetRolesAll(int id)
+        {
+            IList<int> roleIds = _utulekDbContext.UserRoles.
+                Where(user => user.UserId == id).
+                Select(role => role.RoleId).ToList();
+
+            return roleIds;
+        }
+
+        public bool UserAddRole(int userId, Roles role)
+        {
+            try
+            {
+
+                _utulekDbContext.UserRoles.Add(new IdentityUserRole<int>()
+                {
+                    UserId = userId,
+                    RoleId = (int)role
+                });
+                return true;
+            }
+            catch { return false; }
+        }
+
+        public bool UserRemoveRole(int userId, Roles role)
+        {
+            try
+            {
+
+                _utulekDbContext.UserRoles.Remove(new IdentityUserRole<int>()
+                {
+                    UserId = userId,
+                    RoleId = (int)role
+                });
+                return true;
+            }
+            catch { return false; }
+
+        }
+
         #endregion
     }
 }

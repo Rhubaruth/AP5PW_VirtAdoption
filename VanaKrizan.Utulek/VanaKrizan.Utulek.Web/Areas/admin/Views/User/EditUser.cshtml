@@ -1,0 +1,71 @@
+﻿@using VanaKrizan.Utulek.Infrastructure.Identity;
+@using VanaKrizan.Utulek.Web.Areas.admin.Controllers;
+@model UserConjoined
+
+@{
+    ViewData["Title"] = "[" + Model.User.Id + "] " + Model.User.UserName + " edit";
+    Model.IsCustomer = true;
+}
+
+<div class="titulEdit">
+    <h2>@ViewData["Title"]</h2>
+</div>
+
+
+<div>
+<form asp-action="EditUser" id="form" method="post" class="petEdit">
+    <div class="mb-3">
+        <label class="form-label" asp-for="User.UserName"> UserName </label>
+        <input class="form-control" asp-for="User.UserName">
+
+        <label class="form-label" asp-for="User.FirstName"> FirstName </label>
+        <input class="form-control" asp-for="User.FirstName">
+
+        <label class="form-label" asp-for="User.LastName"> LastName </label>
+        <input class="form-control" asp-for="User.LastName">
+
+        <label class="form-label" asp-for="User.Email"> Email </label>
+        <input class="form-control" asp-for="User.Email">
+
+        <label class="form-label" asp-for="User.PhoneNumber"> PhoneNumber </label>
+        <input class="form-control" asp-for="User.PhoneNumber">
+
+        @* Add checkboxes for roles *@
+        <div class="form-check">
+            <input asp-for="IsAdmin" type="checkbox" name="@nameof(Model.IsAdmin)" />
+            <label>@nameof(Model.IsAdmin)</label>
+        </div>
+        <div class="form-check">
+            <input asp-for="IsManager" type="checkbox" name="@nameof(Model.IsManager)" />
+            <label>@nameof(Model.IsManager)</label>
+        </div>
+        <div class="form-check">
+            <input asp-for="IsCustomer" type="hidden" name="@nameof(Model.IsCustomer)" />
+            <label>@nameof(Model.IsCustomer)</label>
+        </div>
+
+     <button type="submit" class="btn btn-primary">Submit</button>
+
+    @* Hidden data from form *@
+    <input type="hidden" asp-for="User.Id" />
+    <input type="hidden" asp-for="User.EmailConfirmed" />
+    <input type="hidden" asp-for="User.PhoneNumberConfirmed" />
+    <input type="hidden" asp-for="User.PasswordHash" />
+    <input type="hidden" asp-for="User.SecurityStamp" />
+    <input type="hidden" asp-for="User.ConcurrencyStamp" />
+    <input type="hidden" asp-for="User.TwoFactorEnabled" />
+    <input type="hidden" asp-for="User.LockoutEnd" />
+    <input type="hidden" asp-for="User.LockoutEnabled" />
+    <input type="hidden" asp-for="User.AccessFailedCount" />
+        
+
+</form>
+</div>
+
+
+
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+
+}
