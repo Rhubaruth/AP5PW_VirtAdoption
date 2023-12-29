@@ -25,6 +25,10 @@ namespace VanaKrizan.Utulek.Application.Abstraction
 
         public IList<Breed> BreedSelectAll();
         public Breed? BreedSelectById(int? id);
+        public void BreedCreate(Breed breed);
+        public bool BreedEdit(Breed breed);
+        public bool BreedDelete(int id);
+
         #endregion
 
         #region User

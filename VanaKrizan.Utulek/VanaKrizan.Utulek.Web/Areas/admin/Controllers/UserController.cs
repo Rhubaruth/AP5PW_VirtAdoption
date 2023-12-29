@@ -28,7 +28,7 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 
         public IActionResult Index()
         {
-            IList<Infrastructure.Identity.User> users = _petService.UserSelectAll();
+            IList<User> users = _petService.UserSelectAll();
             return View(users);
         }
 

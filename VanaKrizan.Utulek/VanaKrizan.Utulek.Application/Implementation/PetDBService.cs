@@ -98,6 +98,45 @@ namespace VanaKrizan.Utulek.Application.Implementation
             if (id == null) return new Breed { Id = -1, Name = "Nedefinováno"};
             return _utulekDbContext.Breeds.Where(size => size.Id == id).FirstOrDefault();
         }
+
+        public void BreedCreate(Breed breed)
+        {
+            _utulekDbContext.Breeds.Add(breed);
+            _utulekDbContext.SaveChanges();
+        }
+
+        public bool BreedEdit(Breed breed)
+        {
+            try
+            {
+                _utulekDbContext.Update(breed);
+                _utulekDbContext.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool BreedDelete(int id)
+        {
+            Breed? breed = BreedSelectById(id);
+            if (breed == null)
+                return false;
+
+            try
+            {
+                _utulekDbContext.Breeds.Remove(breed);
+                _utulekDbContext.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         #endregion
 
         #region Users
