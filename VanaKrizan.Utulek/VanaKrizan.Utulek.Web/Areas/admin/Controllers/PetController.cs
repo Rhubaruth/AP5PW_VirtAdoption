@@ -34,11 +34,23 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
         }
 
         [HttpPost]      // default atribut = "HttpGet"
-        public IActionResult Create(Pet pet)
+        async public Task<IActionResult> Create(Pet pet)
         {
-            _petService.PetCreate(pet);
+            //_petService.PetCreate(pet);
 
-            return RedirectToAction(nameof(PetController.Index), "Pet");
+            //return RedirectToAction(nameof(PetController.Index), "Pet");
+
+            if(ModelState.IsValid)
+            {
+                _petService.PetCreate(pet);
+                return RedirectToAction(nameof(PetController.Index), "Pet");
+
+            }
+            else
+            {
+                return View(pet);
+            }
+
         }
         #endregion
 
