@@ -75,7 +75,7 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
             bool isEdited = _petService.PetEdit(updatedPet);
 
             if (isEdited)
-                return RedirectToAction(nameof(PetController.Index));
+                return RedirectToAction(nameof(PetController.Index), "Pet");
             return NotFound();
         }
         #endregion
@@ -86,7 +86,7 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
             bool deleted = _petService.PetDelete(id);
             
             if(deleted)
-                return RedirectToAction(nameof(PetController.Index));
+                return RedirectToAction(nameof(PetController.Index), "Pet");
             return NotFound();
         }
         #endregion
