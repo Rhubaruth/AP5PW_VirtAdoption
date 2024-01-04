@@ -1,246 +1,182 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900);
-@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900);
+/* If you like this, please check my blog at codedgar.com.ve */
+@import url('https://fonts.googleapis.com/css?family=Work+Sans');
 
-.container
-{
-    display: flex; 
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    flex-direction: column;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    background-color: #171A3D;
-    font-family: 'Lato', sans-serif;
-}
-
-.price h1 {
-    font-weight: 300; 
-    color: #18C2C0;
-    letter-spacing: 2px;
+body {
+    font-family: 'Work Sans', sans-serif;
+    background: #00d2ff;
+    background: -webkit-linear-gradient(to right, #3a7bd5, #00d2ff);
+    background: linear-gradient(to right, #3a7bd5, #00d2ff);
+    /* Thanks to uigradients :) */
 }
 
 .card {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    width: 520px;
-    height: 400px;
-
-    .row {
-        height: 20%;
-        width: 100%;
-        border-bottom: 1.2px solid #292C58;
-    }
-    &:last-child {
-        border: none;
-    }
-    .paypal {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-    }
-    .details {
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-    }
-    .paypal, .credit {
-        background-color: #1E2148;
-    }
-    .cardholder, .number, .details {
-        background-color: #242852;
-    }
+    background: #16181a;
+    border-radius: 14px;
+    max-width: 300px;
+    display: block;
+    margin: auto;
+    padding: 60px;
+    padding-top:30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: 2px 10px 40px black;
+    z-index: 99;
 }
 
-//////////////////// ROW ONE & TWO
-.paypal, .credit
-.left, .right {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-
-    .left {
-        float: left;
-        margin-left: 50px;
-    }
-    label {
-        margin-left: 10px;
-        font-size: 1rem;
-        cursor: pointer;
-        font-weight: 700;
-        letter-spacing: 0.5px;
-        color: #fff;
-    }
-    input[type=radio] {
-        visibility: hidden;
-    }
-    .radio {
-        position: absolute;
-        top: -2px;
-        left: -20px;
-        border: 3px solid #414365;
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        background-color: #292B52;
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    &::before {
-        position: absolute;
-        content: '';
-        border-radius: 50%;
-        top: 5px;
-        left: 5px;
-        width: 9px;
-        height: 9px;
-        background-color: transparent;
-        transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .right {
-        float: right;
-        margin-right: 30px;
-    }
-    img {
-        width: 42px;
-        height: 30px;
-        margin-left: 10px;
-    }
+.card p{
+    color:lightslategrey;
+    font-size:26px;
 }
 
-input[type=radio]:checked ~ .radio {
-    border: 3px solid #90E1E3;
-    background-color: #18C2C0;
-}
-&::before {
-    background-color: #fff;
+.container{
+    margin-top:11%;
 }
 
-////////////////// ROW THREE & FOUR
-.cardholder, .number{
-    .info {
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-        margin-left: 40px;
-    }
-    label {
-        display: inline-block;
-        letter-spacing: 0.5px;
-        color: #8F92C3;
-        width: 100px;
-    }
-    input {
-        display: inline-block;
-        max-width: 300px;
-        width: 300px;
-        background-color: transparent;
-        font-family: 'Source Code Pro';
-        border: none;
-        outline: none;
-        margin-left: 50px;
-        color: white;
-    }
-    &::placeholder {
-        font-family: 'Source Code Pro';
-        color: #444880;
-    }
-}
-#cardnumber, #cardnumber::placeholder {
-    letter-spacing: 2px;
-}
-///////////////////// DETAILS
-.details {
-    .left, .right
-    {
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-    .left {
-        float: left;
-        padding-left: 40px;
-        width: 50%;
-    }
-    label {
-        letter-spacing: 0.5px;
-        color: #8F92C3;
-        width: 100px;
-        margin-right: 20px;
-    }
-    select {
-        font-family: 'Source Code Pro';
-        cursor: pointer;
-        appearance: none;
-        background: transparent;
-        border: none;
-        outline: none;
-        color: #444880;
-    }
-    span {
-        font-family: 'Source Code Pro';
-        color: #444880;
-        margin: 0 2px;
-    }
-    .right {
-        float: right;
-        width: 50%;
-    }
-    label {
-        margin-right: 20px;
-        color: #8F92C3;
-    }
-    input {
-        text-align: center;
-        width: 50px;
-        font-family: 'Source Code Pro';
-        cursor: pointer;
-        background: transparent;
-        border: none;
-        outline: none;
-        color: #fff;
-    }
-        &::placeholder {
-            font-family: 'Source Code Pro';
-            color: #444880;
-        }
-    span {
-        text-align: center;
-        display: inline-block;
-        font-family: 'Source Code Pro';
-        cursor: pointer;
-        margin-left: 50px;
-        color: #18C2C0;
-        width: 24px;
-        height: 24px;
-        border: 2px solid #18C2C0;
-        border-radius: 50%;
-    }
+.logo-card {
+    max-width: 50px;
+    margin-bottom: 15px;
+    margin-top: -19px;
 }
 
-///////////////////// Button
-.button button{
-    font-size: 1.2rem;
-    font-weight: 400;
-    letter-spacing: 1px;
-    width: 520px;
-    background-color: #18C2C0;
+label {
+    display: flex;
+    font-size: 10px;
+    color: white;
+    opacity: .4;
+}
+
+input {
+    font-family: 'Work Sans', sans-serif;
+    background: transparent;
     border: none;
-    color: #fff;
-    padding: 18px;
-    border-radius: 5px;
+    border-bottom: 1px solid transparent;
+    color: #dbdce0;
+    transition: border-bottom .4s;
+}
+
+input:focus {
+    border-bottom: 1px solid #48cae4;
     outline: none;
-    transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    &:hover {
-        background-color: #15aeac;
+}
+
+.cardnumber {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.name {
+    display: block;
+    font-size: 15px;
+    max-width: 200px;
+    float: left;
+    margin-bottom: 15px;
+}
+
+.toleft {
+    float: left;
+}
+
+.ccv {
+    width: 50px;
+    font-size: 15px;
+}
+
+.rovne {
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    text-align: center;
+    padding-top:10px;
+}
+
+.right {
+    margin-top:-15px;
+}
+
+.spodek {
+    position: fixed;
+}
+
+.spodek label {
+    border: none;
+}
+
+.receipt {
+    background: #dbdce0;
+    border-radius: 4px;
+    padding: 5%;
+    padding-top: 200px;
+    max-width: 600px;
+    display: block;
+    margin: auto;
+    margin-top: -180px;
+    z-index: -999;
+    position: relative;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    padding-bottom: 2rem;
+    border-radius: 5%;
+    align-items: center;
+}
+
+.col {
+    width: 50%;
+    float: left;
+    display: inline-block;
+}
+
+.bought-items {
+    margin-top: -3px;
+}
+
+.cost {
+    color: #3a7bd5;
+}
+
+.comprobe {
+    text-align: center;
+}
+
+.text {
+    margin-top: 110px;
+}
+
+.proceed {
+    position: absolute;
+    transform: translate(300px, 10px);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #0077b6;
+    border: none;
+    color: white;
+    transition: box-shadow .2s, transform .4s;
+    cursor: pointer;
+}
+
+    .proceed:active {
+        outline: none;
     }
-    &:active {
-        background-color: #139b99;
+
+    .proceed:focus {
+        outline: none;
+        box-shadow: inset 0px 0px 5px white;
     }
-    i {
-        font-size: 1.2rem;
-        margin-right: 5px;
+
+.sendicon {
+    filter: invert(100%);
+    padding-top: 2px;
+}
+
+@media (max-width: 600px) {
+    .proceed {
+        transform: translate(250px, 10px);
+    }
+
+    .col {
+        display: block;
+        margin: auto;
+        width: 100%;
+        text-align: center;
     }
 }

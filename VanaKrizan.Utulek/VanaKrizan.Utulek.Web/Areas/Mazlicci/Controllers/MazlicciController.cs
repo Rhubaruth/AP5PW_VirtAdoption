@@ -33,5 +33,10 @@ namespace VanaKrizan.Utulek.Web.Areas.Mazlicci.Controllers
             }
             return View();
         }
+
+        public IActionResult Platba()
+        {
+            return View();
+        }
     }
 }
