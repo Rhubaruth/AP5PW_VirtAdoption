@@ -28,18 +28,22 @@ namespace VanaKrizan.Utulek.Web.Areas.Security.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel registerVM)
+        public async Task<IActionResult> Register(RegisterLoginViewModel registerVM)
         {
-            if (ModelState.IsValid)
+            if(registerVM.Register == null)
+                return View();
+
+
+			if (ModelState.IsValid)
             {
-                string[] errors = await accountService.Register(registerVM, Roles.Customer);
+                string[] errors = await accountService.Register(registerVM.Register, Roles.Customer);
 
                 if (errors == null)
                 {
                     LoginViewModel loginVM = new LoginViewModel()
                     {
-                        Username = registerVM.Username,
-                        Password = registerVM.Password
+                        Username = registerVM.Register.Username,
+                        Password = registerVM.Register.Password
                     };
 
                     bool isLogged = await accountService.Login(loginVM);
@@ -55,7 +59,7 @@ namespace VanaKrizan.Utulek.Web.Areas.Security.Controllers
 
             }
 
-            return View(registerVM);
+            return View(registerVM.Register);
         }
 
         public IActionResult Login()
@@ -93,6 +97,7 @@ namespace VanaKrizan.Utulek.Web.Areas.Security.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Prihlaseni(LoginViewModel loginVM)
 		{
+
 			if (ModelState.IsValid)
 			{
 				bool isLogged = await accountService.Login(loginVM);
