@@ -55,6 +55,7 @@ namespace VanaKrizan.Utulek.Web.Areas.Security.Controllers
                 else
                 {
                     //error to ViewModel
+                    ViewBag.Errors = errors;
                 }
 
             }
@@ -86,7 +87,7 @@ namespace VanaKrizan.Utulek.Web.Areas.Security.Controllers
         public async Task<IActionResult> Logout()
         {
             await accountService.Logout();
-            return RedirectToAction(nameof(Login));
+            return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).Replace(nameof(Controller), String.Empty), new { area = String.Empty });
         }
 
 		public IActionResult Prihlaseni()
@@ -94,21 +95,21 @@ namespace VanaKrizan.Utulek.Web.Areas.Security.Controllers
 			return View();
 		}
 
-		[HttpPost]
-		public async Task<IActionResult> Prihlaseni(LoginViewModel loginVM)
-		{
+		//[HttpPost]
+		//public async Task<IActionResult> Prihlaseni(LoginViewModel loginVM)
+		//{
 
-			if (ModelState.IsValid)
-			{
-				bool isLogged = await accountService.Login(loginVM);
-				if (isLogged)
-					return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).Replace(nameof(Controller), String.Empty), new { area = String.Empty });
+		//	if (ModelState.IsValid)
+		//	{
+		//		bool isLogged = await accountService.Login(loginVM);
+		//		if (isLogged)
+		//			return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).Replace(nameof(Controller), String.Empty), new { area = String.Empty });
 
-				loginVM.LoginFailed = true;
-			}
+		//		loginVM.LoginFailed = true;
+		//	}
 
-			return View(loginVM);
-		}
+		//	return View(loginVM);
+		//}
 
 	}
 }
