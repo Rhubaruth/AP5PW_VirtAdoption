@@ -67,5 +67,10 @@ namespace VanaKrizan.Utulek.Web.Areas.Mazlicci.Controllers
                 return RedirectToAction(nameof(MazlicciController.Index), "Mazlicci");
             return NotFound();
         }
+
+        public IActionResult Platba()
+        {
+            return View();
+        }
     }
 }
