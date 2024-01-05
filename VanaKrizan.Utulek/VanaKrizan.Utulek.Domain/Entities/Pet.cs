@@ -14,8 +14,11 @@ namespace VanaKrizan.Utulek.Domain.Entities
         public string Name { get; set; }
         public DateTime? Birth { get; set; }
 
-        //[ForeignKey(nameof(Pet))]
+        [ForeignKey(nameof(Breed.Id))]
         public int? BreedId { get; set; }
+        
+        [ForeignKey(nameof(Size.Id))]
+        public int? SizeId { get; set; }
 
         [StringLength(1)]
         public string? Sex { get; set; }
@@ -25,8 +28,7 @@ namespace VanaKrizan.Utulek.Domain.Entities
 
         // public double Cost { get; set; }
 
-        [Required]
-        public string ImageSrc { get; set; }
+        public string? ImageSrc { get; set; }
         public string? Info { get; set; }
 
         

@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+.containerMazl {
+    width: 80%;
+    padding-right: 1%;
+    padding-left: 1%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 2%;
+    margin-bottom: 16rem;
+    background-color: #EDF6F9;
+    border-radius: 20px;
+}
+
+.info {
+    position: relative;
+    display: block;
+}
+
+body {
+    background-color: #83C5BE;
+}
+
+h1 {
+    margin-top: 3%;
+    text-align: center;
+    font-family: Agbalumo;
+}
+
+img {
+    width: 300px;
+    height: auto;
+    margin-left:auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.zaklInfo {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 5%;
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+}
+
+legend {
+    font-size: 20px;
+    padding: 0;
+    font-weight: 600;
+}
+
+.popis {
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+}
+
+
+.hl {
+    float: left;
+    font-weight: 700;
+    width: 200px;
+}
+
+.data {
+    padding-left: 0;
+    font-size: 16px;
+    line-height: 19px;
+    padding-bottom: 5px;
+    margin-right:0;
+}
+
+dl{
+}

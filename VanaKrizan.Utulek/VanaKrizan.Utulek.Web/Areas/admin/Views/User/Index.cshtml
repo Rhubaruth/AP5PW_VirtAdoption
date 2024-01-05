@@ -1,0 +1,57 @@
+﻿@using VanaKrizan.Utulek.Infrastructure.Identity;
+@using VanaKrizan.Utulek.Domain.Entities.Interface;
+@model IList<User>
+
+@{
+    ViewData["Title"] = "Users Admin";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+@{
+    if (Model != null && Model.Count > 0)
+    {
+
+        <table class="tableAdmin">
+            <thead>
+                <tr>
+                    <th scope="col">@nameof(IUser.Id)</th>
+                    <th scope="col">@nameof(IUser.UserName)</th>
+                    <th scope="col">@nameof(IUser.FirstName)</th>
+                    <th scope="col">@nameof(IUser.LastName)</th>
+                    <th scope="col">@nameof(IUser.Email)</th>
+                    <th scope="col">@nameof(IUser.PhoneNumber)</th>
+                    <th scope="col"> Delete </th>
+                    <th scope="col">  </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <th scope="row">@Model[i].Id</th>
+                        <td scope="row">@Model[i].UserName</td>
+                        <td scope="row">@Model[i].FirstName</td>
+                        <td scope="row">@Model[i].LastName</td>
+                        <td scope="row">@Model[i].Email</td>
+                        <td scope="row">@Model[i].PhoneNumber</td>
+                        <td><a asp-action="Delete" asp-route-id="@Model[i].Id" onclick="return ConfirmDelete();">X</a></td>
+                        <td><a asp-action="EditUser" asp-route-id="@Model[i].Id">Edit</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+
+
+@section Scripts {
+    <script src="~/js/dialogs.js"></script>
+
+}
+
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+
+}

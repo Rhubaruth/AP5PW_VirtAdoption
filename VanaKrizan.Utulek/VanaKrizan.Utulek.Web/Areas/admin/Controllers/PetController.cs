@@ -4,6 +4,7 @@ using VanaKrizan.Utulek.Domain.Entities;
 using VanaKrizan.Utulek.Infrastructure.Database;
 using VanaKrizan.Utulek.Application.Abstraction;
 using VanaKrizan.Utulek.Infrastructure.Identity.Enums;
+using Microsoft.EntityFrameworkCore;
 
 namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 {
@@ -19,47 +20,51 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 
         public IActionResult Index()
         {
-            IList<Pet> pets = _petService.Select();
+            IList<Pet> pets = _petService.PetSelectAll();
             return View(pets);
         }
 
-        /* Funcs for Create */
 
-        public IActionResult ChooseType()
+        #region Funcs for Create 
+        public IActionResult Create()
         {
-            return View();  // vrací view s návem "Create" 
+            ViewBag.Sizes = _petService.SizeSelectAll();
+            ViewBag.Breeds = _petService.BreedSelectAll();
+            return View();
         }
 
         [HttpPost]      // default atribut = "HttpGet"
-        public IActionResult ChooseType(ChosenType chosenType)
+        async public Task<IActionResult> Create(Pet pet)
         {
-            //_petService.Create(type);
+            //_petService.PetCreate(pet);
 
-            switch (chosenType.Type)
+            //return RedirectToAction(nameof(PetController.Index), "Pet");
+
+            if(ModelState.IsValid)
             {
-                case PetType.Dog:
-                    return RedirectToAction(
-                        nameof(CreatorController.CreateDog), "Creator");
-                case PetType.Cat:
-                    return RedirectToAction(
-                        nameof(CreatorController.CreateCat), "Creator");
-                default:
-                    break;
+                _petService.PetCreate(pet);
+                return RedirectToAction(nameof(PetController.Index), "Pet");
+
+            }
+            else
+            {
+                return View(pet);
             }
 
-            return NotFound();
         }
+        #endregion
 
-        /* Funcs for Edit */
-        
+        #region Funcs for Edit
         public IActionResult Edit(int id)
         {
-            Pet? pet = _petService.SelectById(id);
+            Pet? pet = _petService.PetSelectById(id);
             if (pet == null)
             {
                 return NotFound();
             }
 
+            ViewBag.Sizes = _petService.SizeSelectAll();
+            ViewBag.Breeds = _petService.BreedSelectAll();
             return View(pet);  // vrací view s návem "Edit" 
         }
 
@@ -67,22 +72,23 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
         public IActionResult Edit(Pet updatedPet)
         {
 
-            bool isEdited = _petService.Edit(updatedPet);
+            bool isEdited = _petService.PetEdit(updatedPet);
 
             if (isEdited)
-                return RedirectToAction(nameof(PetController.Index));
+                return RedirectToAction(nameof(PetController.Index), "Pet");
             return NotFound();
         }
+        #endregion
 
-        /* Funcs for Delete */
-
+        #region Funcs for Delete
         public IActionResult Delete(int id)
         {
-            bool deleted = _petService.Delete(id);
+            bool deleted = _petService.PetDelete(id);
             
             if(deleted)
-                return RedirectToAction(nameof(PetController.Index));
+                return RedirectToAction(nameof(PetController.Index), "Pet");
             return NotFound();
         }
+        #endregion
     }
 }

@@ -1,0 +1,57 @@
+﻿@using VanaKrizan.Utulek.Domain.Entities;
+@model PetConjoined
+
+@{
+    <div class="containerMazl">
+        <section class="info">
+            <div class="row">
+                <div class="mazel">
+                    <h1>@Model.pet.Name</h1>
+                    <div class="zaklInfo">
+                        <dl class="zaklad">
+                            <fieldset>
+                                <legend>Základní údaje</legend>
+                                <dl>
+                                    <dt class="hl">Velikost:</dt>
+                                    <dd class="data">@Model.size.Name</dd>
+                                </dl>
+                                <dl>
+                                    <dt class="hl">Plemeno:</dt>
+                                    <dd class="data">@Model.breed.Name</dd>
+                                </dl>
+                                <dl>
+                                    <dt class="hl">Stáří:</dt>
+                                    <dd class="data">@Model.pet.Birth</dd>
+                                </dl>
+                                <dl>
+                                    <dt class="hl">Pohlaví:</dt>
+                                    <dd class="data">@Model.pet.Sex</dd>
+                                </dl>
+                                <dl>
+                                    <dt class="hl">V útulku od:</dt>
+                                    <dd class="data">@Model.pet.InShelterSince</dd>
+                                </dl>
+                                <dl>
+                                    <dt class="hl">Čip:</dt>
+                                    <dd class="data">[not in db yet]</dd>
+                                </dl>
+                            </fieldset>
+                        </dl>
+                        <div class="obr">
+                            <img src=@Model.pet.ImageSrc>
+                        </div>
+                    </div>
+                    <div class="popis">
+                        @Model.pet.Info
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+    </div>
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/detail.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+}
