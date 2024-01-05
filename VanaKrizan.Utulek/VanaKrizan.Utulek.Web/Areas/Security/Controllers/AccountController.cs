@@ -85,5 +85,25 @@ namespace VanaKrizan.Utulek.Web.Areas.Security.Controllers
             return RedirectToAction(nameof(Login));
         }
 
-    }
+		public IActionResult Prihlaseni()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Prihlaseni(LoginViewModel loginVM)
+		{
+			if (ModelState.IsValid)
+			{
+				bool isLogged = await accountService.Login(loginVM);
+				if (isLogged)
+					return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).Replace(nameof(Controller), String.Empty), new { area = String.Empty });
+
+				loginVM.LoginFailed = true;
+			}
+
+			return View(loginVM);
+		}
+
+	}
 }
