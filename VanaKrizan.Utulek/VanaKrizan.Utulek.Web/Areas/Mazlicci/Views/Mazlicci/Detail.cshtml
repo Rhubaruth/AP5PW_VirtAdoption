@@ -1,11 +1,13 @@
-﻿
+﻿@using VanaKrizan.Utulek.Domain.Entities;
+@model PetConjoined
+
 @{
     <div class="containerMazl">
         <section class="info">
             <div class="row">
                 <div class="mazel">
                     <div class="barva">
-                        <h1>Andy</h1>
+                        <h1>@Model.pet.Name</h1>
                         <div class="container">
                             <div class="button-container">
                                 <div class="dog">
@@ -41,7 +43,7 @@
                             <form class="modal-content animate" action="/action_page.php" method="post">
                                 <div class="imgcontainer">
                                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                                    <h2>Andy</h2>
+                                    <h2>@Model.pet.Name</h2>
                                     <img src="~/img/pets/Andy.jpg" class="pet">
                                 </div>
 

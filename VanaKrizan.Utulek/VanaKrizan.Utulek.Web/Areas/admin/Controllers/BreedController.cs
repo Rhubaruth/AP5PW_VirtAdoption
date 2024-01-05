@@ -10,72 +10,55 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 {
     [Area("admin")] // napojení Controller - Area
     [Authorize(Roles = nameof(Roles.Admin) + ", " + nameof(Roles.Manager))]
-    public class PetController : Controller
+    public class BreedController : Controller
     {
         IPetService _petService;
-        public PetController(IPetService petService)
+        public BreedController(IPetService petService)
         {
             _petService = petService;
         }
 
         public IActionResult Index()
         {
-            IList<Pet> pets = _petService.PetSelectAll();
-            return View(pets);
+            IList<Breed> breeds = _petService.BreedSelectAll();
+            return View(breeds);
         }
 
 
         #region Funcs for Create 
         public IActionResult Create()
         {
-            ViewBag.Sizes = _petService.SizeSelectAll();
-            ViewBag.Breeds = _petService.BreedSelectAll();
             return View();
         }
 
         [HttpPost]      // default atribut = "HttpGet"
-        async public Task<IActionResult> Create(Pet pet)
+        public IActionResult Create(Breed breed)
         {
-            //_petService.PetCreate(pet);
+            _petService.BreedCreate(breed);
 
-            //return RedirectToAction(nameof(PetController.Index), "Pet");
-
-            if(ModelState.IsValid)
-            {
-                _petService.PetCreate(pet);
-                return RedirectToAction(nameof(PetController.Index), "Pet");
-
-            }
-            else
-            {
-                return View(pet);
-            }
-
+            return RedirectToAction(nameof(BreedController.Index), "Breed");
         }
         #endregion
 
         #region Funcs for Edit
         public IActionResult Edit(int id)
         {
-            Pet? pet = _petService.PetSelectById(id);
-            if (pet == null)
+            Breed? item = _petService.BreedSelectById(id);
+            if (item == null)
             {
                 return NotFound();
             }
 
-            ViewBag.Sizes = _petService.SizeSelectAll();
-            ViewBag.Breeds = _petService.BreedSelectAll();
-            return View(pet);  // vrací view s návem "Edit" 
+            return View(item);  // vrací view s návem "Edit" 
         }
 
         [HttpPost]      // default atribut = "HttpGet"
-        public IActionResult Edit(Pet updatedPet)
+        public IActionResult Edit(Breed updatedItem)
         {
-
-            bool isEdited = _petService.PetEdit(updatedPet);
+            bool isEdited = _petService.BreedEdit(updatedItem);
 
             if (isEdited)
-                return RedirectToAction(nameof(PetController.Index), "Pet");
+                return RedirectToAction(nameof(BreedController.Index));
             return NotFound();
         }
         #endregion
@@ -83,10 +66,10 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
         #region Funcs for Delete
         public IActionResult Delete(int id)
         {
-            bool deleted = _petService.PetDelete(id);
+            bool deleted = _petService.BreedDelete(id);
             
             if(deleted)
-                return RedirectToAction(nameof(PetController.Index), "Pet");
+                return RedirectToAction(nameof(PetController.Index));
             return NotFound();
         }
         #endregion

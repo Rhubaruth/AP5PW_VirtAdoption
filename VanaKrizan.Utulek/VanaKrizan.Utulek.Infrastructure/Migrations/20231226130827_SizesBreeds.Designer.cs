@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VanaKrizan.Utulek.Infrastructure.Database;
 
@@ -10,9 +11,11 @@ using VanaKrizan.Utulek.Infrastructure.Database;
 namespace VanaKrizan.Utulek.Infrastructure.Migrations
 {
     [DbContext(typeof(UtulekDbContext))]
-    partial class UtulekDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231226130827_SizesBreeds")]
+    partial class SizesBreeds
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -203,9 +206,9 @@ namespace VanaKrizan.Utulek.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            Birth = new DateTime(2023, 12, 27, 12, 56, 3, 611, DateTimeKind.Local).AddTicks(1776),
+                            Birth = new DateTime(2023, 12, 26, 14, 8, 27, 673, DateTimeKind.Local).AddTicks(1634),
                             ImageSrc = "/img/pets/peso1.jpg",
-                            InShelterSince = new DateTime(2023, 12, 27, 12, 56, 3, 611, DateTimeKind.Local).AddTicks(1827),
+                            InShelterSince = new DateTime(2023, 12, 26, 14, 8, 27, 673, DateTimeKind.Local).AddTicks(1694),
                             Name = "Doggo",
                             Sex = "M"
                         },
@@ -213,14 +216,14 @@ namespace VanaKrizan.Utulek.Infrastructure.Migrations
                         {
                             Id = 2,
                             ImageSrc = "/img/pets/peso2.jpg",
-                            InShelterSince = new DateTime(2023, 12, 27, 12, 56, 3, 611, DateTimeKind.Local).AddTicks(1833),
+                            InShelterSince = new DateTime(2023, 12, 26, 14, 8, 27, 673, DateTimeKind.Local).AddTicks(1700),
                             Name = "Oggod",
                             Sex = "M"
                         },
                         new
                         {
                             Id = 3,
-                            Birth = new DateTime(2023, 12, 27, 12, 56, 3, 611, DateTimeKind.Local).AddTicks(1836),
+                            Birth = new DateTime(2023, 12, 26, 14, 8, 27, 673, DateTimeKind.Local).AddTicks(1702),
                             ImageSrc = "/img/pets/kocka1.jpg",
                             InShelterSince = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Kitty"
@@ -261,37 +264,6 @@ namespace VanaKrizan.Utulek.Infrastructure.Migrations
                         {
                             Id = 3,
                             Name = "velká"
-                        });
-                });
-
-            modelBuilder.Entity("VanaKrizan.Utulek.Infrastructure.Database.Classes.UserHasPet", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("PetId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserHasPet");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            PetId = 1,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            PetId = 3,
-                            UserId = 1
                         });
                 });
 

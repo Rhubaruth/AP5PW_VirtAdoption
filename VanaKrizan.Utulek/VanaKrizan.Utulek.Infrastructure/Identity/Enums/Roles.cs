@@ -8,8 +8,8 @@ namespace VanaKrizan.Utulek.Infrastructure.Identity.Enums
 {
     public enum Roles
     {
-        Admin,
-        Manager,
-        Customer,
+        Admin = 1,
+        Manager = 2,
+        Customer = 3,
     }
 }
