@@ -94,20 +94,54 @@ namespace VanaKrizan.Utulek.Web.Areas.Security.Controllers
 			return View();
 		}
 
+
 		[HttpPost]
-		public async Task<IActionResult> Prihlaseni(LoginViewModel loginVM)
+		public async Task<IActionResult> Prihlaseni(RegisterLoginViewModel registerLoginVM)
 		{
 
-			if (ModelState.IsValid)
+			if (registerLoginVM.Register != null)
 			{
-				bool isLogged = await accountService.Login(loginVM);
-				if (isLogged)
-					return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).Replace(nameof(Controller), String.Empty), new { area = String.Empty });
+                RegisterViewModel registerVM = registerLoginVM.Register;
+				if (ModelState.IsValid)
+				{
+					string[] errors = await accountService.Register(registerVM, Roles.Customer);
 
-				loginVM.LoginFailed = true;
+					if (errors == null)
+					{
+						LoginViewModel loginVM = new LoginViewModel()
+						{
+							Username = registerVM.Username,
+							Password = registerVM.Password
+						};
+
+						bool isLogged = await accountService.Login(loginVM);
+						if (isLogged)
+							return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).Replace(nameof(Controller), String.Empty), new { area = String.Empty });
+						else
+							return RedirectToAction(nameof(Login));
+					}
+					else
+					{
+						//error to ViewModel
+					}
+
+				}
 			}
 
-			return View(loginVM);
+			if (registerLoginVM.Login != null)
+            {
+                LoginViewModel loginVM = registerLoginVM.Login;
+			    if (ModelState.IsValid)
+			    {
+				    bool isLogged = await accountService.Login(loginVM);
+				    if (isLogged)
+					    return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).Replace(nameof(Controller), String.Empty), new { area = String.Empty });
+
+				    loginVM.LoginFailed = true;
+			    }
+			}
+
+			return View(registerLoginVM);
 		}
 
 	}

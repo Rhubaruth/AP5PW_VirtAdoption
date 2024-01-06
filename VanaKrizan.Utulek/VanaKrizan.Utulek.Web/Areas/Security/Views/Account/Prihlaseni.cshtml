@@ -19,7 +19,7 @@
 			<input type="checkbox" id="chk" aria-hidden="true">
 
 			<div class="signup">
-				<form asp-action="Register" method="post">
+				<form asp-action="Prihlaseni" method="post">
 					<div asp-validation-summary="All" class="text-danger"></div>
 
 
@@ -40,7 +40,7 @@
 
 			<div class="login">
 
-				<form asp-action="Login" method="post">
+		<form asp-action="Prihlaseni" method="post">
 				<div asp-validation-summary="All" class="text-danger"></div>
 					<label for="chk" aria-hidden="true">Přihlášení</label>
 					<input asp-for="Login.Username" id="inputUsername" type="text" placeholder="Email" required="">
