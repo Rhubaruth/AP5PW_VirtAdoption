@@ -30,8 +30,9 @@
 					<span asp-validation-for="Register.Email" class="text-danger"></span>
 					<input asp-for="Register.Password" id="user-pass" type="password" placeholder="Heslo" required="">
 					<span asp-validation-for="Register.Password" class="text-danger"></span>
-					<input asp-for="Register.RepeatedPassword" type="password" id="user-repeatpass" placeholder="Repeat Password" autofocus="">
+					<input asp-for="Register.RepeatedPassword" type="password" id="user-repeatpass" placeholder="Zopakovat heslo" autofocus="" required="">
 					<span asp-validation-for="Register.RepeatedPassword" class="text-danger"></span>
+					<div asp-validation-summary="All" class="text-danger error"></div>
 
 					<button type="submit">Registrovat</button>
 				</form>
