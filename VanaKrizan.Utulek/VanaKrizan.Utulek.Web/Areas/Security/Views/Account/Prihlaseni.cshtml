@@ -20,13 +20,25 @@
 					<label for="chk" aria-hidden="true">Registrace</label>
 					<input asp-for="Register.Username" id="user-name" type="text" placeholder="Uživatelské jméno" required="">
 					<span asp-validation-for="Register.Username" class="text-danger"></span>
+					@{
+						if (ViewBag.Errors != null)
+						{
+							@foreach (var item in ViewBag.Errors)
+							{
+								<div class="text-danger">
+									@item
+								</div>
+							}
+						}
+					}
 					<input asp-for="Register.Email" id="user-email" type="email" placeholder="Email" required="">
 					<span asp-validation-for="Register.Email" class="text-danger"></span>
 					<input asp-for="Register.Password" id="user-pass" type="password" placeholder="Heslo" required="">
 					<span asp-validation-for="Register.Password" class="text-danger"></span>
 					<input asp-for="Register.RepeatedPassword" type="password" id="user-repeatpass" placeholder="Zopakovat heslo" autofocus="" required="">
-					<span asp-validation-for="Register.RepeatedPassword" class="text-danger"></span>
-
+					@* <span asp-validation-for="Register.RepeatedPassword" class="text-danger"></span> *@
+					<div asp-validation-summary="All" class=" chyba"></div> @*text-danger*@
+					
 					<button type="submit">Registrovat</button>
 				</form>
 			</div>
@@ -39,6 +51,12 @@
 					<span asp-validation-for="Login.Username" class="text-danger"></span>
 					<input asp-for="Login.Password" id="inputPassword" type="password" placeholder="Heslo" required="">
 					<span asp-validation-for="Login.Password" class="text-danger"></span>
+					@{
+						if (Model?.LoginFailed == true)
+						{
+							<div class="chyba">Špatné jméno nebo heslo</div>
+						}
+					}
 
 					<button type="submit">Přihlásit se</button>
 				</form>
@@ -46,21 +64,4 @@
 		</div>
 
 
-@{
-	if (Model?.LoginFailed == true)
-	{
-		<div class="text-danger">Login went wrong </div>
-	}
-}
-@{
-	if (ViewBag.Errors != null)
-	{
-		@foreach (var item in ViewBag.Errors)
-		{
-			<div class="text-danger">
-				@item
-			</div>
-		}
-	}
-}
-<div asp-validation-summary="All" class="text-danger"></div>
+
