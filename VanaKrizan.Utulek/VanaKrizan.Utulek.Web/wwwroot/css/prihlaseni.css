@@ -119,9 +119,10 @@ button:hover {
 */
 
 .chyba {
-    color: #8E2B3F;
-    margin-left:70px;
-    margin-bottom:0px;
+    /*color: #8E2B3F;*/
+    color: #C48975;
+    margin-left: 70px;
+    margin-bottom: 0px;
 }
 
 ul {

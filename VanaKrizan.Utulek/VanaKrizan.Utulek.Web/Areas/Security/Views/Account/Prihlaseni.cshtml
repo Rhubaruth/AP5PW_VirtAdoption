@@ -18,16 +18,6 @@
 				<form asp-action="Prihlaseni" method="post">
 
 					<label for="chk" aria-hidden="true">Registrace</label>
-					<input asp-for="Register.Username" id="user-name" type="text" placeholder="Uživatelské jméno" required="">
-					<span asp-validation-for="Register.Username" class="text-danger"></span>
-					<input asp-for="Register.Email" id="user-email" type="email" placeholder="Email" required="">
-					<span asp-validation-for="Register.Email" class="text-danger"></span>
-					<input asp-for="Register.Password" id="user-pass" type="password" placeholder="Heslo" required="">
-					<span asp-validation-for="Register.Password" class="text-danger"></span>
-					<input asp-for="Register.RepeatedPassword" type="password" id="user-repeatpass" placeholder="Zopakovat heslo" autofocus="" required="">
-					@* <span asp-validation-for="Register.RepeatedPassword" class="text-danger"></span> *@
-					
-					<div asp-validation-summary="All" class=" chyba"></div> @*text-danger*@
 					@{
 						if (ViewBag.Errors != null)
 						{
@@ -39,6 +29,18 @@
 							}
 						}
 					}
+
+					<input asp-for="Register.Username" id="user-name" type="text" placeholder="Uživatelské jméno" required="">
+					<span asp-validation-for="Register.Username" class="text-danger"></span>
+					<input asp-for="Register.Email" id="user-email" type="email" placeholder="Email" required="">
+					<span asp-validation-for="Register.Email" class="text-danger"></span>
+					<input asp-for="Register.Password" id="user-pass" type="password" placeholder="Heslo" required="">
+					<span asp-validation-for="Register.Password" class="text-danger"></span>
+					<input asp-for="Register.RepeatedPassword" type="password" id="user-repeatpass" placeholder="Zopakovat heslo" autofocus="" required="">
+					@* <span asp-validation-for="Register.RepeatedPassword" class="text-danger"></span> *@
+					
+					<div asp-validation-summary="All" class=" chyba"></div> @*text-danger*@
+
 
 
 					<button type="submit">Registrovat</button>
