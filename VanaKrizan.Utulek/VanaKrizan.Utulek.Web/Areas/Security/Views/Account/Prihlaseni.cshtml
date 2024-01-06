@@ -9,19 +9,13 @@
 	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 }
-		@{
-            if (Model?.LoginFailed == true)
-			{
-				<div class="text-danger">Login went wrong </div>
-			}
-		}
+
+
 		<div class="mainLog">
 			<input type="checkbox" id="chk" aria-hidden="true">
 
 			<div class="signup">
 				<form asp-action="Prihlaseni" method="post">
-					<div asp-validation-summary="All" class="text-danger"></div>
-
 
 					<label for="chk" aria-hidden="true">Registrace</label>
 					<input asp-for="Register.Username" id="user-name" type="text" placeholder="Uživatelské jméno" required="">
@@ -32,7 +26,6 @@
 					<span asp-validation-for="Register.Password" class="text-danger"></span>
 					<input asp-for="Register.RepeatedPassword" type="password" id="user-repeatpass" placeholder="Zopakovat heslo" autofocus="" required="">
 					<span asp-validation-for="Register.RepeatedPassword" class="text-danger"></span>
-					<div asp-validation-summary="All" class="text-danger error"></div>
 
 					<button type="submit">Registrovat</button>
 				</form>
@@ -40,8 +33,7 @@
 
 			<div class="login">
 
-		<form asp-action="Prihlaseni" method="post">
-				<div asp-validation-summary="All" class="text-danger"></div>
+				<form asp-action="Prihlaseni" method="post">
 					<label for="chk" aria-hidden="true">Přihlášení</label>
 					<input asp-for="Login.Username" id="inputUsername" type="text" placeholder="Email" required="">
 					<span asp-validation-for="Login.Username" class="text-danger"></span>
@@ -52,3 +44,23 @@
 				</form>
 			</div>
 		</div>
+
+
+@{
+	if (Model?.LoginFailed == true)
+	{
+		<div class="text-danger">Login went wrong </div>
+	}
+}
+@{
+	if (ViewBag.Errors != null)
+	{
+		@foreach (var item in ViewBag.Errors)
+		{
+			<div class="text-danger">
+				@item
+			</div>
+		}
+	}
+}
+<div asp-validation-summary="All" class="text-danger"></div>

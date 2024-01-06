@@ -54,10 +54,11 @@ namespace VanaKrizan.Utulek.Web.Areas.Security.Controllers
                 }
                 else
                 {
-                    //error to ViewModel
-                }
+					//error to ViewModel
+					ViewBag.Errors = errors;
+				}
 
-            }
+			}
 
             return View(registerVM.Register);
         }
@@ -123,6 +124,7 @@ namespace VanaKrizan.Utulek.Web.Areas.Security.Controllers
 					else
 					{
 						//error to ViewModel
+						ViewBag.Errors = errors;
 					}
 
 				}
@@ -137,7 +139,7 @@ namespace VanaKrizan.Utulek.Web.Areas.Security.Controllers
 				    if (isLogged)
 					    return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).Replace(nameof(Controller), String.Empty), new { area = String.Empty });
 
-				    loginVM.LoginFailed = true;
+                    registerLoginVM.LoginFailed = true;
 			    }
 			}
 
