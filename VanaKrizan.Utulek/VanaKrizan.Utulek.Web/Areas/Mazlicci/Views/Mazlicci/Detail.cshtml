@@ -9,7 +9,10 @@
                     <div class="barva">
                         <h1>@Model.pet.Name</h1>
                         <div class="container">
+
+
                             <div class="button-container">
+
                                 <div class="dog">
                                     <div class="tail"></div>
                                     <div class="body"></div>
@@ -33,18 +36,24 @@
                                         <div class="right"></div>
                                     </div>
                                 </div>
+
+
                                 <button class="adoptuj" onclick="document.getElementById('id01').style.display='block'"> Adoptuj mě</button>
                                 <div class="paw"></div>
                                 <div class="paw top"></div>
+
+
                             </div>
                         </div>
 
                         <div id="id01" class="modal">
-                            <form class="modal-content animate" action="/action_page.php" method="post">
+                            <form class="modal-content-detail animate" action="/action_page.php" method="post">
                                 <div class="imgcontainer">
                                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                                     <h2>@Model.pet.Name</h2>
-                                    <img src=@Model.pet.ImageSrc class="pet">
+                                    <div class="okno">
+                                        <img src=@Model.pet.ImageSrc >
+                                    </div>
                                 </div>
 
                                 <div class="container">
@@ -55,8 +64,8 @@
                                 </div>
 
                                 <div class="container">
-                                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                                    <a id="submitLink" class="submitbtn" asp-area="Platba" asp-controller="Platba" asp-action="Platba">Souhlasím</a>
+                                   <!-- <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>-->
+                                    <a id="submitLink" asp-area="Platba" asp-controller="Platba" asp-action="Platba"><img src="~/img/pets/handshake.png" class="icon-agree"></a>
                                 </div>
                             </form>
                         </div>
@@ -91,8 +100,8 @@
                                     </dl>
                                 </fieldset>
                             </dl>
-                            <div class="obr">
-                                <img src=@Model.pet.ImageSrc>
+                            <div class="dolni">
+                                <img src=@Model.pet.ImageSrc >
                             </div>
                         </div>
                     </div>
@@ -127,5 +136,5 @@
 
 @section Styles {
     <link rel="stylesheet" href="~/css/detail.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
 }

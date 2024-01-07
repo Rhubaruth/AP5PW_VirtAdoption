@@ -14,23 +14,23 @@
 
                     @foreach (var pet in Model.Pets)
                     {
-                        <div class="col mb-5">
-                            <div class="card h-100 mazlik">
+                        <div class="col mb-5 col-md-6 col-sm-12 col-lg-4">
+                            <div class="mazlik">
                                 <!-- Product image-->
-                                <img class="card-img-top" src="@pet.ImageSrc" alt="@pet.Name" />
-                                <!-- Product details-->
-                                <div class="card-body p-4">
-                                    <div class="text-center">
-                                        <!-- Product name-->
-                                        <h5 class="fw-bolder"> @pet.Name </h5>
-                                        <!-- Product price-->
-                                        Narozen: @pet.Birth
-                                    </div>
-                                </div>
-                                <!-- Product actions-->
-                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <div class="text-center">
-                                        <a class="btn btn-outline-dark mt-auto" asp-area="Mazlicci" asp-controller="Mazlicci" asp-action="Detail" asp-route-id="@pet.Id">Detail</a>
+                                <div class="content">
+                                    <div class="grid">
+                                        <figure class="effect-julia boxik">
+                                            <img class="card-img-top" src="@pet.ImageSrc" alt="@pet.Name" />
+                                            
+                                            <figcaption>
+                                                <h2> @pet.Name</h2>
+                                                <div>
+                                                    <p>Narození: @pet.Birth?.ToString("dd.MM.yyyy")</p>
+                                                    <p>Nějaké základní info...</p>
+                                                </div>
+                                                <a class="btn btn-outline-dark mt-auto" asp-area="Mazlicci" asp-controller="Mazlicci" asp-action="Detail" asp-route-id="@pet.Id">Detail</a>
+                                            </figcaption>
+                                        </figure>
                                     </div>
                                 </div>
                             </div>
@@ -84,5 +84,4 @@
 @section Styles {
     <link rel="stylesheet" href="~/css/mazlicci.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
-    
 }
