@@ -15,7 +15,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top"><h2>Útulek Zlín</h2></a>
+                <a class="navbar-brand logo" asp-area="" asp-controller="Home" asp-action="Index"><h2>Útulek Zlín</h2><img src="~/img/pets/paw-icon.png" /> </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
@@ -25,7 +25,7 @@
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Domů</a></li>
                         <li class="nav-item"><a class="nav-link text-dark" asp-area="Mazlicci" asp-controller="Mazlicci" asp-action="Index">Mazlíčci</a> @*+virtuální adopce*@ </li>
-                        <li class="nav-item"><a class="nav-link text-dark" href="#aktuality">Aktuality</a> </li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="#portfolio">Nalezenci</a> </li>
                         <li class="nav-item"><a class="nav-link text-dark" href="#informace">Informace</a> @*+kontakt*@</li>
                         <li class="nav-item"><a class="nav-link text-dark" asp-area="User" asp-controller="User" asp-action="MyPets">Moje Adopce</a> </li>
                         @if (User.Identity.IsAuthenticated == true && (User.IsInRole(nameof(Roles.Admin)) || User.IsInRole(nameof(Roles.Manager))))
@@ -33,27 +33,24 @@
                             <li class="nav-item"> <a class="nav-link text-dark" asp-area="admin" asp-controller="Pet" asp-action="Index">Admin</a> @*pak někam schovat*@ </li>
                             <li class="nav-item"> <a class="nav-link text-dark" asp-area="admin" asp-controller="User" asp-action="Index">Admin2</a> </li>
                         }
+                        @{
+                            @if (User.Identity.IsAuthenticated == false)
+                            {
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="Security" asp-controller="Account" asp-action="Prihlaseni"> Přihlásit se</a></li>
+                            }
+                            else
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person"></i> Logged as @User.Identity.Name</a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item text-dark" asp-area="Security" asp-controller="Account" asp-action="Logout"><i class="bi bi-person-slash me-1"></i>Odhlásit se</a></li>
+                                    </ul>
+                                </li>
+                            }
+                        }
                     </ul>
                 </div>
-                @{
-                    @if (User.Identity.IsAuthenticated == false)
-                    {
-                        <ul class="navbar-nav navbar-right">
-                            <li class="nav-item"><a class="nav-link text-dark" asp-area="Security" asp-controller="Account" asp-action="Prihlaseni"><i class="bi bi-unlock"></i> Přihlásit se</a></li>
-                        </ul>
-                    }
-                    else
-                    {
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person"></i> Logged as @User.Identity.Name</a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item text-dark" asp-area="Security" asp-controller="Account" asp-action="Logout"><i class="bi bi-person-slash me-1"></i>Odhlásit se</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    }
-                }
+                
             </div>
         </nav>
 
