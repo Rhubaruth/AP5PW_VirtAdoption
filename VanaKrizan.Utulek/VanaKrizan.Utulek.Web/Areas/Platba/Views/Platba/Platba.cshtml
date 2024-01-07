@@ -1,13 +1,24 @@
-﻿
+﻿@using VanaKrizan.Utulek.Domain.Entities;
+@model PetConjoined
+
 @{
 
     <div class="container">
         <div class="card">
-            <button class="proceed">
+        <form asp-action="Platba" method="post" id="form">
+            <button type="submit" class="proceed">
                 <svg class="sendicon" width="24" height="24" viewBox="0 0 24 24">
                     <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
                 </svg>
             </button>
+
+                <input type="hidden" asp-for="pet.Id" />
+                <input type="hidden" asp-for="breed.Id" />
+                <input type="hidden" asp-for="breed.Name" />
+                <input type="hidden" asp-for="size.Id" />
+                <input type="hidden" asp-for="size.Name" />
+                <input type="hidden" asp-for="cost" />
+        </form>
             <!-- <img src="https://seeklogo.com/images/V/VISA-logo-62D5B26FE1-seeklogo.com.png" class="logo-card"> -->
             <p>Karta</p>
             <label>Card number:</label>
@@ -23,11 +34,11 @@
             <div class="rovne">
                 <div class="col">
                     <p>Cena:</p>
-                    <h2 class="cost">1000 Kč</h2><br>
+                    <h2 class="cost">@Model.cost Kč</h2><br>
                 </div>
                 <div class="col">
                     <p>Mazlíček:</p>
-                    <h2 class="bought-items">Doggo</h2>
+                    <h2 class="bought-items">@Model.pet.Name</h2>
                 </div><br>
             </div>
             <div class="text">
