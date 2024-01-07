@@ -12,6 +12,8 @@ namespace VanaKrizan.Utulek.Domain.Entities
         public Size size { get; set; }
         public Breed breed { get; set; }
 
+        public double? cost { get; set; }
+
         public PetConjoined(Pet _pet, Size _size, Breed _breed) 
         { 
             this.pet = _pet;
