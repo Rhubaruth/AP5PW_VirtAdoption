@@ -54,11 +54,11 @@ namespace VanaKrizan.Utulek.Web.Areas.Security.Controllers
                 }
                 else
                 {
-                    //error to ViewModel
-                    ViewBag.Errors = errors;
-                }
+					//error to ViewModel
+					ViewBag.Errors = errors;
+				}
 
-            }
+			}
 
             return View(registerVM.Register);
         }
@@ -95,21 +95,56 @@ namespace VanaKrizan.Utulek.Web.Areas.Security.Controllers
 			return View();
 		}
 
-		//[HttpPost]
-		//public async Task<IActionResult> Prihlaseni(LoginViewModel loginVM)
-		//{
 
-		//	if (ModelState.IsValid)
-		//	{
-		//		bool isLogged = await accountService.Login(loginVM);
-		//		if (isLogged)
-		//			return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).Replace(nameof(Controller), String.Empty), new { area = String.Empty });
+		[HttpPost]
+		public async Task<IActionResult> Prihlaseni(RegisterLoginViewModel registerLoginVM)
+		{
 
-		//		loginVM.LoginFailed = true;
-		//	}
+			if (registerLoginVM.Register != null)
+			{
+                RegisterViewModel registerVM = registerLoginVM.Register;
+				if (ModelState.IsValid)
+				{
+					string[] errors = await accountService.Register(registerVM, Roles.Customer);
 
-		//	return View(loginVM);
-		//}
+					if (errors == null)
+					{
+						LoginViewModel loginVM = new LoginViewModel()
+						{
+							Username = registerVM.Username,
+							Password = registerVM.Password
+						};
+
+						bool isLogged = await accountService.Login(loginVM);
+						if (isLogged)
+							return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).Replace(nameof(Controller), String.Empty), new { area = String.Empty });
+						else
+							return RedirectToAction(nameof(Login));
+					}
+					else
+					{
+						//error to ViewModel
+						ViewBag.Errors = errors;
+					}
+
+				}
+			}
+
+			if (registerLoginVM.Login != null)
+            {
+                LoginViewModel loginVM = registerLoginVM.Login;
+			    if (ModelState.IsValid)
+			    {
+				    bool isLogged = await accountService.Login(loginVM);
+				    if (isLogged)
+					    return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).Replace(nameof(Controller), String.Empty), new { area = String.Empty });
+
+                    registerLoginVM.LoginFailed = true;
+			    }
+			}
+
+			return View(registerLoginVM);
+		}
 
 	}
 }

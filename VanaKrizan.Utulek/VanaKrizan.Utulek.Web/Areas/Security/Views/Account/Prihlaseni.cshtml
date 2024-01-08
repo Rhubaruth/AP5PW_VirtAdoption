@@ -9,29 +9,39 @@
 	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
 }
-		@{
-            if (Model?.LoginFailed == true)
-			{
-				<div class="text-danger">Login went wrong </div>
-			}
-		}
+
+
 		<div class="mainLog">
 			<input type="checkbox" id="chk" aria-hidden="true">
 
 			<div class="signup">
-				<form asp-action="Register" method="post">
-					<div asp-validation-summary="All" class="text-danger"></div>
-
+				<form asp-action="Prihlaseni" method="post">
 
 					<label for="chk" aria-hidden="true">Registrace</label>
+					@{
+						if (ViewBag.Errors != null)
+						{
+							@foreach (var item in ViewBag.Errors)
+							{
+								<div class="chyba">
+									@item
+								</div>
+							}
+						}
+					}
+
 					<input asp-for="Register.Username" id="user-name" type="text" placeholder="Uživatelské jméno" required="">
 					<span asp-validation-for="Register.Username" class="text-danger"></span>
 					<input asp-for="Register.Email" id="user-email" type="email" placeholder="Email" required="">
 					<span asp-validation-for="Register.Email" class="text-danger"></span>
 					<input asp-for="Register.Password" id="user-pass" type="password" placeholder="Heslo" required="">
 					<span asp-validation-for="Register.Password" class="text-danger"></span>
-					<input asp-for="Register.RepeatedPassword" type="password" id="user-repeatpass" placeholder="Repeat Password" autofocus="">
-					<span asp-validation-for="Register.RepeatedPassword" class="text-danger"></span>
+					<input asp-for="Register.RepeatedPassword" type="password" id="user-repeatpass" placeholder="Zopakovat heslo" autofocus="" required="">
+					@* <span asp-validation-for="Register.RepeatedPassword" class="text-danger"></span> *@
+					
+					<div asp-validation-summary="All" class=" chyba"></div> @*text-danger*@
+
+
 
 					<button type="submit">Registrovat</button>
 				</form>
@@ -39,15 +49,23 @@
 
 			<div class="login">
 
-				<form asp-action="Login" method="post">
-				<div asp-validation-summary="All" class="text-danger"></div>
+				<form asp-action="Prihlaseni" method="post">
 					<label for="chk" aria-hidden="true">Přihlášení</label>
 					<input asp-for="Login.Username" id="inputUsername" name="Username" type="text" placeholder="Email" required="">
 					<span asp-validation-for="Login.Username" class="text-danger"></span>
 					<input asp-for="Login.Password" id="inputPassword" name="Password" type="password" placeholder="Heslo" required="">
 					<span asp-validation-for="Login.Password" class="text-danger"></span>
+					@{
+						if (Model?.LoginFailed == true)
+						{
+							<div class="chyba">Špatné jméno nebo heslo</div>
+						}
+					}
 
 					<button type="submit">Přihlásit se</button>
 				</form>
 			</div>
 		</div>
+
+
+
