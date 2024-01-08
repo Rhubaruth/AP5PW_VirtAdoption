@@ -48,6 +48,16 @@ namespace VanaKrizan.Utulek.Web.Areas.Mazlicci.Controllers
                 return RedirectToAction(nameof(MazlicciController.Index), "Mazlicci");
             }
 
+            ViewBag.Adopted = false;
+            var user = _userManager.GetUserAsync(User).Result;
+            if (user != null)
+            {
+                IList<Pet> userPets = _petService.UserGetPetsAll(user.Id);
+                if (userPets.Contains(pet))
+                    ViewBag.Adopted = true;
+            }
+
+
             Size? size = _petService.SizeSelectById(pet.SizeId);
             Breed? breed = _petService.BreedSelectById(pet.BreedId);
 

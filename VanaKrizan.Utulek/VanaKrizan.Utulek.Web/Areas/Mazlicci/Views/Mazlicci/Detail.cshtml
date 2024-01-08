@@ -38,7 +38,15 @@
 
                                 @if (User.Identity.IsAuthenticated)
                                 {
-                                    <button class="adoptuj" onclick="document.getElementById('id01').style.display='block'"> Adoptuj mě</button>
+                                    @if (ViewBag.Adopted) 
+                                    {
+                                        <button class="adoptuj" onclick="document.getElementById('id01').style.display='block'" disabled> Adoptuj mě</button>
+                                        <p>Tohoto mazlíčka již adoptujete.</p>
+                                    }
+                                    else
+                                    {
+                                        <button class="adoptuj" onclick="document.getElementById('id01').style.display='block'"> Adoptuj mě</button>
+                                    }
                                 }
                                 else
                                 {
