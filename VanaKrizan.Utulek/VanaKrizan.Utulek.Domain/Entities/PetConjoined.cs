@@ -14,11 +14,11 @@ namespace VanaKrizan.Utulek.Domain.Entities
 
         public double? cost { get; set; }
 
-        public PetConjoined(Pet _pet, Size _size, Breed _breed) 
-        { 
-            this.pet = _pet;
-            this.size = _size;
-            this.breed = _breed;
-        }
+        //public PetConjoined(Pet _pet, Size _size, Breed _breed) 
+        //{ 
+        //    this.pet = _pet;
+        //    this.size = _size;
+        //    this.breed = _breed;
+        //}
     }
 }

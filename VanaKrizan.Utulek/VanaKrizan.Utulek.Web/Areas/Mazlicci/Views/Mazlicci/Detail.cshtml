@@ -8,46 +8,52 @@
                 <div class="mazel">
                     <div class="barva">
                         <h1>@Model.pet.Name</h1>
-                        <div class="container">
 
+                            <div class="container">
+                                <div class="button-container">
+                                    <div class="dog">
+                                        <div class="tail"></div>
+                                        <div class="body"></div>
+                                        <div class="head">
+                                            <div class="eyes">
+                                                <div class="left"></div>
+                                                <div class="right"></div>
 
-                            <div class="button-container">
-
-                                <div class="dog">
-                                    <div class="tail"></div>
-                                    <div class="body"></div>
-                                    <div class="head">
-                                        <div class="eyes">
+                                            </div>
+                                            <div class="nuzzle">
+                                                <div class="mouth">
+                                                    <div class="tongue"></div>
+                                                </div>
+                                                <div class="nose">
+                                                    <div class="nostrils"></div>
+                                                    <div class="highlight"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ears">
                                             <div class="left"></div>
                                             <div class="right"></div>
                                         </div>
-                                        <div class="nuzzle">
-                                            <div class="mouth">
-                                                <div class="tongue"></div>
-                                            </div>
-                                            <div class="nose">
-                                                <div class="nostrils"></div>
-                                                <div class="highlight"></div>
-                                            </div>
-                                        </div>
                                     </div>
-                                    <div class="ears">
-                                        <div class="left"></div>
-                                        <div class="right"></div>
-                                    </div>
-                                </div>
 
-
-                                <button class="adoptuj" onclick="document.getElementById('id01').style.display='block'"> Adoptuj mě</button>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <button class="adoptuj" onclick="document.getElementById('id01').style.display='block'"> Adoptuj mě</button>
+                                }
+                                else
+                                {
+                                    <form asp-area="Security" asp-controller="Account" asp-action="Prihlaseni" method="get">
+                                        <button type="submit" class="adoptuj"> Adoptuj mě</button>
+                                    </form>
+                                }
                                 <div class="paw"></div>
-                                <div class="paw top"></div>
-
-
+                                    <div class="paw top"></div>
+                                </div>
                             </div>
-                        </div>
 
                         <div id="id01" class="modal">
-                            <form class="modal-content-detail animate" action="/action_page.php" method="post">
+
+                            <form asp-action="Detail" id="form" method="post" class="modal-content animate">
                                 <div class="imgcontainer">
                                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                                     <h2>@Model.pet.Name</h2>
@@ -59,13 +65,26 @@
                                 <div class="container">
                                     <div class="castka">
                                         <label>Chci přispět virtuální adopcí částkou </label>
-                                        <input type="number" placeholder="Adopční přísěvek" name="prispevek" required min="50" id="hodnota">
+                                        <input asp-for="cost" type="number" placeholder="Adopční přísěvek" name="cost" required min="50" id="hodnota">
                                     </div>
                                 </div>
 
                                 <div class="container">
-                                   <!-- <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>-->
-                                    <a id="submitLink" asp-area="Platba" asp-controller="Platba" asp-action="Platba"><img src="~/img/pets/handshake.png" class="icon-agree"></a>
+
+                                    <!-- <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>-->                    
+                                    <button type="submit" class="submitbtn">Submit</button>
+
+                                    <input type="hidden" asp-for="pet.Id" />
+                                    <input type="hidden" asp-for="breed.Id" />
+                                    <input type="hidden" asp-for="breed.Name" />
+                                    <input type="hidden" asp-for="size.Id" />
+                                    <input type="hidden" asp-for="size.Name" />
+
+                                    <!--
+
+                                        <a id="submitLink" class="submitbtn" asp-area="Platba" asp-controller="Platba" asp-action="Platba">Souhlasím</a>
+                                    -->
+
                                 </div>
                             </form>
                         </div>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Diagnostics;
 using VanaKrizan.Utulek.Application.Abstraction;
 using VanaKrizan.Utulek.Application.ViewModels;
@@ -50,8 +51,28 @@ namespace VanaKrizan.Utulek.Web.Areas.Mazlicci.Controllers
             Size? size = _petService.SizeSelectById(pet.SizeId);
             Breed? breed = _petService.BreedSelectById(pet.BreedId);
 
-            return View(new PetConjoined(pet, size, breed));
+            PetConjoined petConj = new PetConjoined
+            {
+                pet = pet,
+                size = size,
+                breed = breed,
+                cost = 100,
+            };
+
+            return View(petConj);
         }
+
+        [HttpPost]
+        public IActionResult Detail(PetConjoined petConj)
+        {
+            if(petConj.pet == null)
+                return NotFound();
+
+            petConj.pet = _petService.PetSelectById(petConj.pet.Id);
+            TempData["PetData"] = JsonConvert.SerializeObject(petConj);
+            return RedirectToAction(nameof(PlatbaController.Platba), "Platba", new { area = "Platba" });
+        }
+
 
         public IActionResult AdoptPet(int petId)
         {
@@ -68,9 +89,6 @@ namespace VanaKrizan.Utulek.Web.Areas.Mazlicci.Controllers
             return NotFound();
         }
 
-        public IActionResult Platba()
-        {
-            return View();
-        }
+
     }
 }
