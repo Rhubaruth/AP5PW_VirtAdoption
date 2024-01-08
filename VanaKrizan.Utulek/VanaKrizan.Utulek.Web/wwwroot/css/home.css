@@ -13152,6 +13152,15 @@ section#contact {
     margin-top: 20px;
 }
 
+.bez {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.sdole {
+    padding-bottom: 4rem;
+}
+
 .footer {
     background-color: #212529;
     color: lightgray;

@@ -51,7 +51,7 @@
 
 				<form asp-action="Prihlaseni" method="post">
 					<label for="chk" aria-hidden="true">Přihlášení</label>
-					<input asp-for="Login.Username" id="inputUsername" type="text" placeholder="Email" required="">
+			<input asp-for="Login.Username" id="inputUsername" type="text" placeholder="Uživatelské jméno" required="">
 					<span asp-validation-for="Login.Username" class="text-danger"></span>
 					<input asp-for="Login.Password" id="inputPassword" type="password" placeholder="Heslo" required="">
 					<span asp-validation-for="Login.Password" class="text-danger"></span>

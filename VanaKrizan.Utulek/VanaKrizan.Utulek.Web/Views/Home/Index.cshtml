@@ -41,12 +41,14 @@
         <div class="text-center">
             <h2 class="section-heading text-uppercase">Nalezenci</h2>
             <h8 class="h8 text-muted">Níže jsou zobrazeni psi, kteří byli přivezeni na útulek během posledních 14 dní. </h8>
-            <h3 class="section-subheading text-muted">Snažíme se vždy najít majitele. Pokud nejste třeba majitelem, ale psa znáte, budeme rádi za jakoukoliv informaci.</h3>
+            <div class="">
+                <h3 class="section-subheading text-muted">Snažíme se vždy najít majitele. Pokud nejste třeba majitelem, ale psa znáte, budeme rádi za jakoukoliv informaci.</h3>
+            </div>
         </div>
         @{
             if (Model != null && Model.Pets != null && Model.Pets.Count > 0)
             {
-                <section class="py-5 mazlici">
+                <section class="bez">
                     <div class="container px-4 px-lg-5 mt-5">
                         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
