@@ -53,7 +53,7 @@
 
                         <div id="id01" class="modal">
 
-                            <form asp-action="Detail" id="form" method="post" class="modal-content animate">
+                            <form asp-action="Detail" id="form" method="post" class="modal-content-detail animate">
                                 <div class="imgcontainer">
                                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                                     <h2>@Model.pet.Name</h2>
@@ -73,7 +73,7 @@
 
                                     <!-- <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>-->
                                     <!-- <button type="submit" class="submitbtn">Submit</button> -->
-                                    <button type="submit" id="submitLink"><img src="~/img/pets/handshake.png" class="icon-agree"></button>
+                                    <button type="submit" id="submitLink" class="btnimg"><img src="~/img/pets/handshake.png" class="icon-agree"></button>
 
                                     <input type="hidden" asp-for="pet.Id" />
                                     <input type="hidden" asp-for="breed.Id" />
