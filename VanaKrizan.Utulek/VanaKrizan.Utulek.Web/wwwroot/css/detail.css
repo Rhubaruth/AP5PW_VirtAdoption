@@ -413,11 +413,6 @@ h1 {
     font-family: Agbalumo;
 }
 
-img {
-    width: 400px;
-    height: auto;
-    margin-left: auto;
-}
 
 .row {
     display: flex;
@@ -523,6 +518,10 @@ input[type=number] {
     text-decoration: none;
 }
 
+.icon-agree {
+    width: 80px;
+}
+
 .submitbtn {
     width: 150px;
     padding: 10px 18px;
@@ -559,9 +558,15 @@ input[type=number] {
     text-align:center;
 }
 
-img.pet {
-    width: 300px;
+.dolni img {
+    width: 400px;
     height: auto;
+    margin-left: auto;
+}
+
+.okno img {
+    width: 300px;
+    height: 200px;
     border-radius: 30%;
 }
 
@@ -586,11 +591,12 @@ img.pet {
 }
 
 /* Modal Content/Box */
-.modal-content {
-    /*background-color: #fefefe;*/
+.modal-content-detail {
+    background-color: #fefefe;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 60%; /* Could be more or less, depending on screen size */
+    border-radius:20px;
 }
 
 /* The Close Button (x) */

@@ -1,36 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using VanaKrizan.Utulek.Application.Abstraction;
+using VanaKrizan.Utulek.Application.Implementation;
 using VanaKrizan.Utulek.Application.ViewModels;
 using VanaKrizan.Utulek.Web.Models;
 
 namespace VanaKrizan.Utulek.Web.Controllers
 {
-    public class HomeController : Controller
+    [Area("User")]
+    public class UserController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        IHomeService _homeService;
+        private IPetService _petService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public UserController(IHomeService homeService, IPetService petService)
         {
-            _logger = logger;
+            _homeService = homeService;
+            _petService = petService;
         }
 
-        public IActionResult Index()
+        public IActionResult MyPets()
         {
-            return View();
+            CarouselProductViewModel viewModel = _homeService.GetHomeIndexViewModel(_petService);
+
+            return View(viewModel);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        public IActionResult Aktuality()
-        {
-            return View();
-        }
-
-        public IActionResult Info()
+        public IActionResult MyData()
         {
             return View();
         }

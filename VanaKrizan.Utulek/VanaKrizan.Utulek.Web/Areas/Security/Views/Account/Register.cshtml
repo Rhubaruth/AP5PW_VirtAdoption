@@ -24,6 +24,13 @@
 
         <div asp-validation-summary="All" class="text-danger"></div>
 
+        @foreach (var item in ViewBag.Errors)
+        {
+            <div class="text-danger">
+                @item
+            </div>
+        }
+
         <input asp-for="Username" type="text" id="user-name" class="form-control" placeholder="Username" autofocus="">
         <span asp-validation-for="Username" class="text-danger"></span>
         <input asp-for="FirstName" type="text" id="first-name" class="form-control" placeholder="First name" autofocus="">

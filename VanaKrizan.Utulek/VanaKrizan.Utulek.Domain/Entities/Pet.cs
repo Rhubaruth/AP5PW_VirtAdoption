@@ -24,6 +24,9 @@ namespace VanaKrizan.Utulek.Domain.Entities
         public string? Sex { get; set; }
 
         [Required]
+        public bool HasChip { get; set; }
+
+        [Required]
         public DateTime InShelterSince { get; set; }
 
         // public double Cost { get; set; }

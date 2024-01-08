@@ -17,7 +17,7 @@ namespace VanaKrizan.Utulek.Web.Areas.Mazlicci.Controllers
             _petService = petService;
         }
 
-        public IActionResult Platba()
+        public IActionResult Platba(int id, double cost)
         {
             return View();
         }

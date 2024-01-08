@@ -87,7 +87,7 @@ namespace VanaKrizan.Utulek.Web.Areas.Security.Controllers
         public async Task<IActionResult> Logout()
         {
             await accountService.Logout();
-            return RedirectToAction(nameof(Login));
+            return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).Replace(nameof(Controller), String.Empty), new { area = String.Empty });
         }
 
 		public IActionResult Prihlaseni()

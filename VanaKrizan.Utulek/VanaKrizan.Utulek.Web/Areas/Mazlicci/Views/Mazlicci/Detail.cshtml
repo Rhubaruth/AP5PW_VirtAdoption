@@ -9,7 +9,10 @@
                     <div class="barva">
                         <h1>@Model.pet.Name</h1>
                         <div class="container">
+
+
                             <div class="button-container">
+
                                 <div class="dog">
                                     <div class="tail"></div>
                                     <div class="body"></div>
@@ -33,18 +36,24 @@
                                         <div class="right"></div>
                                     </div>
                                 </div>
+
+
                                 <button class="adoptuj" onclick="document.getElementById('id01').style.display='block'"> Adoptuj mě</button>
                                 <div class="paw"></div>
                                 <div class="paw top"></div>
+
+
                             </div>
                         </div>
 
                         <div id="id01" class="modal">
-                            <form class="modal-content animate" action="/action_page.php" method="post">
+                            <form class="modal-content-detail animate" action="/action_page.php" method="post">
                                 <div class="imgcontainer">
                                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                                     <h2>@Model.pet.Name</h2>
-                                    <img src="~/img/pets/Andy.jpg" class="pet">
+                                    <div class="okno">
+                                        <img src=@Model.pet.ImageSrc >
+                                    </div>
                                 </div>
 
                                 <div class="container">
@@ -55,8 +64,8 @@
                                 </div>
 
                                 <div class="container">
-                                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                                    <a class="submitbtn" asp-area="Platba" asp-controller="Platba" asp-action="Platba" >Souhlasím</a>
+                                   <!-- <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>-->
+                                    <a id="submitLink" asp-area="Platba" asp-controller="Platba" asp-action="Platba"><img src="~/img/pets/handshake.png" class="icon-agree"></a>
                                 </div>
                             </form>
                         </div>
@@ -67,41 +76,46 @@
                                     <legend>Základní údaje</legend>
                                     <dl>
                                         <dt class="hl">Velikost:</dt>
-                                        <dd class="data">Střední</dd>
+                                        <dd class="data">@Model.size.Name</dd>
                                     </dl>
                                     <dl>
                                         <dt class="hl">Plemeno:</dt>
-                                        <dd class="data">Kříženec labradora</dd>
+                                        <dd class="data">@Model.breed.Name</dd>
                                     </dl>
                                     <dl>
                                         <dt class="hl">Stáří:</dt>
-                                        <dd class="data">narozen 2013</dd>
+                                        <dd class="data">@Model.pet.Birth</dd>
                                     </dl>
                                     <dl>
                                         <dt class="hl">Pohlaví:</dt>
-                                        <dd class="data">pes</dd>
+                                        <dd class="data">@Model.pet.Sex</dd>
                                     </dl>
                                     <dl>
                                         <dt class="hl">V útulku od:</dt>
-                                        <dd class="data">26.5.2022</dd>
+                                        <dd class="data">@Model.pet.InShelterSince</dd>
                                     </dl>
                                     <dl>
                                         <dt class="hl">Čip:</dt>
-                                        <dd class="data">ano</dd>
+                                        <dd class="data">@Model.pet.HasChip</dd>
                                     </dl>
                                 </fieldset>
                             </dl>
-                            <div class="obr">
-                                <img src="~/img/pets/Andy.jpg">
+                            <div class="dolni">
+                                <img src=@Model.pet.ImageSrc >
                             </div>
                         </div>
                     </div>
-                    <div class="popis">
-                        <div class="color">
-                            <p>Andy je kříženec labradora a border kolie. Má 9 let. Vyrůstal v rodině, kde se narodilo dítě a bohužel se stalo, že Andy na něho zavrčel a rodina se začala obávat. Byl zvyklý žít v bytě, chodili s ním na vycházky a zná i náhubek. Byl by možná vhodný do rodiny, kde by měl svůj klid a věděli, jak zvládat konfliktní situace. Je to ještě vitální psík, přijděte se na něho podívat na útulek…..</p>
-                            <p>9/2022 Během pobytu u nás Andy výrazně zhubnul a trápí ho průjmy, již několikátý měsíc žere intestinální granule, zatím veškerá léčba nebyla úspěšná, váha někdy šla mírně nahoru, vzápětí však zase klesla… jako na houpačce. Koncem září podstoupil na klinice ve Slušovicích kompletní rozbor krve, RTG vyšetření, SONO dutiny břišní a ukázalo se, že jeho slezina je patologicky zvětšená, což potvrdil také krevní obraz. Doporučena byla případná operace ještě do konce roku – odstranění sleziny. Děkujeme za Vaši podporu, bez ní by to nešlo…. </p>
-                        </div>
-                    </div>
+                    @{
+                        if(Model.pet.Info != null)
+                        {
+                            <div class="popis">
+                                <div class="color">
+                                    @Model.pet.Info
+                                </div>
+                            </div>
+                        }
+                    }
+
                 </div>
             </div>
         </section>
@@ -122,5 +136,5 @@
 
 @section Styles {
     <link rel="stylesheet" href="~/css/detail.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
 }
