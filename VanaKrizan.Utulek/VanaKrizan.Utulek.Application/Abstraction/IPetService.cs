@@ -13,6 +13,7 @@ namespace VanaKrizan.Utulek.Application.Abstraction
     {
         #region Pet
         IList<Pet> PetSelectAll();
+        IList<Pet> PetSelectAllOrderedDate();
         Pet? PetSelectById(int id);
         void PetCreate(Pet pet);
         bool PetDelete(int id);

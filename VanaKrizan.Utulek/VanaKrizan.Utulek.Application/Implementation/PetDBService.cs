@@ -68,6 +68,12 @@ namespace VanaKrizan.Utulek.Application.Implementation
             return _utulekDbContext.Pets.ToList();
         }
 
+        public IList<Pet> PetSelectAllOrderedDate()
+        {
+            IList<Pet> list = _utulekDbContext.Pets.OrderBy(x => x.InShelterSince).ToList();
+            return list.Reverse().ToList();
+        }
+
         public Pet? PetSelectById(int id)
         {
             return _utulekDbContext.Pets.Where(pet  => pet.Id == id).FirstOrDefault();
