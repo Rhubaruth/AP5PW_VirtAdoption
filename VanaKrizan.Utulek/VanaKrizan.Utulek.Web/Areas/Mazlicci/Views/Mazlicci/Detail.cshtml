@@ -5,60 +5,29 @@
     <div class="containerMazl">
         <section class="info">
             <div class="row">
-                <div class="mazel">
-                    <div class="barva">
+                <div class="mazel row">
+                    <div class="barva col-md-5 col-sm-5 col-lg-6">
                         <h1>@Model.pet.Name</h1>
-
-                            <div class="container">
-                                <div class="button-container">
-                                    <div class="dog">
-                                        <div class="tail"></div>
-                                        <div class="body"></div>
-                                        <div class="head">
-                                            <div class="eyes">
-                                                <div class="left"></div>
-                                                <div class="right"></div>
-
-                                            </div>
-                                            <div class="nuzzle">
-                                                <div class="mouth">
-                                                    <div class="tongue"></div>
-                                                </div>
-                                                <div class="nose">
-                                                    <div class="nostrils"></div>
-                                                    <div class="highlight"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ears">
-                                            <div class="left"></div>
-                                            <div class="right"></div>
-                                        </div>
-                                    </div>
-
-                                @if (User.Identity.IsAuthenticated)
-                                {
-                                    @if (ViewBag.Adopted) 
-                                    {
-                                        <button class="adoptuj" onclick="document.getElementById('id01').style.display='block'" disabled> Adoptuj mě</button>
-                                        <p>Tohoto mazlíčka již adoptujete.</p>
-                                    }
-                                    else
-                                    {
-                                        <button class="adoptuj" onclick="document.getElementById('id01').style.display='block'"> Adoptuj mě</button>
-                                    }
-                                }
-                                else
-                                {
-                                    <form asp-area="Security" asp-controller="Account" asp-action="Prihlaseni" method="get">
-                                        <button type="submit" class="adoptuj"> Adoptuj mě</button>
-                                    </form>
-                                }
-                                <div class="paw"></div>
-                                    <div class="paw top"></div>
-                                </div>
-                            </div>
-
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            @if (ViewBag.Adopted)
+                            {
+                                <div class="myDIV"><button onclick="document.getElementById('id01').style.display='block'" disabled class="btnimg"><img src="~/img/pets/dogAcat.png" class="icon-agree"></button></div>
+                                <p>Tohoto mazlíčka již adoptujete.</p>
+                            }
+                            else
+                            {
+                                <div class="myDIV"><button onclick="document.getElementById('id01').style.display='block'" class="btnimg"><img src="~/img/pets/dogAcat.png" class="icon-agree"></button></div>
+                                <div class="hide"><p>Adoptuj mě</p></div>
+                            }
+                        }
+                        else
+                        {
+                            <form asp-area="Security" asp-controller="Account" asp-action="Prihlaseni" method="get">
+                                <div class="myDIV"><button class="btnimg"><img src="~/img/pets/dogAcat.png" class="icon-agree"></button></div>
+                                <div class="hide"><p>Adoptuj mě</p></div>
+                            </form>
+                        }
                         <div id="id01" class="modal">
 
                             <form asp-action="Detail" id="form" method="post" class="modal-content-detail animate">
@@ -77,10 +46,8 @@
                                     </div>
                                 </div>
 
-                                <div class="container">
+                                <div class="container-pet">
 
-                                    <!-- <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>-->
-                                    <!-- <button type="submit" class="submitbtn">Submit</button> -->
                                     <button type="submit" id="submitLink" class="btnimg"><img src="~/img/pets/handshake.png" class="icon-agree"></button>
 
                                     <input type="hidden" asp-for="pet.Id" />
@@ -89,46 +56,52 @@
                                     <input type="hidden" asp-for="size.Id" />
                                     <input type="hidden" asp-for="size.Name" />
 
-                                    <!--
-
-                                        <a id="submitLink" class="submitbtn" asp-area="Platba" asp-controller="Platba" asp-action="Platba">Souhlasím</a>
-                                    -->
-
                                 </div>
                             </form>
                         </div>
 
-                        <div class="zaklInfo">
-                            <dl class="zaklad">
-                                <fieldset>
-                                    <legend>Základní údaje</legend>
-                                    <dl>
-                                        <dt class="hl">Velikost:</dt>
-                                        <dd class="data">@Model.size.Name</dd>
-                                    </dl>
-                                    <dl>
-                                        <dt class="hl">Plemeno:</dt>
-                                        <dd class="data">@Model.breed.Name</dd>
-                                    </dl>
-                                    <dl>
-                                        <dt class="hl">Stáří:</dt>
-                                        <dd class="data">@Model.pet.Birth</dd>
-                                    </dl>
-                                    <dl>
-                                        <dt class="hl">Pohlaví:</dt>
-                                        <dd class="data">@Model.pet.Sex</dd>
-                                    </dl>
-                                    <dl>
-                                        <dt class="hl">V útulku od:</dt>
-                                        <dd class="data">@Model.pet.InShelterSince</dd>
-                                    </dl>
-                                    <dl>
-                                        <dt class="hl">Čip:</dt>
-                                        <dd class="data">@Model.pet.HasChip</dd>
-                                    </dl>
-                                </fieldset>
-                            </dl>
-                            <div class="dolni">
+                        <div class="zaklInfo row">
+                            <div class="col-md-12 col-sm-12 col-lg-10 horniInfo">
+                                <dl class="zaklad">
+                                    <fieldset>
+                                        <legend>Základní údaje</legend>
+                                        <dl>
+                                            <dt class="hl">Velikost:</dt>
+                                            <dd class="data">@Model.size.Name</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt class="hl">Plemeno:</dt>
+                                            <dd class="data">@Model.breed.Name</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt class="hl">Stáří:</dt>
+                                            @if (Model.pet.Birth == null)
+                                            {
+                                                <dd class="data">Neznámé</dd>
+                                            }
+                                            else
+                                            {
+                                                <dd class="data">@Model.pet.Birth?.ToString("dd.MM.yyyy")</dd>
+                                            }
+                                        </dl>
+                                        <dl>
+                                            <div class="cip">
+                                                <dt class="hl">Čip:</dt>
+                                            </div>
+                                            <dd class="data">@Model.pet.HasChip</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt class="hl">Pohlaví:</dt>
+                                            <dd class="data">@Model.pet.Sex</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt class="hl">V útulku od:</dt>
+                                            <dd class="data">@Model.pet.InShelterSince.ToString("dd.MM.yyyy")</dd>
+                                        </dl>
+                                    </fieldset>
+                                </dl>
+                            </div>
+                            <div class="col-md-12 col-sm-12  dolni">
                                 <img src=@Model.pet.ImageSrc >
                             </div>
                         </div>
