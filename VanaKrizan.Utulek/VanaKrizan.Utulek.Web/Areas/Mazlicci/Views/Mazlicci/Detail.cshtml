@@ -29,7 +29,7 @@
                             </form>
                         }
                         <div id="id01" class="modal">
-
+                            <div class="col-md-12 col-sm-12 col-lg-12 vyskakovaci">
                             <form asp-action="Detail" id="form" method="post" class="modal-content-detail animate">
                                 <div class="imgcontainer">
                                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -41,8 +41,8 @@
 
                                 <div class="container">
                                     <div class="castka">
-                                        <label>Chci přispět virtuální adopcí částkou </label>
-                                        <input asp-for="cost" type="number" placeholder="Adopční přísěvek" name="cost" required min="50" id="hodnota">
+                                            <div class="textCastka"> <label>Chci přispět virtuální adopcí částkou </label></div>
+                                           <div class="honotaCastka"> <input asp-for="cost" type="number" placeholder="Adopční přísěvek" name="cost" required min="50" id="hodnota"></div>
                                     </div>
                                 </div>
 
@@ -58,10 +58,11 @@
 
                                 </div>
                             </form>
+                            </div>
                         </div>
 
                         <div class="zaklInfo row">
-                            <div class="col-md-12 col-sm-12 col-lg-10 horniInfo">
+                            <div class="col-md-12 col-sm-12 col-lg-9 horniInfo">
                                 <dl class="zaklad">
                                     <fieldset>
                                         <legend>Základní údaje</legend>

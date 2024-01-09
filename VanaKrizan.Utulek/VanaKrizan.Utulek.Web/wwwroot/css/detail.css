@@ -123,6 +123,12 @@ legend {
 .adoptuj {
     width: auto;
 }
+
+
+.vyskakovaci{
+    margin:auto;
+}
+
 ///////////////////////////////////////////////
 /* Full-width input fields */
 input[type=number] {
@@ -195,9 +201,19 @@ input[type=number] {
     display: grid;
     align-items: center;
     grid-template-columns: 1fr 1fr;
-    column-gap: 5%;
     white-space: nowrap;
+    column-gap: 20px;
+    padding-left:5px;
 }
+
+.textCastka{
+    text-align:right;
+}
+
+.honotaCastka {
+    text-align: left;
+}
+
 
 /* Center the image and position the close button */
 .imgcontainer {
@@ -255,6 +271,7 @@ input[type=number] {
     border: 1px solid #888;
     width: 55%; /* Could be more or less, depending on screen size */
     border-radius:20px;
+    min-width:400px;
 }
 
 /* The Close Button (x) */
@@ -370,6 +387,10 @@ input[type=number] {
         padding-left: 50px;
         padding-right: 50px;
     }
+
+    .horniInfo dt {
+        padding-left: 120px;
+    }
 }
 
 
@@ -377,12 +398,20 @@ input[type=number] {
     .horniInfo dt{
         padding-left: 80px;
     }
-
+    .castka {
+        margin-left: 10%;
+    }
 }
 
-@media screen and (min-width: 1200px) {
-    .horniInfo dt {
-        padding-left: 120px;
+@media screen and (min-width: 1000px) {
+    .castka {
+        padding-left: 8%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .castka {
+        padding-left: 30px;
     }
 }
 
@@ -397,6 +426,37 @@ input[type=number] {
     .horniInfo {
         padding-left: 10%;
     }
+
 }
 
+
+@media screen and (max-width: 900px) {
+    .castka input {
+        width: 90px;
+    }
+
+    .castka {
+        padding-left: 10px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .castka input {
+        width: 70px;
+    }
+
+    .castka {
+        padding-left:5px;
+    }
+}
+
+@media screen and (max-width: 672px) {
+    .castka input {
+        width: 80px;
+    }
+
+    .castka {
+        padding-left: 2px;
+    }
+}
 
