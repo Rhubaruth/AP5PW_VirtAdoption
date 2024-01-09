@@ -66,7 +66,7 @@
                                                         <h2> @pet.Name</h2>
                                                         <div>
                                                             <p>Narození: @pet.Birth?.ToString("dd.MM.yyyy")</p>
-                                                            <p>Nějaké základní info...</p>
+                                                            <p>Pohlaví: @pet.Sex</p>
                                                         </div>
                                                         <a class="btn btn-outline-dark mt-auto" asp-area="Mazlicci" asp-controller="Mazlicci" asp-action="Detail" asp-route-id="@pet.Id">Detail</a>
                                                     </figcaption>
