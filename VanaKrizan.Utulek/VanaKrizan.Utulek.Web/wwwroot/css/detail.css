@@ -80,7 +80,7 @@ h1 {
     display: flex;
     justify-content: center;
     padding-left:0px;
-    margin-left:100px;
+    /*margin-left:100px;*/
 }
 
 legend {
@@ -95,6 +95,7 @@ legend {
     padding-right: 20%;
     padding-bottom: 5%;
     padding-top: 2%;
+    margin:auto;
 }
 
 .color {
@@ -103,9 +104,15 @@ legend {
     margin-left: 5%;
     margin-right: 5%;
     border-radius: 20px;
-    padding:2%;
+    padding: 3%;
+    margin: auto;
+    align-items: center;
+    margin-top:5%;
 }
 
+.dira {
+    margin-left: 25px;
+}
 
 .hl {
     float: left;
@@ -362,6 +369,10 @@ input[type=number] {
 
     .zaklad fieldset {
         margin:auto;
+    }
+
+    .color{
+        margin-left:20px;
     }
 }
 
