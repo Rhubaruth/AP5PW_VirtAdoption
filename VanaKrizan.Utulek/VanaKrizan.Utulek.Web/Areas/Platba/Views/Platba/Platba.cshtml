@@ -18,19 +18,19 @@
                 <input type="hidden" asp-for="size.Id" />
                 <input type="hidden" asp-for="size.Name" />
                 <input type="hidden" asp-for="cost" />
-        </form>
             <!-- <img src="https://seeklogo.com/images/V/VISA-logo-62D5B26FE1-seeklogo.com.png" class="logo-card"> -->
             <div class="col-md-12 col-sm-12 col-lg-12">
                 <p>Karta</p>
                 <label>Card number:</label>
-                <input id="user" type="text" class="input cardnumber" placeholder="1234 5678 9101 1121">
+                <input id="user" type="text" class="input cardnumber" placeholder="1234 5678 9101 1121" required>
                 <div class="spodek">
                     <label >Name:</label>
-                    <input class="input name" placeholder="Edgar Pérez">
+                    <input class="input name" placeholder="Edgar Pérez" required>
                     <label class="toleft right">CCV:</label>
-                    <input class="input toleft ccv" placeholder="321">
+                    <input class="input toleft ccv" placeholder="321" required>
                 </div>
             </div>
+        </form>
         </div>
         <div class="receipt">
             <div class="rovne">

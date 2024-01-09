@@ -1,40 +1,45 @@
-﻿@model Pet
+﻿@model PetFile
 
 @{
-    ViewData["Title"] = /* "[" + Model.Id + "]" + */ Model.Name + " edit";
+    ViewData["Title"] = /* "[" + Model.Id + "]" + */ Model.PetObj.Name + " edit";
 }
 <div class="titulEdit">
     <h2>@ViewData["Title"]</h2>
 </div>
 
-<form asp-action="Edit" method="post" class="petEdit">
+<form asp-action="Edit" method="post" class="petEdit" enctype="multipart/form-data">
     <div class="mb-3">
-        <label class="form-label" asp-for="Name"> Jméno: </label>
-        <input class="form-control" asp-for="Name" required>
+        <input class="form-control" asp-for="PetObj.Id" hidden>
 
-        <label class="form-label" asp-for="Birth"> Narození: </label>
-        <input type="date" class="form-control" asp-for="Birth">
+        <label class="form-label" asp-for="PetObj.Name"> Jméno: </label>
+        <input class="form-control" asp-for="PetObj.Name" required>
 
-        <label class="form-label" asp-for="InShelterSince"> V utulku od: </label>
-        <input type="date" class="form-control" asp-for="InShelterSince" required>
+        <label class="form-label" asp-for="PetObj.Birth"> Narození: </label>
+        <input type="date" class="form-control" asp-for="PetObj.Birth">
 
-        <label class="form-label" asp-for="Sex"> Pohlaví: </label>
-        <input class="form-control" asp-for="Sex">
+        <label class="form-label" asp-for="PetObj.InShelterSince"> V utulku od: </label>
+        <input type="date" class="form-control" asp-for="PetObj.InShelterSince" required>
 
-        <label class="form-label" asp-for="Info"> Informace: </label>
-        <input class="form-control" asp-for="Info">
+        <label class="form-label" asp-for="PetObj.Sex"> Pohlaví: </label>
+        <input class="form-control" asp-for="PetObj.Sex">
 
-        <label class="form-label" asp-for="BreedId"> Plemeno: </label>
-        <select class="form-control" asp-for="BreedId" asp-items="@(new SelectList(ViewBag.Breeds, "Id", "Name"))"></select>
+        <label class="form-label" asp-for="PetObj.Info"> Informace: </label>
+        <input class="form-control" asp-for="PetObj.Info">
 
-        <label class="form-label" asp-for="SizeId"> Velikost: </label>
-        <select class="form-control" asp-for="SizeId" asp-items="@(new SelectList(ViewBag.Sizes, "Id", "Name"))"></select>
+        <label class="form-label" asp-for="PetObj.BreedId"> Plemeno: </label>
+        <select class="form-control" asp-for="PetObj.BreedId" asp-items="@(new SelectList(ViewBag.Breeds, "Id", "Name"))"></select>
+
+        <label class="form-label" asp-for="PetObj.SizeId"> Velikost: </label>
+        <select class="form-control" asp-for="PetObj.SizeId" asp-items="@(new SelectList(ViewBag.Sizes, "Id", "Name"))"></select>
 
 
+        <label asp-for="ImageFile"></label>
+        <input asp-for="ImageFile" type="file">
+        @* <span asp-validation-for="ImageFile"></span> *@
     </div>
     <div class="mb-3">
-        <label class="form-label" asp-for="ImageSrc"> Zdroj obrázku: </label>
-        <input class="form-control" asp-for="ImageSrc">
+        <label class="form-label" asp-for="PetObj.ImageSrc"> Zdroj obrázku: </label>
+        <input class="form-control" asp-for="PetObj.ImageSrc">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

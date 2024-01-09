@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using VanaKrizan.Utulek.Domain.Entities;
-using VanaKrizan.Utulek.Infrastructure.Database;
 using VanaKrizan.Utulek.Application.Abstraction;
 using VanaKrizan.Utulek.Infrastructure.Identity.Enums;
-using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
+using Microsoft.AspNetCore.Http;
+
 
 namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 {
@@ -34,23 +35,31 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
         }
 
         [HttpPost]      // default atribut = "HttpGet"
-        async public Task<IActionResult> Create(Pet pet)
+        async public Task<IActionResult> Create(PetFile petWithFile)
         {
-            //_petService.PetCreate(pet);
 
-            //return RedirectToAction(nameof(PetController.Index), "Pet");
-
-            if(ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _petService.PetCreate(pet);
-                return RedirectToAction(nameof(PetController.Index), "Pet");
-
-            }
-            else
-            {
-                return View(pet);
+                return View(petWithFile);
             }
 
+            if (petWithFile.ImageFile != null)
+            {
+                // Combine the target directory with the unique file name
+                var fileName = petWithFile.PetObj.Name.Replace(" ", "_") + petWithFile.PetObj.Id.ToString() + ".jpg";
+                var filePath = Path.Combine("wwwroot\\img\\uploaded", fileName);
+
+                // Copy the file to the target directory
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await petWithFile.ImageFile.CopyToAsync(stream);
+                }
+
+                petWithFile.PetObj.ImageSrc = "/img/uploaded/" + fileName;
+            }
+
+            _petService.PetCreate(petWithFile.PetObj);
+            return RedirectToAction(nameof(PetController.Index), "Pet");
         }
         #endregion
 
@@ -65,14 +74,34 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 
             ViewBag.Sizes = _petService.SizeSelectAll();
             ViewBag.Breeds = _petService.BreedSelectAll();
-            return View(pet);  // vrací view s návem "Edit" 
+
+            PetFile PetWithFile = new PetFile()
+            {
+                PetObj = pet,
+            };
+
+            return View(PetWithFile);  // vrací view s návem "Edit" 
         }
 
         [HttpPost]      // default atribut = "HttpGet"
-        public IActionResult Edit(Pet updatedPet)
+        public IActionResult Edit(PetFile updatedPet)
         {
 
-            bool isEdited = _petService.PetEdit(updatedPet);
+            if(updatedPet.ImageFile != null) {
+                // Combine the target directory with the unique file name
+                var fileName = updatedPet.PetObj.Name.Replace(" ", "_") + updatedPet.PetObj.Id.ToString() + ".jpg";
+                var filePath = Path.Combine("wwwroot\\img\\uploaded", fileName);
+
+                // Copy the file to the target directory
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    updatedPet.ImageFile.CopyToAsync(stream);
+                }
+
+                updatedPet.PetObj.ImageSrc = "/img/uploaded/" + fileName;
+            }
+
+            bool isEdited = _petService.PetEdit(updatedPet.PetObj);
 
             if (isEdited)
                 return RedirectToAction(nameof(PetController.Index), "Pet");
@@ -86,7 +115,7 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
             bool deleted = _petService.PetDelete(id);
             
             if(deleted)
-                return RedirectToAction(nameof(PetController.Index), "Pet");
+                return RedirectToAction(nameof(UserController.Index), "User", new { area = "User"});
             return NotFound();
         }
         #endregion

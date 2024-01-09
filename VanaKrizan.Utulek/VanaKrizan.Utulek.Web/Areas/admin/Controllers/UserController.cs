@@ -8,12 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using VanaKrizan.Utulek.Domain.Entities.Interface;
 using Microsoft.AspNetCore.Identity;
 using VanaKrizan.Utulek.Infrastructure.Identity;
-using System.Data;
+using VanaKrizan.Utulek.Infrastructure.HelperClasses;
+
 
 namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 {
     [Area("admin")] // napojení Controller - Area
-    [Authorize(Roles = nameof(Roles.Admin))]
+    [Authorize(Roles = nameof(Roles.Admin) + ", " + nameof(Roles.Manager))]
     public class UserController : Controller
     {
         IPetService _petService;
@@ -32,6 +33,7 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
             return View(users);
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             var thisUser = _userManager.GetUserAsync(User).Result;
@@ -46,6 +48,7 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 
 
         #region Funcs for Edit
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult EditUser(int id)
         {
@@ -94,8 +97,61 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
             bool isEdited = _petService.UserEdit(updatedUser.User);
 
             if (isEdited)
-                return RedirectToAction(nameof(PetController.Index));
+                return RedirectToAction(nameof(UserController.Index));
             return NotFound();
+        }
+        #endregion
+
+
+        #region Funcs for User-Pet edit
+        [HttpGet]
+        public IActionResult UsersPets(int id)
+        {
+            User? user = _petService.UserSelectById(id);
+            if (user == null)
+                return NotFound();
+
+            IList<Pet> userPets = _petService.UserGetPetsAll(id);
+            IList<Pet> otherPets = _petService.PetSelectAll();
+            
+            foreach(Pet pet in userPets)
+            {
+                otherPets.Remove(pet);
+            }
+
+            // nonePet to prepand both lists with
+            // used when admid doesnt want to add/remove
+            Pet nonePet = new Pet();
+            nonePet.Id = 0;
+            nonePet.Name = "---";
+    
+
+            UserPets data = new UserPets()
+            {
+                UserId = user.Id,
+                adoptedPets = userPets.Prepend(nonePet).ToList(),
+                otherPets = otherPets.Prepend(nonePet).ToList(),
+                addPetId = 0,
+                removePetId = 0,
+            };
+            ViewBag.Username = user.UserName;
+
+            return View(data);
+        }
+
+        [HttpPost]      // default atribut = "HttpGet"
+        public IActionResult UsersPets(UserPets updatedData)
+        {
+            if (updatedData.addPetId != 0)
+            {
+                _petService.UserAdoptPet(updatedData.addPetId, updatedData.UserId);
+            }   
+            if(updatedData.removePetId != 0)
+            {
+                _petService.UserRemovePet(updatedData.removePetId, updatedData.UserId);
+            }
+
+            return RedirectToAction(nameof(UserController.Index));
         }
         #endregion
 

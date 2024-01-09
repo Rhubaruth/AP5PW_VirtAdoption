@@ -1,5 +1,6 @@
 ﻿@using VanaKrizan.Utulek.Infrastructure.Identity;
 @using VanaKrizan.Utulek.Domain.Entities.Interface;
+@using VanaKrizan.Utulek.Infrastructure.Identity.Enums;
 @model IList<User>
 
 @{
@@ -21,7 +22,11 @@
                     <th scope="col">@nameof(IUser.LastName)</th>
                     <th scope="col">@nameof(IUser.Email)</th>
                     <th scope="col">@nameof(IUser.PhoneNumber)</th>
-                    <th scope="col"> Delete </th>
+                    @if (User.IsInRole(nameof(Roles.Admin)))
+                    {
+                        <th scope="col"> Delete </th>
+                        <th scope="col">  </th>
+                    }
                     <th scope="col">  </th>
                 </tr>
             </thead>
@@ -35,8 +40,12 @@
                         <td scope="row">@Model[i].LastName</td>
                         <td scope="row">@Model[i].Email</td>
                         <td scope="row">@Model[i].PhoneNumber</td>
-                        <td><a asp-action="Delete" asp-route-id="@Model[i].Id" onclick="return ConfirmDelete();">X</a></td>
-                        <td><a asp-action="EditUser" asp-route-id="@Model[i].Id">Edit</a></td>
+                        @if (User.IsInRole(nameof(Roles.Admin)))
+                        {
+                            <td><a asp-action="Delete" asp-route-id="@Model[i].Id" onclick="return ConfirmDelete();">X</a></td>
+                            <td><a asp-action="EditUser" asp-route-id="@Model[i].Id">Edit</a></td>
+                        }
+                        <td><a asp-action="UsersPets" asp-route-id="@Model[i].Id">Pets</a></td>
                     </tr>
                 }
             </tbody>

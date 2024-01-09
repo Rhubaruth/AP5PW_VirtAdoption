@@ -1,0 +1,39 @@
+﻿@using VanaKrizan.Utulek.Infrastructure.HelperClasses;
+@using VanaKrizan.Utulek.Web.Areas.admin.Controllers;
+@model UserPets
+
+@{
+    ViewData["Title"] = ViewBag.Username + "'s " + " pets";
+}
+
+<div class="titulEdit">
+    <h2>@ViewData["Title"]</h2>
+</div>
+
+
+<div>
+    <form asp-action="UsersPets" id="form" method="post" class="petEdit">
+        <div class="mb-3">
+
+            <label class="form-label" asp-for="addPetId"> Přidat mazlíčka: </label>
+            <select class="form-control" asp-for="addPetId" asp-items="@(new SelectList(Model.otherPets, "Id", "Name"))"></select>
+
+            <label class="form-label" asp-for="removePetId"> Odebrat mazlíčka: </label>
+            <select class="form-control" asp-for="removePetId" asp-items="@(new SelectList(Model.adoptedPets, "Id", "Name"))"></select>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+            @* Hidden data from form *@
+            <input type="hidden" asp-for="UserId" />
+
+
+    </form>
+</div>
+
+
+
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+
+}

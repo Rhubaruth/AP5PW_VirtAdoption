@@ -40,6 +40,7 @@ namespace VanaKrizan.Utulek.Application.Abstraction
 
         public IList<Pet> UserGetPetsAll(int id);
         public bool UserAdoptPet(int petId, int userId);
+        public bool UserRemovePet(int petId, int userId);
 
         public IList<int> UserGetRolesAll(int id);
         public bool UserAddRole(int userId, Roles role);
