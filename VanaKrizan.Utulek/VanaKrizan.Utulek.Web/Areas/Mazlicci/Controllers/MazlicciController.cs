@@ -99,6 +99,19 @@ namespace VanaKrizan.Utulek.Web.Areas.Mazlicci.Controllers
             return NotFound();
         }
 
+        public IActionResult RemovePet(int petId)
+        {
+            var user = _userManager.GetUserAsync(User).Result;
+            if (user == null)
+            {
+                return NotFound();
+            }
 
+            var result = _petService.UserRemovePet(petId, user.Id);
+
+            if (result)
+                return RedirectToAction(nameof(MazlicciController.Index), "Mazlicci");
+            return NotFound();
+        }
     }
 }

@@ -180,6 +180,30 @@ namespace VanaKrizan.Utulek.Application.Implementation
 
             return true;
         }
+        public bool UserRemovePet(int petId, int userId)
+        {
+            //bool isnotPetInDb = _utulekDbContext.Pets.Where(p => p.Id == petId).FirstOrDefault() == null;
+            //bool isUserHavePet = _utulekDbContext.UserHasPet.Where(line => line.UserId == userId && line.PetId == petId).FirstOrDefault() != null;
+
+            //if (isnotPetInDb || !isUserHavePet)
+            //    return false;
+
+
+            UserHasPet? line = _utulekDbContext.UserHasPet.Where(line => line.UserId == userId && line.PetId == petId).FirstOrDefault();
+            if( line == null )
+                return false;
+
+            try
+            {
+                _utulekDbContext.UserHasPet.Remove(line);
+                _utulekDbContext.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }   
+        }
 
         public User? UserSelectById(int id)
         {

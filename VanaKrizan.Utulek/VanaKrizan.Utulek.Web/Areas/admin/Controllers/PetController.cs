@@ -86,7 +86,7 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
             bool deleted = _petService.PetDelete(id);
             
             if(deleted)
-                return RedirectToAction(nameof(PetController.Index), "Pet");
+                return RedirectToAction(nameof(UserController.Index), "User", new { area = "User"});
             return NotFound();
         }
         #endregion

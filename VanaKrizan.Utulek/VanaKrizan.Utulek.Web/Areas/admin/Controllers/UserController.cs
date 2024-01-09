@@ -13,7 +13,7 @@ using System.Data;
 namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 {
     [Area("admin")] // napojení Controller - Area
-    [Authorize(Roles = nameof(Roles.Admin))]
+    [Authorize(Roles = nameof(Roles.Admin) + ", " + nameof(Roles.Manager))]
     public class UserController : Controller
     {
         IPetService _petService;
@@ -32,6 +32,7 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
             return View(users);
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             var thisUser = _userManager.GetUserAsync(User).Result;
@@ -46,6 +47,7 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 
 
         #region Funcs for Edit
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult EditUser(int id)
         {
