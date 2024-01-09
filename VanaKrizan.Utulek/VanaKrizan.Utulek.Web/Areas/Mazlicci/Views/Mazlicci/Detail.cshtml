@@ -93,11 +93,22 @@
                                         </dl>
                                         <dl>
                                             <dt class="hl">Pohlaví:</dt>
-                                            <dd class="data">@Model.pet.Sex</dd>
+                                            @if (Model.pet.Birth == null)
+                                            {
+                                                <dd class="data">Neznámé</dd>
+                                            }
+                                            else
+                                            {
+                                                <dd class="data">@Model.pet.Sex</dd>
+                                            }
                                         </dl>
                                         <dl>
                                             <dt class="hl">V útulku od:</dt>
                                             <dd class="data">@Model.pet.InShelterSince.ToString("dd.MM.yyyy")</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt class="hl"></dt>
+                                            <dd class="data"></dd>
                                         </dl>
                                     </fieldset>
                                 </dl>
