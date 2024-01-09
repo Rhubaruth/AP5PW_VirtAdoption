@@ -27,6 +27,7 @@
                         <th scope="col"> Delete </th>
                         <th scope="col">  </th>
                     }
+                    <th scope="col">  </th>
                 </tr>
             </thead>
             <tbody>
@@ -44,6 +45,7 @@
                             <td><a asp-action="Delete" asp-route-id="@Model[i].Id" onclick="return ConfirmDelete();">X</a></td>
                             <td><a asp-action="EditUser" asp-route-id="@Model[i].Id">Edit</a></td>
                         }
+                        <td><a asp-action="UsersPets" asp-route-id="@Model[i].Id">Pets</a></td>
                     </tr>
                 }
             </tbody>
