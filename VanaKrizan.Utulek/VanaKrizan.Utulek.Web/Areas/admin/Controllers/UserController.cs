@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using VanaKrizan.Utulek.Infrastructure.Identity;
 using VanaKrizan.Utulek.Infrastructure.HelperClasses;
 
+
 namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 {
     [Area("admin")] // napojení Controller - Area
@@ -133,7 +134,7 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
                 addPetId = 0,
                 removePetId = 0,
             };
-
+            ViewBag.Username = user.UserName;
 
             return View(data);
         }

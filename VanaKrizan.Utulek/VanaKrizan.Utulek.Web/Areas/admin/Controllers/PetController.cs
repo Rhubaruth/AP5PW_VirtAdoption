@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using VanaKrizan.Utulek.Domain.Entities;
-using VanaKrizan.Utulek.Infrastructure.Database;
 using VanaKrizan.Utulek.Application.Abstraction;
 using VanaKrizan.Utulek.Infrastructure.Identity.Enums;
-using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
+using Microsoft.AspNetCore.Http;
+
 
 namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 {
@@ -65,14 +66,34 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 
             ViewBag.Sizes = _petService.SizeSelectAll();
             ViewBag.Breeds = _petService.BreedSelectAll();
-            return View(pet);  // vrací view s návem "Edit" 
+
+            PetFile PetWithFile = new PetFile()
+            {
+                PetObj = pet,
+            };
+
+            return View(PetWithFile);  // vrací view s návem "Edit" 
         }
 
         [HttpPost]      // default atribut = "HttpGet"
-        public IActionResult Edit(Pet updatedPet)
+        public IActionResult Edit(PetFile updatedPet)
         {
 
-            bool isEdited = _petService.PetEdit(updatedPet);
+            if(updatedPet.ImageFile != null) {
+                // Combine the target directory with the unique file name
+                var fileName = updatedPet.PetObj.Name.Replace(" ", "_") + updatedPet.PetObj.Id.ToString() + ".jpg";
+                var filePath = Path.Combine("wwwroot\\img\\pets", fileName);
+
+                // Copy the file to the target directory
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    updatedPet.ImageFile.CopyToAsync(stream);
+                }
+
+                updatedPet.PetObj.ImageSrc = "/img/pets/" + fileName;
+            }
+
+            bool isEdited = _petService.PetEdit(updatedPet.PetObj);
 
             if (isEdited)
                 return RedirectToAction(nameof(PetController.Index), "Pet");
