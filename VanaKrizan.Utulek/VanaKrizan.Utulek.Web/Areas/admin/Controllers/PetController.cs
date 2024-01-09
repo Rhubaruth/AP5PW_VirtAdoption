@@ -35,23 +35,31 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
         }
 
         [HttpPost]      // default atribut = "HttpGet"
-        async public Task<IActionResult> Create(Pet pet)
+        async public Task<IActionResult> Create(PetFile petWithFile)
         {
-            //_petService.PetCreate(pet);
 
-            //return RedirectToAction(nameof(PetController.Index), "Pet");
-
-            if(ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _petService.PetCreate(pet);
-                return RedirectToAction(nameof(PetController.Index), "Pet");
-
-            }
-            else
-            {
-                return View(pet);
+                return View(petWithFile);
             }
 
+            if (petWithFile.ImageFile != null)
+            {
+                // Combine the target directory with the unique file name
+                var fileName = petWithFile.PetObj.Name.Replace(" ", "_") + petWithFile.PetObj.Id.ToString() + ".jpg";
+                var filePath = Path.Combine("wwwroot\\img\\uploaded", fileName);
+
+                // Copy the file to the target directory
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await petWithFile.ImageFile.CopyToAsync(stream);
+                }
+
+                petWithFile.PetObj.ImageSrc = "/img/uploaded/" + fileName;
+            }
+
+            _petService.PetCreate(petWithFile.PetObj);
+            return RedirectToAction(nameof(PetController.Index), "Pet");
         }
         #endregion
 
@@ -82,7 +90,7 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
             if(updatedPet.ImageFile != null) {
                 // Combine the target directory with the unique file name
                 var fileName = updatedPet.PetObj.Name.Replace(" ", "_") + updatedPet.PetObj.Id.ToString() + ".jpg";
-                var filePath = Path.Combine("wwwroot\\img\\pets", fileName);
+                var filePath = Path.Combine("wwwroot\\img\\uploaded", fileName);
 
                 // Copy the file to the target directory
                 using (var stream = new FileStream(filePath, FileMode.Create))
@@ -90,7 +98,7 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
                     updatedPet.ImageFile.CopyToAsync(stream);
                 }
 
-                updatedPet.PetObj.ImageSrc = "/img/pets/" + fileName;
+                updatedPet.PetObj.ImageSrc = "/img/uploaded/" + fileName;
             }
 
             bool isEdited = _petService.PetEdit(updatedPet.PetObj);
