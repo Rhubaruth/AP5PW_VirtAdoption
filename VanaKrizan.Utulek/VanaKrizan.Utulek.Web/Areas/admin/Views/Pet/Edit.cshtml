@@ -24,7 +24,8 @@
         <input class="form-control" asp-for="PetObj.Sex">
 
         <label class="form-label" asp-for="PetObj.Info"> Informace: </label>
-        <input class="form-control" asp-for="PetObj.Info">
+        @* <input class="form-control" asp-for="PetObj.Info"> *@
+        <textarea asp-for="PetObj.Info"></textarea>
 
         <label class="form-label" asp-for="PetObj.BreedId"> Plemeno: </label>
         <select class="form-control" asp-for="PetObj.BreedId" asp-items="@(new SelectList(ViewBag.Breeds, "Id", "Name"))"></select>
