@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using VanaKrizan.Utulek.Application.Abstraction;
 using VanaKrizan.Utulek.Application.Implementation;
 using VanaKrizan.Utulek.Application.ViewModels;
+using VanaKrizan.Utulek.Domain.Entities;
+using VanaKrizan.Utulek.Infrastructure.Identity;
 using VanaKrizan.Utulek.Web.Models;
 
 namespace VanaKrizan.Utulek.Web.Controllers
@@ -12,16 +15,25 @@ namespace VanaKrizan.Utulek.Web.Controllers
     {
         IHomeService _homeService;
         private IPetService _petService;
+        UserManager<User> _userManager;
 
-        public UserController(IHomeService homeService, IPetService petService)
+        public UserController(IHomeService homeService, IPetService petService, UserManager<User> userManager)
         {
             _homeService = homeService;
             _petService = petService;
+            _userManager = userManager;
         }
 
         public IActionResult MyPets()
         {
-            CarouselProductViewModel viewModel = _homeService.GetHomeIndexViewModel(_petService);
+            var thisUser = _userManager.GetUserAsync(User).Result;
+
+            CarouselProductViewModel viewModel = new CarouselProductViewModel();
+            viewModel.Carousels = new List<Pet>();
+            if (thisUser != null)
+            {
+                viewModel.Carousels = _petService.UserGetPetsAll(thisUser.Id);
+            }
 
             return View(viewModel);
         }
