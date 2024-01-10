@@ -1,12 +1,12 @@
-﻿@model IList<Pet>
+﻿@model IList<Breed>
 
 @{
-    ViewData["Title"] = "Pet Admin";
+    ViewData["Title"] = "Breed Admin";
 }
 <h1>@ViewData["Title"]</h1>
 
 <div class="createPet">
-    <a asp-action="Create"> Create Pet </a>
+    <a asp-action="Create"> Create Breed </a>
 </div>
 
 @{
@@ -16,11 +16,8 @@
         <table class="tableAdmin">
             <thead>
                 <tr>
-                    <th scope="col">@nameof(Pet.Id)</th>
-                    <th scope="col">@nameof(Pet.Name)</th>
-                    <th scope="col">@nameof(Pet.Sex)</th>
-                    <th scope="col">@nameof(Pet.Birth)</th>
-                    <th scope="col">@nameof(Pet.InShelterSince)</th>
+                    <th scope="col">@nameof(Breed.Id)</th>
+                    <th scope="col">@nameof(Breed.Name)</th>
                     <th scope="col"> Delete </th>
                     <th scope="col">  </th>
                 </tr>
@@ -31,9 +28,6 @@
                     <tr>
                         <th scope="row">@Model[i].Id</th>
                         <td>@Model[i].Name</td>
-                        <td>@Model[i].Sex</td>
-                        <td>@Model[i].Birth</td>
-                        <td>@Model[i].InShelterSince</td>
                         <td><a asp-action="Delete" asp-route-id="@Model[i].Id" onclick="return ConfirmDelete();">X</a></td>
                         <td><a asp-action="Edit" asp-route-id="@Model[i].Id">Edit</a></td>
                     </tr>
