@@ -12,8 +12,8 @@ body {
 .card-platba {
     background: #16181a;
     border-radius: 14px;
-    max-width: 300px;
-    min-width: 300px;
+    max-width: 320px;
+    min-width: 320px;
     display: block;
     margin: auto;
     padding: 60px;
@@ -31,7 +31,7 @@ body {
 
 .container{
     margin-top:130px;
-    min-width:327px;
+    min-width:340px;
 }
 
 .logo-card {
@@ -236,7 +236,7 @@ input:focus {
     .proceed {
         position: fixed;
         top: 320px;
-        left: 0px;
+        left: -20px;
     }
 }
 
