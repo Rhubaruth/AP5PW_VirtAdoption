@@ -42,6 +42,15 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
             if (thisUser.Id == id)
                 return BadRequest();
 
+            var adoptedPets = _petService.UserGetPetsAll(id);
+
+            foreach( var pet in adoptedPets )
+            {
+                _petService.UserRemovePet(pet.Id, id);
+            }
+
+
+
             _petService.UserDelete(id);
             return RedirectToAction(nameof(UserController.Index));
         }

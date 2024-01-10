@@ -113,5 +113,22 @@ namespace VanaKrizan.Utulek.Web.Areas.Mazlicci.Controllers
                 return RedirectToAction(nameof(MazlicciController.Index), "Mazlicci");
             return NotFound();
         }
+
+        [HttpPost]
+        public IActionResult RemovePet(PetConjoined petConj)
+        {
+            var user = _userManager.GetUserAsync(User).Result;
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var result = _petService.UserRemovePet(petConj.pet.Id, user.Id);
+
+            if (result)
+                return RedirectToAction(nameof(MazlicciController.Index), "Mazlicci");
+            return NotFound();
+        }
+
     }
 }

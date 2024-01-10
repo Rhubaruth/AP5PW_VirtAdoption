@@ -92,7 +92,8 @@ namespace VanaKrizan.Utulek.Web.Areas.Security.Controllers
 
 		public IActionResult Prihlaseni()
 		{
-			return View();
+
+			return View(new RegisterLoginViewModel() );
 		}
 
 

@@ -12,8 +12,12 @@
                         {
                             @if (ViewBag.Adopted)
                             {
-                                <div class="myDIV"><button onclick="document.getElementById('id01').style.display='block'" disabled class="btnimg"><img src="~/img/pets/cry.png" class="icon-agree"></button></div>
-                                <div class="hide"> <p>Chcete zrušit adopci?</p></div>
+                                <form asp-area="Mazlicci" asp-controller="Mazlicci" asp-action="RemovePet" method="post">
+                                    <input type="hidden" asp-for="pet.Id" />
+
+                                    <div class="myDIV"><button onclick="return ConfirmDelete();" type="submit" class="btnimg"><img src="~/img/pets/cry.png" class="icon-agree"></button></div>
+                                    <div class="hide"> <p>Chcete zrušit adopci?</p></div>
+                                </form>
                             }
                             else
                             {
@@ -147,6 +151,11 @@
             }
         }
     </script>
+}
+
+@section Scripts {
+    <script src="~/js/dialogs.js"></script>
+
 }
 
 @section Styles {
