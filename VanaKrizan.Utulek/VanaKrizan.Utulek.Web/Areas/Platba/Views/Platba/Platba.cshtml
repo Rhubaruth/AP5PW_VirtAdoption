@@ -4,7 +4,7 @@
 @{
 
     <div class="container">
-        <div class="card">
+        <div class="card-platba">
         <form asp-action="Platba" method="post" id="form">
             <button type="submit" class="proceed">
                 <svg class="sendicon" width="24" height="24" viewBox="0 0 24 24">
@@ -34,23 +34,28 @@
         </div>
         <div class="receipt">
             <div class="rovne">
-                <div class="col col-md-6 col-sm-6 col-lg-6">
-                    <p>Cena:</p>
-                    <h2 class="cost">@Model.cost Kč</h2><br>
+                <div class="col">
+                    <div class="nazev"> <p>Cena:</p></div>
+                    <div class="rovne2 nahoru">
+                        <h2 class="cost">10000 Kč</h2><br>
+                        @* <h2 class="cost">@Model.cost Kč</h2><br>*@
+                    </div>
                 </div>
-                <div class="col col-md-6 col-sm-6 col-lg-6">
-                    <p>Mazlíček:</p>
-                    <h2 class="bought-items">@Model.pet.Name</h2>
+                <div class="col">
+                    <div class="nazev"> <p>Mazlíček:</p></div>
+                    <div class="rovne2">  <h2 class="bought-items">Model.pet.Name sometrk</h2> </div>
+                  @*  <div class="rovne2">  <h2 class="bought-items">@Model.pet.Name sometrk</h2> </div> *@
                 </div><br>
             </div>
-            <div class="text col-md-12 col-sm-12 col-lg-12">
+            <div class="text ">
                 <p class="comprobe">Děkujeme za pomoc mazlíčkům v našem útulku.</p>
             </div>
+            
         </div>
     </div>
 }
 @section Styles {
     <link rel="stylesheet" href="~/css/platba.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    @*  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">*@
 }

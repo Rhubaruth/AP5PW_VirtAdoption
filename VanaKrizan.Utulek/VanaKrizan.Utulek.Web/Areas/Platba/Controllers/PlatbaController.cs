@@ -22,6 +22,7 @@ namespace VanaKrizan.Utulek.Web.Areas.Mazlicci.Controllers
 
         public IActionResult Platba()
         {
+            return View();
             PetConjoined? petConj = JsonConvert.DeserializeObject<PetConjoined>((string)TempData["PetData"]);
             if (petConj == null)
                 return NotFound();

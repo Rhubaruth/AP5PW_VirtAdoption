@@ -9,10 +9,11 @@ body {
     /* Thanks to uigradients :) */
 }
 
-.card {
+.card-platba {
     background: #16181a;
     border-radius: 14px;
     max-width: 300px;
+    min-width: 300px;
     display: block;
     margin: auto;
     padding: 60px;
@@ -23,13 +24,14 @@ body {
     z-index: 99;
 }
 
-.card p{
+.card-platba p{
     color:lightslategrey;
     font-size:26px;
 }
 
 .container{
     margin-top:130px;
+    min-width:327px;
 }
 
 .logo-card {
@@ -84,10 +86,14 @@ input:focus {
 
 .rovne {
     position: absolute;
-    width: 80%;
+    width: 70%;
     height: 100%;
     text-align: center;
     padding-top:10px;
+}
+
+.nahoru{
+    margin-top:-3px;
 }
 
 .right {
@@ -126,6 +132,11 @@ input:focus {
     display: inline-block;
 }
 
+.rovne2 {
+    width: 50%;
+    position: absolute;
+}
+
 .bought-items {
     margin-top: -3px;
 }
@@ -139,7 +150,7 @@ input:focus {
 }
 
 .text {
-    margin-top: 110px;
+    margin-top: 150px;
 }
 
 .proceed {
@@ -170,9 +181,30 @@ input:focus {
 }
 
 @media (max-width: 600px) {
-    .proceed {
-        transform: translate(250px, 10px);
+   
+    .text {
+        margin-top: 130px;
     }
+}
+
+
+@media (max-width: 1200px) {
+
+    .rovne {
+        width: 80%;
+    }
+}
+
+
+@media (max-width: 992px) {
+
+     .rovne {
+        width: 85%;
+    }
+}
+
+
+@media (max-width: 455px) {
 
     .col {
         display: block;
@@ -180,4 +212,41 @@ input:focus {
         width: 100%;
         text-align: center;
     }
+
+    .text {
+        margin-top: 180px;
+    }
+
+    .rovne2 {
+        text-align: center;
+        margin-top:-30px;
+        width:90%;
+    }
+
+    .nazev {
+        padding-bottom: 20px;
+        padding-top: 20px;
+        padding-left: 20%;
+    }
+
+    .rovne {
+        position: unset;
+    }
+
+    .proceed {
+        position: fixed;
+        top: 320px;
+        left: 0px;
+    }
 }
+
+/*
+@media (max-width: 335px) {
+
+    .proceed {
+        position: absolute;
+        top: 200px;
+        left: -40px;
+        z-index: 1;
+    }
+}*/
