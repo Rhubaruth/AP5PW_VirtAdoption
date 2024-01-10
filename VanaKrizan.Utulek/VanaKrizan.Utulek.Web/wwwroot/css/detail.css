@@ -463,9 +463,15 @@ input[type=number] {
 
 @media screen and (min-width: 1401px) {
     .hl {
-        padding-left: 8%;
+        padding-left: 22%;
     }
+}
 
+
+@media screen and (min-width: 1013px) {
+    .hl {
+        margin-left: -20px;
+    }
 }
 
 
