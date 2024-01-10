@@ -11,12 +11,16 @@
             <h1>Tebou virtuálně adoptovaní</h1>
         </div>
 
-
-        <div class="containerCat">
-            <p>Nemáte v adopci žádného mazlíčka</p>
-            <img class="catcat" src="http://38.media.tumblr.com/7cd9bc975faff277ea468ff3b213109f/tumblr_nray62QYpe1twzjm8o1_500.gif" alt="">
-        </div>
-
+        @if(Model.Carousels.Count < 1)
+        {
+            <div class="containerCat">
+                <p>Nemáte v adopci žádného mazlíčka</p>
+                <img class="catcat" src="http://38.media.tumblr.com/7cd9bc975faff277ea468ff3b213109f/tumblr_nray62QYpe1twzjm8o1_500.gif" alt="">
+            </div>
+        }
+        else
+        {
+            
         <section class="py-5 sdole">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
@@ -47,6 +51,7 @@
                 </div>
             </div>
         </section>
+        }
 
     }
 }
