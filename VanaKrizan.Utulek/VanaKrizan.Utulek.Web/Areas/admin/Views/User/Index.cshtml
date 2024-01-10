@@ -6,17 +6,18 @@
 @{
     ViewData["Title"] = "Users Admin";
 }
-<h1>@ViewData["Title"]</h1>
-
+<div class="nazev">
+    <h1>@ViewData["Title"]</h1>
+</div>
 
 @{
     if (Model != null && Model.Count > 0)
     {
 
             <div class="datatable-container">
-                <div class="header-tools"> </div>
+            <!--<div class="header-tools"> </div>-->
                 <!-- ======= Table ======= -->
-            <table class="datatable">
+                <table class="datatable table table-striped custom-table">
                 @*tableAdmin*@
                     <thead>
                         <tr>
@@ -28,7 +29,8 @@
                             <th scope="col">@nameof(IUser.PhoneNumber)</th>
                             @if (User.IsInRole(nameof(Roles.Admin)))
                             {
-                                <th scope="col"> Delete </th>
+                            <th scope="col"> </th>
+                            /*Delete */
                                 <th scope="col">  </th>
                             }
                             <th scope="col">  </th>
@@ -47,10 +49,11 @@
                                 <td scope="row">@Model[i].PhoneNumber</td>
                                 @if (User.IsInRole(nameof(Roles.Admin)))
                                 {
-                                    <td><a asp-action="Delete" asp-route-id="@Model[i].Id" onclick="return ConfirmDelete();"><i class="material-icons">delete</i></a></td>
-                                    <td><a asp-action="EditUser" asp-route-id="@Model[i].Id"><i class="material-icons">edit</i></a></td>
+                                <td><a asp-action="Delete" asp-route-id="@Model[i].Id" onclick="return ConfirmDelete();" class="ikony"><img src="~/img/pets/delete-32.png"></a></td>
+                                <td><a asp-action="EditUser" asp-route-id="@Model[i].Id" class="ikony"><img src="~/img/pets/edit-3-32.png"></a></td>
+                                
                                 }
-                                <td><a asp-action="UsersPets" asp-route-id="@Model[i].Id">Pets</a></td>
+                                <td><a asp-action="UsersPets" asp-route-id="@Model[i].Id" class="ikony"><img src="~/img/pets/paw-32.png"></a></td>
                             </tr>
                         }
                     </tbody>

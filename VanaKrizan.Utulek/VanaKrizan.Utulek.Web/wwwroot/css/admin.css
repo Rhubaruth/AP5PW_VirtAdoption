@@ -23,6 +23,13 @@ html {
 
 body {
     padding-top: 110px;
+    background-color: #3c373e;
+}
+
+.main {
+    /*background-color: transparent;*/
+    background-color: #3c373e;
+    color: #212529;
 }
 
 h1 {
@@ -52,19 +59,68 @@ th, td {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    color: #777;
 }
 
 tr {
-    /*border-radius: 10px;*/
+    /*background-color: rgba(0, 0, 0, 0.05);*/
+}
+
+.row {
+    /*color: #777;*/
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.table-striped tbody tr:nth-of-type(2n+1) {
+    /*background-color: rgba(0, 0, 0, 0.05);*/
+    color: #777;
+}
+
+table {
+    color: #212529;
+}
+
+table td {
+    padding: 0.75rem;
+}
+
+
+thead th {
+    padding-bottom: 30px;
+    border-top: none;
+    border-bottom: none !important;
+    color: #AAAAAA;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    padding: 0.75rem;
 }
 
 thead {
-    background-color: #EDF6F9;
+    /*background-color: #EDF6F9;*/
+}
+
+.n-entries {
+    background: transparent;
+    color: #AFA4AE;
+    border-style:none;
+}
+
+.list-items {
+    color: #D7D7D7;
 }
 
 tr:hover {
-    background-color: #FFDDD2;
-    border-radius: 10px;
+    /*background-color: #FFDDD2;
+    border-radius: 10px;*/
+    color: rgb(255, 255, 255);
+}
+
+.nazev {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    color: #AFA4AE;
 }
 /********************************************************************************************************************************************************/
 .choose{
@@ -130,8 +186,8 @@ tr:hover {
 
 /******************************************************************/
 :root {
-    --primary-color: white;
-    --secondary-color: rgb(61, 68, 73);
+    --primary-color: #D7D7D7;
+    /*--secondary-color: rgb(61, 68, 73);*/
     --highlight-color: #3282b8;
     --dt-status-available-color: greenyellow;
     --dt-status-away-color: lightsalmon;
@@ -140,7 +196,7 @@ tr:hover {
     --dt-padding-s: 6px;
     --dt-padding-xs: 2px;
     --dt-border-radius: 3px;
-    --dt-background-color-container: #2a3338;
+    /*--dt-background-color-container: #2a3338;*/
     --dt-border-color: var(--secondary-color);
     --dt-bg-color: var(--highlight-color);
     --dt-text-color: var(--primary-color);
@@ -148,7 +204,7 @@ tr:hover {
     --dt-text-color-button: var(--primary-color);
     --dt-text-color-active-button: var(--primary-color);
     --dt-hover-cell-color: var(--highlight-color);
-    --dt-even-row-color: var(--secondary-color);
+    /*--dt-even-row-color: var(--secondary-color);*/
     --dt-focus-color: var(--highlight-color);
     --dt-input-background-color: var(--secondary-color);
     --dt-input-color: var(--primary-color);
@@ -159,6 +215,12 @@ tr:hover {
     padding-top: 5px;
 }
 
+.ikony img {
+    width: 20px;
+    height: auto;
+    margin: auto;
+}
+
 .datatable-container {
     font-family: sans-serif;
     background-color: var(--dt-background-color-container);
@@ -167,7 +229,9 @@ tr:hover {
     max-width: 1140px;
     min-width: 950px;
     margin: 0 auto;
-    font-size: 12px;
+    font-size: 14px;
+    margin-bottom:4rem;
+    margin-top:2rem;
 }
 
 .datatable-container .header-tools {
@@ -258,10 +322,10 @@ tr:hover {
     color: var(--dt-text-color-active-button);
 }
 
-.datatable-container .footer-tools .pages ul li span.active {
-    background-color: var(--dt-bg-color);
-    border-radius: var(--dt-border-radius);
-}
+    .datatable-container .footer-tools .pages ul li span.active {
+        background-color: #9a8c98;
+        border-radius: var(--dt-border-radius);
+    }
 
 .datatable-container .footer-tools .pages ul li button,
 .datatable-container .footer-tools .pages ul li span,
@@ -293,10 +357,18 @@ tr:hover {
 .datatable-container .datatable tbody tr:nth-child(even) {
     background-color: var(--dt-even-row-color);
 }
+    /*tady  */
+    .datatable-container .datatable tbody tr:hover {
+        /*background-color: #4C474C;*/
+        /*background-color: #393539;*/
+        /*background-color: #2A2729;*/
+        color: white;
 
-.datatable-container .datatable tbody tr:hover {
-    background-color: var(--dt-hover-cell-color);
-}
+        td, th{
+            color: white;
+        }
+
+    }
 
 .datatable-container .datatable tbody tr .available::after,
 .datatable-container .datatable tbody tr .away::after,

@@ -48,8 +48,8 @@ main {
 }
 
 body {
-    background: #2f3238;
-    color: #fff;
+    /*background: #2f3238;*/
+    /*color: #fff;*/
     font-weight: 400;
     font-size: 1em;
     font-family: 'Raleway', Arial, sans-serif;
@@ -57,7 +57,7 @@ body {
 
 a {
     outline: none;
-    color: #3498db;
+    color: #ffc800;
     text-decoration: none;
 }
 
