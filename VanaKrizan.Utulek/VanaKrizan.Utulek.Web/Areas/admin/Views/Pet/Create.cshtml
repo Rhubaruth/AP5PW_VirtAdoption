@@ -5,14 +5,14 @@
     ViewData["Title"] = "Pet - Create";
 }
 
-<div class="titulPeso">
+<div class="titulEdit">
     <h1>@ViewData["Title"]</h1>
 </div>
 
 
 @* prej jiný create *@
-<form asp-action="Create" method="post" class="pridaniPeso">
-    <div class="mb-3">
+<form asp-action="Create" method="post" class="pridaniPeso petEdit" enctype="multipart/form-data" id="form">
+    <div class="mb-3 inputy">
         <label class="form-label" asp-for="PetObj.Name"> Jméno: </label>
         <input class="form-control" asp-for="PetObj.Name" required>
 
@@ -37,13 +37,14 @@
         <label asp-for="ImageFile"></label>
         <input asp-for="ImageFile" type="file">
         @* <span asp-validation-for="ImageFile"></span> *@
-
+        <div class="zmis">
+            <label class="form-label" asp-for="PetObj.ImageSrc"> Zdroj obrázku: </label>
+            <input class="form-control" asp-for="PetObj.ImageSrc">
+        </div>
     </div>
-    <div class="mb-3">
-        <label class="form-label" asp-for="PetObj.ImageSrc"> Zdroj obrázku: </label>
-        <input class="form-control" asp-for="PetObj.ImageSrc">
+    <div class="btnSub">
+        <button type="submit" class="btn btn-primary">Submit</button>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
 @section Styles {

@@ -7,9 +7,9 @@
     <h2>@ViewData["Title"]</h2>
 </div>
 
-<form asp-action="Edit" method="post" class="petEdit" enctype="multipart/form-data">
-    <div class="mb-3">
-        <input class="form-control" asp-for="PetObj.Id" hidden>
+<form asp-action="Edit" method="post" class="petEdit" enctype="multipart/form-data" id="form">
+    <div class="mb-3 inputy">
+        <input class="form-control " asp-for="PetObj.Id" hidden>
 
         <label class="form-label" asp-for="PetObj.Name"> Jméno: </label>
         <input class="form-control" asp-for="PetObj.Name" required>
@@ -25,7 +25,7 @@
 
         <label class="form-label" asp-for="PetObj.Info"> Informace: </label>
         @* <input class="form-control" asp-for="PetObj.Info"> *@
-        <textarea asp-for="PetObj.Info"></textarea>
+        <textarea asp-for="PetObj.Info" class="form-control textar"></textarea>
 
         <label class="form-label" asp-for="PetObj.BreedId"> Plemeno: </label>
         <select class="form-control" asp-for="PetObj.BreedId" asp-items="@(new SelectList(ViewBag.Breeds, "Id", "Name"))"></select>
@@ -34,19 +34,23 @@
         <select class="form-control" asp-for="PetObj.SizeId" asp-items="@(new SelectList(ViewBag.Sizes, "Id", "Name"))"></select>
 
 
-        <label asp-for="ImageFile"></label>
-        <input asp-for="ImageFile" type="file">
+        <div class="inobr">
+            <label asp-for="ImageFile"></label>
+            <input asp-for="ImageFile" type="file"> 
+
+        </div>
         @* <span asp-validation-for="ImageFile"></span> *@
+        <div class="zmis">
+            <label class="form-label" asp-for="PetObj.ImageSrc"> Zdroj obrázku: </label>
+            <input class="form-control" asp-for="PetObj.ImageSrc">
+        </div>
     </div>
-    <div class="mb-3">
-        <label class="form-label" asp-for="PetObj.ImageSrc"> Zdroj obrázku: </label>
-        <input class="form-control" asp-for="PetObj.ImageSrc">
+    <div class="btnSub">
+        <button type="submit" class="btn btn-primary">Submit</button>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
 
 @section Styles {
     <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
-
 }

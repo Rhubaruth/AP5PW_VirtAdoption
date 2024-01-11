@@ -3,7 +3,9 @@
 @{
     ViewData["Title"] = "Breed Admin";
 }
-<h1>@ViewData["Title"]</h1>
+<div class="nazev">
+    <h1>@ViewData["Title"]</h1>
+</div>
 
 <div class="createPet">
     <a asp-action="Create"> Create Breed </a>
@@ -12,39 +14,38 @@
 @{
     if (Model != null && Model.Count > 0)
     {
-
-        <table class="tableAdmin">
-            <thead>
-                <tr>
-                    <th scope="col">@nameof(Breed.Id)</th>
-                    <th scope="col">@nameof(Breed.Name)</th>
-                    <th scope="col"> Delete </th>
-                    <th scope="col">  </th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (int i = 0; i < Model.Count; i++)
-                {
+        <div class="datatable-container-pet">
+            <table class="datatable-pet table table-striped custom-table tableAdmin" role="table">
+                <thead role="rowgroup">
                     <tr>
-                        <th scope="row">@Model[i].Id</th>
-                        <td>@Model[i].Name</td>
-                        <td><a asp-action="Delete" asp-route-id="@Model[i].Id" onclick="return ConfirmDelete();">X</a></td>
-                        <td><a asp-action="Edit" asp-route-id="@Model[i].Id">Edit</a></td>
+                        <th scope="col" role="columnheader">@nameof(Breed.Id)</th>
+                        <th scope="col" role="columnheader">@nameof(Breed.Name)</th>
+                        <th scope="col" role="columnheader">  </th>
+                        <th scope="col" role="columnheader">  </th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody role="rowgroup">
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr role="row">
+                            <th scope="row" class="pad">@Model[i].Id</th>
+                            <td scope="row" class="pad">@Model[i].Name</td>
+                            <td scope="row" class="ikony"><a asp-action="Delete" asp-route-id="@Model[i].Id" onclick="return ConfirmDelete();"><img src="~/img/pets/delete-32.png"></a></td>
+                            <td scope="row" class="ikony"><a asp-action="Edit" asp-route-id="@Model[i].Id"><img src="~/img/pets/edit-3-32.png"></a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     }
 }
 
 
 @section Scripts {
     <script src="~/js/dialogs.js"></script>
-
 }
 
 
 @section Styles {
     <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
-
 }

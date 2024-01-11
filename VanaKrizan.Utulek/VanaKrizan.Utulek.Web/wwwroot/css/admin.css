@@ -42,8 +42,12 @@ h1 {
     width: 60%;
     margin: auto;
     text-align: center;
+    text-decoration: none;
 }
 
+    .createPet a {
+        text-decoration: none;
+    }
 
 .tableAdmin {
     margin: auto; 
@@ -662,4 +666,62 @@ td:nth-of-type(5):before {
 
 .customCheckBoxWrapper .customCheckBox:hover .inner {
     transform: translateY(-2px);
+}
+
+/***************************************************************Edit Pet*************************************************************************/
+.inobr {
+    margin-top: 10px;
+    background-color: transparent;
+}
+
+.inobr input {
+    background-color: transparent;
+    border: none;
+}
+
+.inputy input .zmis {
+    background-color: transparent;
+}
+
+.zmis {
+    background-color: transparent;
+}
+
+label,
+textarea {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+
+}
+
+textarea {
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+
+.textar {
+    border-radius: 25px;
+    background: rgba(255,255,255,.1);
+    color: #777;
+    /*overflow: auto;*/
+    overflow: hidden;
+    border: none;
+    outline: none;
+    border-style: none;
+    border-color: Transparent;
+}
+
+/************************************Create Breed*************************************/
+.odsad{
+    margin-bottom:10rem;
 }
