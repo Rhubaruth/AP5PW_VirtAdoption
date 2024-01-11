@@ -17,12 +17,14 @@
 
             <label class="form-label" asp-for="addPetId"> Přidat mazlíčka: </label>
             <div class="sel">
-                <select class="form-control" asp-for="addPetId" asp-items="@(new SelectList(Model.otherPets, "Id", "Name"))"></select>
+                <select class="sel-control" asp-for="addPetId" asp-items="@(new SelectList(Model.otherPets, "Id", "Name"))"
+                        onfocus="this.size=@Math.Min(Model.otherPets.Count, 3);" onblur="this.size=0" onchange="this.size=1; this.blur()"></select>
             </div>
 
             <label class="form-label" asp-for="removePetId"> Odebrat mazlíčka: </label>
             <div class="sel">
-                <select class="form-control" asp-for="removePetId" asp-items="@(new SelectList(Model.adoptedPets, "Id", "Name"))"></select>
+                <select class="sel-control" asp-for="removePetId" asp-items="@(new SelectList(Model.adoptedPets, "Id", "Name"))"
+                        onfocus="this.size=@Math.Min(Model.adoptedPets.Count, 3);" onblur="this.size=0" onchange="this.size=1; this.blur()"></select>
             </div>
         </div>
 

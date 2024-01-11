@@ -28,8 +28,14 @@
         <input class="form-control" asp-for="User.Email">
 
         <label class="form-label" asp-for="User.PhoneNumber"> PhoneNumber </label>
-        <input class="form-control" asp-for="User.PhoneNumber">
-    </div>
+        @if (Model.User.PhoneNumber == null) {
+                <input class="form-control" asp-for="User.PhoneNumber">
+            }
+            else
+            {
+                <p></p>
+            }
+        </div>
         @* Add checkboxes for roles *@
         <div class="check customCheckBoxHolder">
             <div class="cbx">
