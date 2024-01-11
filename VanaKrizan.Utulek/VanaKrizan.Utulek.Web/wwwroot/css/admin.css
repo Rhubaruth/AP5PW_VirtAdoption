@@ -454,35 +454,80 @@ tr:hover {
             width:50%
         }
 
+.user {
+    td: nth-of-type(0):before
+    {
+        content: "ID";
+    }
 
-td:nth-of-type(0):before {
-    content: "ID";
+    td:nth-of-type(1):before {
+        content: "USERNAME   ";
+        padding-right: 71px; /*31*/
+    }
+
+    td:nth-of-type(2):before {
+        content: "FIRSTNAME  ";
+        padding-right: 70px;
+    }
+
+    td:nth-of-type(3):before {
+        content: "LASTNAME   ";
+        padding-right: 75px;
+    }
+
+    td:nth-of-type(4):before {
+        content: "EMAIL      ";
+        padding-right: 108px;
+    }
+
+    td:nth-of-type(5):before {
+        content: "PHONENUMBER";
+        padding-right: 40px;
+    }
+
 }
 
-td:nth-of-type(1):before {
-    content: "USERNAME   ";
-    padding-right: 71px;/*31*/
+.petind {
+    td: nth-of-type(0):before
+    {
+        content: "ID";
+    }
+
+    td:nth-of-type(1):before {
+        content: "NAME";
+        padding-right: 125px; /*40*/
+    }
+
+    td:nth-of-type(2):before {
+        content: "SEX";
+        padding-right: 139px;
+    }
+
+    td:nth-of-type(3):before {
+        content: "BIRTH";
+        padding-right: 125px;
+    }
+
+    td:nth-of-type(4):before {
+        content: "IN SHELTER SINCE";
+        padding-right: 40px;
+    }
+
 }
 
-td:nth-of-type(2):before {
-    content: "FIRSTNAME  ";
-    padding-right: 70px;
+.breed {
+    td: nth-of-type(0):before
+    {
+        content: "ID";
+    }
+
+    td:nth-of-type(1):before {
+        content: "NAME";
+        padding-right: 40px; /*40*/
+    }
+
 }
 
-td:nth-of-type(3):before {
-    content: "LASTNAME   ";
-    padding-right: 75px;
-}
-
-td:nth-of-type(4):before {
-    content: "EMAIL      ";
-    padding-right: 108px;
-}
-
-td:nth-of-type(5):before {
-    content: "PHONENUMBER";
-    padding-right: 40px;
-}
 
 }
 
@@ -723,5 +768,5 @@ label {
 
 /************************************Create Breed*************************************/
 .odsad{
-    margin-bottom:10rem;
+    margin-bottom:12rem;
 }
