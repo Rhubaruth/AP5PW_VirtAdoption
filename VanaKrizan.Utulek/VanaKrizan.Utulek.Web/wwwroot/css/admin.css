@@ -27,7 +27,6 @@ body {
 }
 
 .main {
-    /*background-color: transparent;*/
     background-color: #3c373e;
     color: #212529;
 }
@@ -47,8 +46,7 @@ h1 {
 
 
 .tableAdmin {
-    margin: auto; /*
-    background-color: #EDF6F9;*/
+    margin: auto; 
     margin-top: 2%;
     border-collapse: collapse;
     border-radius: 10px;
@@ -62,18 +60,13 @@ th, td {
     color: #777;
 }
 
-tr {
-    /*background-color: rgba(0, 0, 0, 0.05);*/
-}
 
 .row {
-    /*color: #777;*/
     padding-bottom: 20px;
     padding-top: 20px;
 }
 
 .table-striped tbody tr:nth-of-type(2n+1) {
-    /*background-color: rgba(0, 0, 0, 0.05);*/
     color: #777;
 }
 
@@ -97,9 +90,6 @@ thead th {
     padding: 0.75rem;
 }
 
-thead {
-    /*background-color: #EDF6F9;*/
-}
 
 .n-entries {
     background: transparent;
@@ -112,8 +102,6 @@ thead {
 }
 
 tr:hover {
-    /*background-color: #FFDDD2;
-    border-radius: 10px;*/
     color: rgb(255, 255, 255);
 }
 
@@ -184,7 +172,7 @@ tr:hover {
 }
 
 
-/******************************************************************/
+/***************************Index*******************************/
 :root {
     --primary-color: #D7D7D7;
     /*--secondary-color: rgb(61, 68, 73);*/
@@ -416,11 +404,7 @@ tr:hover {
     background-color: var(--dt-status-offline-color);
 }
 
-
-/***********************/
-/*
-	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
-	*/
+/*******************Resp Index**************/
 @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
 
     /* Force table to not be like tables anymore */
@@ -428,7 +412,6 @@ tr:hover {
         display: block;
     }
 
-        /* Hide table headers (but not display: none;, for accessibility) */
         thead tr {
             position: absolute;
             top: -9999px;
@@ -439,19 +422,12 @@ tr:hover {
         margin: 0 0 1rem 0;
     }
 
-        tr:nth-child(odd) {
-            /*background: #ccc;*/
-        }
-
     .ikony img {
         width: 20px;
         height: auto;
         white-space: nowrap;
     }
 
-    .ikony {
-        /*width: 10%;*/
-    }
 
     table td {
         border: none;
@@ -467,18 +443,11 @@ tr:hover {
     .pad{
         text-align:left;
     }
-
-/*td:nth-of-type {
-    padding-right: 50px;
-}*/
 }
 
         td:before {
-            /*position: absolute;*/
             top: 0;
             left: 6px;
-            /*width: 50%;*/
-            /*padding-left: 50%;*/
             white-space: nowrap;
         }
 
@@ -512,4 +481,139 @@ td:nth-of-type(5):before {
     padding-right: 40px;
 }
 
+}
+
+/************************EditUser*************************************************************************************************************************************************/
+
+.inputy input {
+    border: none;
+    padding: 15px 20px;
+    border-radius: 25px;
+    background: rgba(255,255,255,.1);
+    color: #777;
+}
+
+    .inputy input:focus {
+        color: black;
+        background: rgba(255,255,255,.3);
+        border: 0px solid;
+        outline: none;
+        box-shadow:none;
+    }
+
+.inputy label {
+    color: #AAAAAA;
+    padding-top: 10px;
+}
+
+
+.titulEdit {
+    color: #AFA4AE;
+}
+
+.cbx label {
+    color: #AAAAAA;
+    padding-left:10px;
+}
+
+
+.check {
+    margin-bottom: 40px;
+}
+
+.btnSub button {
+    color: #777;
+    background: #D2A400;
+    border: none;
+}
+
+    .btnSub button:focus {
+        border: none;
+        outline: none;
+        box-shadow: none;
+    }
+
+/**********************Checkbox*******************/
+.customCheckBoxHolder {
+    margin: 5px;
+    display: flex;
+    padding-bottom:15px;
+}
+
+.customCheckBox {
+    width: fit-content;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+    padding: 2px 8px;
+    background-color: rgba(0, 0, 0, 0.16);
+    border-radius: 0px;
+    color: rgba(255, 255, 255, 0.7);
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 300ms;
+    transition-property: color, background-color, box-shadow;
+    display: flex;
+    height: 32px;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px 1px 1px 0px;
+    outline: none;
+    justify-content: center;
+    min-width: 55px;
+}
+
+    .customCheckBox:hover {
+        background-color: rgba(0, 0, 0, 0.17);
+        color: white;
+        box-shadow: rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.17) 0px 2px 4px 1px;
+    }
+
+    .customCheckBox .inner {
+        font-size: 18px;
+        font-weight: 900;
+        pointer-events: none;
+        transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition-duration: 300ms;
+        transition-property: transform;
+        transform: translateY(0px);
+    }
+
+    .customCheckBox:hover .inner {
+        transform: translateY(-2px);
+    }
+
+/* Multiple Checkboxes can be chained together for a radio input */
+.customCheckBoxWrapper:first-of-type .customCheckBox {
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border-right: 0px;
+}
+
+.customCheckBoxWrapper:last-of-type .customCheckBox {
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    border-left: 0px;
+}
+
+.customCheckBoxInput {
+    display: none;
+}
+
+    .customCheckBoxInput:checked + .customCheckBoxWrapper .customCheckBox {
+        background-color: #373138;
+        color: white;
+        box-shadow: rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.17) 0px 2px 4px 1px;
+    }
+
+        .customCheckBoxInput:checked + .customCheckBoxWrapper .customCheckBox .inner {
+            transform: translateY(-2px);
+        }
+
+        .customCheckBoxInput:checked + .customCheckBoxWrapper .customCheckBox:hover {
+            background-color: #D2A400;
+            box-shadow: rgba(0, 0, 0, 0.26) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.15) 0px 3px 6px 2px;
+        }
+
+.customCheckBoxWrapper .customCheckBox:hover .inner {
+    transform: translateY(-2px);
 }

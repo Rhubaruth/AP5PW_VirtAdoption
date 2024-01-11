@@ -14,7 +14,7 @@
 
 <div>
 <form asp-action="EditUser" id="form" method="post" class="petEdit">
-    <div class="mb-3">
+    <div class="mb-3 inputy">
         <label class="form-label" asp-for="User.UserName"> UserName </label>
         <input class="form-control" asp-for="User.UserName">
 
@@ -29,22 +29,33 @@
 
         <label class="form-label" asp-for="User.PhoneNumber"> PhoneNumber </label>
         <input class="form-control" asp-for="User.PhoneNumber">
-
+    </div>
         @* Add checkboxes for roles *@
-        <div class="form-check">
-            <input asp-for="IsAdmin" type="checkbox" name="@nameof(Model.IsAdmin)" />
-            <label>@nameof(Model.IsAdmin)</label>
+        <div class="check customCheckBoxHolder">
+            <div class="cbx">
+                <input asp-for="IsAdmin" type="checkbox" name="@nameof(Model.IsAdmin)" class="customCheckBoxInput" id="cCB1" />
+                <label for="cCB1" class="customCheckBoxWrapper">
+                    <div class="customCheckBox">
+                        <div class="inner">@nameof(Model.IsAdmin)</div>
+                    </div>
+                </label>
+            </div>
+            <div class="cbx ">
+                <input asp-for="IsManager" type="checkbox" name="@nameof(Model.IsManager)" class="customCheckBoxInput" id="cCB2" />
+                <label for="cCB2" class="customCheckBoxWrapper">
+                    <div class="customCheckBox">
+                        <div class="inner">@nameof(Model.IsManager)</div>
+                    </div>
+                </label>
+            </div>
+            @* <div class="form-check">
+                <input asp-for="IsCustomer" type="hidden" name="@nameof(Model.IsCustomer)" />
+                <label>@nameof(Model.IsCustomer)</label>
+            </div> *@
         </div>
-        <div class="form-check">
-            <input asp-for="IsManager" type="checkbox" name="@nameof(Model.IsManager)" />
-            <label>@nameof(Model.IsManager)</label>
+        <div class="btnSub">
+            <button type="submit" class="btn btn-primary">Submit</button>
         </div>
-        <div class="form-check">
-            <input asp-for="IsCustomer" type="hidden" name="@nameof(Model.IsCustomer)" />
-            <label>@nameof(Model.IsCustomer)</label>
-        </div>
-
-     <button type="submit" class="btn btn-primary">Submit</button>
 
     @* Hidden data from form *@
     <input type="hidden" asp-for="User.Id" />
