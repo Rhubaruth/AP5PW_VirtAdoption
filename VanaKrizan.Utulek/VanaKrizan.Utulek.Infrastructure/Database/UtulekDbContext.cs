@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using VanaKrizan.Utulek.Domain.Entities;
 using VanaKrizan.Utulek.Infrastructure.Identity;
+using VanaKrizan.Utulek.Infrastructure.Database.Classes;
 
 
 namespace VanaKrizan.Utulek.Infrastructure.Database
@@ -15,6 +16,10 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
     public class UtulekDbContext : IdentityDbContext<User, Role, int>
     {
         public DbSet<Pet> Pets { get; set; }
+        public DbSet<Size> Sizes { get; set; }
+        public DbSet<Breed> Breeds { get; set; }
+        public DbSet<UserHasPet> UserHasPet {  get; set; }
+
 
         public UtulekDbContext(DbContextOptions options) : base(options) { }
 
@@ -24,7 +29,10 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
 
             DatabaseInit dbInit = new DatabaseInit();
             // nevkládá se neustále, pouze poprvé za migraci
+            modelBuilder.Entity<Size>().HasData(dbInit.GetSizes());
+            modelBuilder.Entity<Breed>();
             modelBuilder.Entity<Pet>().HasData(dbInit.GetPets());
+
 
 
             //Identity - User and Role initialization
@@ -41,6 +49,10 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
             //and finally, connect the users with the roles
             modelBuilder.Entity<IdentityUserRole<int>>().HasData(adminUserRoles);
             modelBuilder.Entity<IdentityUserRole<int>>().HasData(managerUserRoles);
+
+
+            // connect User and Pets
+            modelBuilder.Entity<UserHasPet>().HasData(dbInit.CreateUserWithPet());
 
 
             //configuration of User entity using IUser interface property inside Order entity

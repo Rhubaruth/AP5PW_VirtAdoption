@@ -145,6 +145,24 @@ namespace VanaKrizan.Utulek.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("VanaKrizan.Utulek.Domain.Entities.Breed", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<bool?>("isMixed")
+                        .HasColumnType("tinyint(1)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Breeds");
+                });
+
             modelBuilder.Entity("VanaKrizan.Utulek.Domain.Entities.Pet", b =>
                 {
                     b.Property<int>("Id")
@@ -157,8 +175,10 @@ namespace VanaKrizan.Utulek.Infrastructure.Migrations
                     b.Property<int?>("BreedId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("HasChip")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("ImageSrc")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("InShelterSince")
@@ -175,6 +195,9 @@ namespace VanaKrizan.Utulek.Infrastructure.Migrations
                         .HasMaxLength(1)
                         .HasColumnType("varchar(1)");
 
+                    b.Property<int?>("SizeId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Pets");
@@ -183,27 +206,98 @@ namespace VanaKrizan.Utulek.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            Birth = new DateTime(2023, 12, 15, 13, 1, 40, 127, DateTimeKind.Local).AddTicks(3456),
-                            ImageSrc = "/img/pets/produkty-01.jpg",
-                            InShelterSince = new DateTime(2023, 12, 15, 13, 1, 40, 127, DateTimeKind.Local).AddTicks(3510),
+                            Birth = new DateTime(2024, 1, 7, 0, 26, 38, 485, DateTimeKind.Local).AddTicks(9387),
+                            HasChip = false,
+                            ImageSrc = "/img/pets/peso1.jpg",
+                            InShelterSince = new DateTime(2024, 1, 7, 0, 26, 38, 485, DateTimeKind.Local).AddTicks(9445),
                             Name = "Doggo",
                             Sex = "M"
                         },
                         new
                         {
                             Id = 2,
-                            ImageSrc = "/img/pets/produkty-02.jpg",
-                            InShelterSince = new DateTime(2023, 12, 15, 13, 1, 40, 127, DateTimeKind.Local).AddTicks(3516),
+                            HasChip = false,
+                            ImageSrc = "/img/pets/peso2.jpg",
+                            InShelterSince = new DateTime(2024, 1, 7, 0, 26, 38, 485, DateTimeKind.Local).AddTicks(9453),
                             Name = "Oggod",
                             Sex = "M"
                         },
                         new
                         {
                             Id = 3,
-                            Birth = new DateTime(2023, 12, 15, 13, 1, 40, 127, DateTimeKind.Local).AddTicks(3519),
-                            ImageSrc = "/img/pets/produkty-03.jpg",
+                            Birth = new DateTime(2024, 1, 7, 0, 26, 38, 485, DateTimeKind.Local).AddTicks(9455),
+                            HasChip = false,
+                            ImageSrc = "/img/pets/kocka1.jpg",
                             InShelterSince = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Kitty"
+                        });
+                });
+
+            modelBuilder.Entity("VanaKrizan.Utulek.Domain.Entities.Size", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Sizes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = -1,
+                            Name = "Nezadáno"
+                        },
+                        new
+                        {
+                            Id = 1,
+                            Name = "malá"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "střední"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "velká"
+                        });
+                });
+
+            modelBuilder.Entity("VanaKrizan.Utulek.Infrastructure.Database.Classes.UserHasPet", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("PetId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserHasPet");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            PetId = 1,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            PetId = 3,
+                            UserId = 1
                         });
                 });
 

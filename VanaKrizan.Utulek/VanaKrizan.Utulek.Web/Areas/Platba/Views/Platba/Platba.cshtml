@@ -1,0 +1,59 @@
+﻿@using VanaKrizan.Utulek.Domain.Entities;
+@model PetConjoined
+
+@{
+
+    <div class="container">
+        <div class="card-platba">
+        <form asp-action="Platba" method="post" id="form">
+            <button type="submit" class="proceed">
+                <svg class="sendicon" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+                </svg>
+            </button>
+
+                <input type="hidden" asp-for="pet.Id" />
+                <input type="hidden" asp-for="breed.Id" />
+                <input type="hidden" asp-for="breed.Name" />
+                <input type="hidden" asp-for="size.Id" />
+                <input type="hidden" asp-for="size.Name" />
+                <input type="hidden" asp-for="cost" />
+            <!-- <img src="https://seeklogo.com/images/V/VISA-logo-62D5B26FE1-seeklogo.com.png" class="logo-card"> -->
+            <div class="col-md-12 col-sm-12 col-lg-12">
+                <p>Karta</p>
+                <label>Card number:</label>
+                <input id="user" type="text" class="input cardnumber" placeholder="1234 5678 9101 1121" required>
+                <div class="spodek">
+                    <label >Name:</label>
+                    <input class="input name" placeholder="Edgar Pérez" required>
+                    <label class="toleft right">CCV:</label>
+                    <input class="input toleft ccv" placeholder="321" required>
+                </div>
+            </div>
+        </form>
+        </div>
+        <div class="receipt">
+            <div class="rovne">
+                <div class="col">
+                    <div class="nazev"> <p>Cena:</p></div>
+                    <div class="rovne2 nahoru">
+                        <h2 class="cost">@Model.cost Kč</h2><br>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="nazev"> <p>Mazlíček:</p></div>
+                    <div class="rovne2">  <h2 class="bought-items">@Model.pet.Name sometrk</h2> </div>
+                </div><br>
+            </div>
+            <div class="text ">
+                <p class="comprobe">Děkujeme za pomoc mazlíčkům v našem útulku.</p>
+            </div>
+            
+        </div>
+    </div>
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/platba.css" asp-append-version="true" />
+    @*  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">*@
+}

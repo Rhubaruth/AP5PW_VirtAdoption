@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using VanaKrizan.Utulek.Application.Abstraction;
 using VanaKrizan.Utulek.Application.ViewModels;
+using VanaKrizan.Utulek.Domain.Entities;
 using VanaKrizan.Utulek.Web.Models;
 
 namespace VanaKrizan.Utulek.Web.Controllers
@@ -9,21 +10,37 @@ namespace VanaKrizan.Utulek.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        IPetService _petService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IPetService petService)
         {
             _logger = logger;
+            _petService = petService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            CarouselProductViewModel viewModel = new CarouselProductViewModel();
+            viewModel.Pets = _petService.PetSelectAllOrderedDate().Take(3).ToList();
+
+            return View(viewModel);
         }
 
         public IActionResult Privacy()
         {
             return View();
         }
+
+        public IActionResult Aktuality()
+        {
+            return View();
+        }
+
+        public IActionResult Info()
+        {
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

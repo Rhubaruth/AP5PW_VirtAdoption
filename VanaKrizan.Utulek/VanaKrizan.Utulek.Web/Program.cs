@@ -57,7 +57,7 @@ builder.Services.AddDbContext<UtulekDbContext>(
 
 
 // propojení interface s implementací v Applications
-builder.Services.AddScoped<IPetService, PetDFService>();
+builder.Services.AddScoped<IPetService, PetDBService>();
 builder.Services.AddScoped<IHomeService, HomeService>();
 
 var app = builder.Build();

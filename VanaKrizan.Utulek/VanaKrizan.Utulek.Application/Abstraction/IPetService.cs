@@ -4,20 +4,48 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VanaKrizan.Utulek.Domain.Entities;
-
+using VanaKrizan.Utulek.Infrastructure.Identity;
+using VanaKrizan.Utulek.Infrastructure.Identity.Enums;
 
 namespace VanaKrizan.Utulek.Application.Abstraction
 {
     public interface IPetService
     {
-        IList<Pet> Select();
-        Pet? SelectById(int id);
+        #region Pet
+        IList<Pet> PetSelectAll();
+        IList<Pet> PetSelectAllOrderedDate();
+        Pet? PetSelectById(int id);
+        void PetCreate(Pet pet);
+        bool PetDelete(int id);
+        bool PetEdit(Pet pet);
+        #endregion
 
-        void Create(Pet pet);
-        bool Delete(int id);
+        #region Size and Breed
+        public IList<Size> SizeSelectAll();
+        public Size? SizeSelectById(int? id);
 
-        bool Edit(Pet pet);
+        public IList<Breed> BreedSelectAll();
+        public Breed? BreedSelectById(int? id);
+        public void BreedCreate(Breed breed);
+        public bool BreedEdit(Breed breed);
+        public bool BreedDelete(int id);
 
+        #endregion
+
+        #region User
+        public IList<User> UserSelectAll();
+        User? UserSelectById(int id);
+        bool UserDelete(int id);
+        bool UserEdit(User pet);
+
+        public IList<Pet> UserGetPetsAll(int id);
+        public bool UserAdoptPet(int petId, int userId);
+        public bool UserRemovePet(int petId, int userId);
+
+        public IList<int> UserGetRolesAll(int id);
+        public bool UserAddRole(int userId, Roles role);
+        public bool UserRemoveRole(int userId, Roles role);
+        #endregion
 
     }
 }

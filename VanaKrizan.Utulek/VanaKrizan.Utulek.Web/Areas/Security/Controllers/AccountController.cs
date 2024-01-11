@@ -28,18 +28,22 @@ namespace VanaKrizan.Utulek.Web.Areas.Security.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel registerVM)
+        public async Task<IActionResult> Register(RegisterLoginViewModel registerVM)
         {
-            if (ModelState.IsValid)
+            if(registerVM.Register == null)
+                return View();
+
+
+			if (ModelState.IsValid)
             {
-                string[] errors = await accountService.Register(registerVM, Roles.Customer);
+                string[] errors = await accountService.Register(registerVM.Register, Roles.Customer);
 
                 if (errors == null)
                 {
                     LoginViewModel loginVM = new LoginViewModel()
                     {
-                        Username = registerVM.Username,
-                        Password = registerVM.Password
+                        Username = registerVM.Register.Username,
+                        Password = registerVM.Register.Password
                     };
 
                     bool isLogged = await accountService.Login(loginVM);
@@ -50,12 +54,13 @@ namespace VanaKrizan.Utulek.Web.Areas.Security.Controllers
                 }
                 else
                 {
-                    //error to ViewModel
-                }
+					//error to ViewModel
+					ViewBag.Errors = errors;
+				}
 
-            }
+			}
 
-            return View(registerVM);
+            return View(registerVM.Register);
         }
 
         public IActionResult Login()
@@ -82,8 +87,65 @@ namespace VanaKrizan.Utulek.Web.Areas.Security.Controllers
         public async Task<IActionResult> Logout()
         {
             await accountService.Logout();
-            return RedirectToAction(nameof(Login));
+            return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).Replace(nameof(Controller), String.Empty), new { area = String.Empty });
         }
 
-    }
+		public IActionResult Prihlaseni()
+		{
+
+			return View(new RegisterLoginViewModel() );
+		}
+
+
+		[HttpPost]
+		public async Task<IActionResult> Prihlaseni(RegisterLoginViewModel registerLoginVM)
+		{
+
+			if (registerLoginVM.Register != null)
+			{
+                RegisterViewModel registerVM = registerLoginVM.Register;
+				if (ModelState.IsValid)
+				{
+					string[] errors = await accountService.Register(registerVM, Roles.Customer);
+
+					if (errors == null)
+					{
+						LoginViewModel loginVM = new LoginViewModel()
+						{
+							Username = registerVM.Username,
+							Password = registerVM.Password
+						};
+
+						bool isLogged = await accountService.Login(loginVM);
+						if (isLogged)
+							return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).Replace(nameof(Controller), String.Empty), new { area = String.Empty });
+						else
+							return RedirectToAction(nameof(Login));
+					}
+					else
+					{
+						//error to ViewModel
+						ViewBag.Errors = errors;
+					}
+
+				}
+			}
+
+			if (registerLoginVM.Login != null)
+            {
+                LoginViewModel loginVM = registerLoginVM.Login;
+			    if (ModelState.IsValid)
+			    {
+				    bool isLogged = await accountService.Login(loginVM);
+				    if (isLogged)
+					    return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).Replace(nameof(Controller), String.Empty), new { area = String.Empty });
+
+                    registerLoginVM.LoginFailed = true;
+			    }
+			}
+
+			return View(registerLoginVM);
+		}
+
+	}
 }

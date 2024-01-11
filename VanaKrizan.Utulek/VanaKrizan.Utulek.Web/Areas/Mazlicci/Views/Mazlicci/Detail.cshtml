@@ -1,0 +1,165 @@
+﻿@using VanaKrizan.Utulek.Domain.Entities;
+@model PetConjoined
+
+@{
+    <div class="containerMazl">
+        <section class="info">
+            <div class="row">
+                <div class="mazel row">
+                    <div class="barva col-md-5 col-sm-5 col-lg-6">
+                        <h1>@Model.pet.Name</h1>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            @if (ViewBag.Adopted)
+                            {
+                                <form asp-area="Mazlicci" asp-controller="Mazlicci" asp-action="RemovePet" method="post">
+                                    <input type="hidden" asp-for="pet.Id" />
+
+                                    <div class="myDIV"><button onclick="return ConfirmDelete();" type="submit" class="btnimg"><img src="~/img/pets/cry.png" class="icon-agree"></button></div>
+                                    <div class="hide"> <p>Chcete zrušit adopci?</p></div>
+                                </form>
+                            }
+                            else
+                            {
+                                <div class="myDIV"><button onclick="document.getElementById('id01').style.display='block'" class="btnimg"><img src="~/img/pets/dogAcat.png" class="icon-agree"></button></div>
+                                <div class="hide"><p>Adoptuj mě</p></div>
+                            }
+                        }
+                        else
+                        {
+                            <form asp-area="Security" asp-controller="Account" asp-action="Prihlaseni" method="get">
+                                <div class="myDIV"><button class="btnimg"><img src="~/img/pets/dogAcat.png" class="icon-agree"></button></div>
+                                <div class="hide"><p>Adoptuj mě</p></div>
+                            </form>
+                        }
+                        <div id="id01" class="modal">
+                            <div class="col-md-12 col-sm-12 col-lg-12 vyskakovaci">
+                            <form asp-action="Detail" id="form" method="post" class="modal-content-detail animate">
+                                <div class="imgcontainer">
+                                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                                    <h2>@Model.pet.Name</h2>
+                                    <div class="okno">
+                                        <img src=@Model.pet.ImageSrc >
+                                    </div>
+                                </div>
+
+                                <div class="container">
+                                    <div class="castka">
+                                            <div class="textCastka"> <label>Chci přispět virtuální adopcí částkou </label></div>
+                                           <div class="honotaCastka"> <input asp-for="cost" type="number" placeholder="Adopční přísěvek" name="cost" required min="50" id="hodnota"></div>
+                                    </div>
+                                </div>
+
+                                <div class="container-pet">
+
+                                    <button type="submit" id="submitLink" class="btnimg"><img src="~/img/pets/handshake.png" class="icon-agree"></button>
+
+                                    <input type="hidden" asp-for="pet.Id" />
+                                    <input type="hidden" asp-for="breed.Id" />
+                                    <input type="hidden" asp-for="breed.Name" />
+                                    <input type="hidden" asp-for="size.Id" />
+                                    <input type="hidden" asp-for="size.Name" />
+
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+
+                        <div class="zaklInfo row">
+                            <div class="col-md-12 col-sm-12 col-lg-9 horniInfo">
+                                <dl class="zaklad">
+                                    <fieldset>
+                                        <legend>Základní údaje</legend>
+                                        <dl>
+                                            <dt class="hl">Velikost:</dt>
+                                            <dd class="data">@Model.size.Name</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt class="hl">Plemeno:</dt>
+                                            <dd class="data">@Model.breed.Name</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt class="hl">Stáří:</dt>
+                                            @if (Model.pet.Birth == null)
+                                            {
+                                                <dd class="data">Neznámé</dd>
+                                            }
+                                            else
+                                            {
+                                                <dd class="data">@Model.pet.Birth?.ToString("dd.MM.yyyy")</dd>
+                                            }
+                                        </dl>
+                                        <dl>
+                                            <div class="cip">
+                                                <dt class="hl">Čip:</dt>
+                                            </div>
+                                            <dd class="data">@Model.pet.HasChip</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt class="hl">Pohlaví:</dt>
+                                            @if (Model.pet.Birth == null)
+                                            {
+                                                <dd class="data">Neznámé</dd>
+                                            }
+                                            else
+                                            {
+                                                <dd class="data">@Model.pet.Sex</dd>
+                                            }
+                                        </dl>
+                                        <dl>
+                                            <dt class="hl">V útulku od:</dt>
+                                            <dd class="data">@Model.pet.InShelterSince.ToString("dd.MM.yyyy")</dd>
+                                        </dl>
+                                        <dl>
+                                            <dt class="hl"></dt>
+                                            <dd class="data"></dd>
+                                        </dl>
+                                    </fieldset>
+                                </dl>
+                            </div>
+                            <div class="col-md-12 col-sm-12  dolni">
+                                <img src=@Model.pet.ImageSrc >
+                            </div>
+                        </div>
+                    </div>
+                    @{
+                        if(Model.pet.Info != null)
+                        {
+                            <div class="popis row">
+                            <div class="dira">
+                                <div class="color col-md-10 col-sm-12 col-lg-8 ">
+                                    @Model.pet.Info
+                                </div>
+                                </div>
+                            </div>
+                        }
+                    }
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+}
+
+@section Scripts {
+    <script src="~/js/dialogs.js"></script>
+
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/detail.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/mazlicci.css" asp-append-version="true" />
+}

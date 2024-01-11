@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using VanaKrizan.Utulek.Domain.Entities;
-using VanaKrizan.Utulek.Infrastructure.Database;
 using VanaKrizan.Utulek.Application.Abstraction;
 using VanaKrizan.Utulek.Infrastructure.Identity.Enums;
+using System.Diagnostics;
+using Microsoft.AspNetCore.Http;
+
 
 namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 {
@@ -19,70 +21,103 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 
         public IActionResult Index()
         {
-            IList<Pet> pets = _petService.Select();
+            IList<Pet> pets = _petService.PetSelectAll();
             return View(pets);
         }
 
-        /* Funcs for Create */
 
-        public IActionResult ChooseType()
+        #region Funcs for Create 
+        public IActionResult Create()
         {
-            return View();  // vrací view s návem "Create" 
+            ViewBag.Sizes = _petService.SizeSelectAll();
+            ViewBag.Breeds = _petService.BreedSelectAll();
+            return View();
         }
 
         [HttpPost]      // default atribut = "HttpGet"
-        public IActionResult ChooseType(ChosenType chosenType)
+        async public Task<IActionResult> Create(PetFile petWithFile)
         {
-            //_petService.Create(type);
 
-            switch (chosenType.Type)
+            if (!ModelState.IsValid)
             {
-                case PetType.Dog:
-                    return RedirectToAction(
-                        nameof(CreatorController.CreateDog), "Creator");
-                case PetType.Cat:
-                    return RedirectToAction(
-                        nameof(CreatorController.CreateCat), "Creator");
-                default:
-                    break;
+                return View(petWithFile);
             }
 
-            return NotFound();
-        }
+            if (petWithFile.ImageFile != null)
+            {
+                // Combine the target directory with the unique file name
+                var fileName = petWithFile.PetObj.Name.Replace(" ", "_") + petWithFile.PetObj.Id.ToString() + ".jpg";
+                var filePath = Path.Combine("wwwroot\\img\\uploaded", fileName);
 
-        /* Funcs for Edit */
-        
+                // Copy the file to the target directory
+                using (Stream fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await petWithFile.ImageFile.CopyToAsync(fileStream);
+                }
+
+
+                petWithFile.PetObj.ImageSrc = "/img/uploaded/" + fileName;
+            }
+
+            _petService.PetCreate(petWithFile.PetObj);
+            return RedirectToAction(nameof(PetController.Index), "Pet");
+        }
+        #endregion
+
+        #region Funcs for Edit
         public IActionResult Edit(int id)
         {
-            Pet? pet = _petService.SelectById(id);
+            Pet? pet = _petService.PetSelectById(id);
             if (pet == null)
             {
                 return NotFound();
             }
 
-            return View(pet);  // vrací view s návem "Edit" 
+            ViewBag.Sizes = _petService.SizeSelectAll();
+            ViewBag.Breeds = _petService.BreedSelectAll();
+
+            PetFile PetWithFile = new PetFile()
+            {
+                PetObj = pet,
+            };
+
+            return View(PetWithFile);  // vrací view s návem "Edit" 
         }
 
         [HttpPost]      // default atribut = "HttpGet"
-        public IActionResult Edit(Pet updatedPet)
+        public async Task<IActionResult> Edit(PetFile updatedPet)
         {
+            if(updatedPet.ImageFile != null) {
+                // Combine the target directory with the unique file name
+                var fileName = updatedPet.PetObj.Name.Replace(" ", "_") + updatedPet.PetObj.Id.ToString() + ".jpg";
+                var filePath = Path.Combine("wwwroot\\img\\uploaded", fileName);
 
-            bool isEdited = _petService.Edit(updatedPet);
+                // Copy the file to the target directory
+                using (Stream fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await updatedPet.ImageFile.CopyToAsync(fileStream);
+                }
+
+                updatedPet.PetObj.ImageSrc = "/img/uploaded/" + fileName;
+            }
+
+            bool isEdited = _petService.PetEdit(updatedPet.PetObj);
 
             if (isEdited)
-                return RedirectToAction(nameof(PetController.Index));
+                return RedirectToAction(nameof(PetController.Index), "Pet");
             return NotFound();
         }
+        #endregion
 
-        /* Funcs for Delete */
-
+        #region Funcs for Delete
         public IActionResult Delete(int id)
         {
-            bool deleted = _petService.Delete(id);
+            bool deleted = _petService.PetDelete(id);
             
             if(deleted)
-                return RedirectToAction(nameof(PetController.Index));
+                return RedirectToAction(nameof(UserController.Index), "User", new { area = "User"});
             return NotFound();
         }
+        #endregion
     }
 }

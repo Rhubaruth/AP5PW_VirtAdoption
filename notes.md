@@ -14,7 +14,8 @@ install:
 
 # DB
 ## config DB 
-pridana class UtulekDbContext
+pridana class **UtulekDbContext**
+    - tvorba relaci
 
 propojeni: v Program.cs
 db location string: appsettings.json

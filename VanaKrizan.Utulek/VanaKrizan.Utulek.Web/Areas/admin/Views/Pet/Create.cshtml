@@ -1,24 +1,52 @@
-﻿@model Pet
+﻿@using VanaKrizan.Utulek.Domain.Entities;
+@model PetFile
 
 @{
     ViewData["Title"] = "Pet - Create";
 }
-<h1>@ViewData["Title"]</h1>
+
+<div class="titulPeso">
+    <h1>@ViewData["Title"]</h1>
+</div>
+
 
 @* prej jiný create *@
-<form asp-action="Create" method="post"> 
+<form asp-action="Create" method="post" class="pridaniPeso">
     <div class="mb-3">
-        <label class="form-label" asp-for="Name"> Name </label>
-        <input class="form-control" asp-for="Name">
+        <label class="form-label" asp-for="PetObj.Name"> Jméno: </label>
+        <input class="form-control" asp-for="PetObj.Name" required>
 
-        <label class="form-label" asp-for="Birth"> Birth </label>
-        <input class="form-control" asp-for="Birth">
-        
-        <label class="form-label" asp-for="Sex"> Sex </label>
-        <input class="form-control" asp-for="Sex">
+        <label class="form-label" asp-for="PetObj.Birth"> Narození: </label>
+        <input type="date" class="form-control" asp-for="PetObj.Birth">
 
-        <label class="form-label" asp-for="Info"> Info </label>
-        <input class="form-control" asp-for="Info">
+        <label class="form-label" asp-for="PetObj.InShelterSince"> V utulku od: </label>
+        <input type="date" class="form-control" asp-for="PetObj.InShelterSince" required>
+
+        <label class="form-label" asp-for="PetObj.Sex"> Pohlaví: </label>
+        <input class="form-control" asp-for="PetObj.Sex">
+
+        <label class="form-label" asp-for="PetObj.Info"> Informace: </label>
+        <input class="form-control" asp-for="PetObj.Info">
+
+        <label class="form-label" asp-for="PetObj.BreedId"> Plemeno: </label>
+        <select class="form-control" asp-for="PetObj.BreedId" asp-items="@(new SelectList(ViewBag.Breeds, "Id", "Name"))"></select>
+
+        <label class="form-label" asp-for="PetObj.SizeId"> Velikost: </label>
+        <select class="form-control" asp-for="PetObj.SizeId" asp-items="@(new SelectList(ViewBag.Sizes, "Id", "Name"))"></select>
+
+        <label asp-for="ImageFile"></label>
+        <input asp-for="ImageFile" type="file">
+        @* <span asp-validation-for="ImageFile"></span> *@
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="PetObj.ImageSrc"> Zdroj obrázku: </label>
+        <input class="form-control" asp-for="PetObj.ImageSrc">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+
+}

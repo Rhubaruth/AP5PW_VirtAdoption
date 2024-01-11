@@ -1,0 +1,64 @@
+﻿@model CarouselProductViewModel
+
+@{
+    ViewData["Title"] = "Uživatel - Moje Adopce";
+}
+
+@{
+    if (User.Identity.IsAuthenticated)
+    {
+        <div class="nadpis">
+            <h1>Tebou virtuálně adoptovaní</h1>
+        </div>
+
+        @if(Model.Carousels.Count < 1)
+        {
+            <div class="containerCat">
+                <p>Nemáte v adopci žádného mazlíčka</p>
+                <img class="catcat" src="http://38.media.tumblr.com/7cd9bc975faff277ea468ff3b213109f/tumblr_nray62QYpe1twzjm8o1_500.gif" alt="">
+            </div>
+        }
+        else
+        {
+
+            <section class="py-5 sdole">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    @foreach (var pet in Model.Carousels)
+                    {
+                        <div class="col mb-5 col-sm-12 col-md-6 col-lg-4 mazlik">
+                            <div class="mazlik">
+                                <div class="content">
+                                    <div class="grid">
+                                        <figure class="effect-julia boxik2">
+                                            <img class="card-img-top" src="@pet.ImageSrc" alt="@pet.Name" />
+
+                                            <figcaption>
+                                                <h2> @pet.Name</h2>
+                                                <div>
+                                                    <p>Narození: @pet.Birth?.ToString("dd.MM.yyyy")</p>
+                                                    <p>Nějaké základní info...</p>
+                                                </div>
+                                                <a class="btn btn-outline-dark mt-auto" asp-area="Mazlicci" asp-controller="Mazlicci" asp-action="Detail" asp-route-id="@pet.Id">Detail</a>
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </section>
+        }
+
+    }
+}
+
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/detail.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/mazlicci.css" asp-append-version="true" />
+}

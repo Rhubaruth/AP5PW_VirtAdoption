@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using VanaKrizan.Utulek.Domain.Entities;
 using VanaKrizan.Utulek.Infrastructure.Identity;
+using VanaKrizan.Utulek.Infrastructure.Database.Classes;
 
 
 namespace VanaKrizan.Utulek.Infrastructure.Database
 {
     internal class DatabaseInit
     {
-        public List<Pet> GetPets() 
-        { 
-            
+        public List<Pet> GetPets()
+        {
+
             List<Pet> pets = new List<Pet>();
 
             #region Hardcoded adding pets
@@ -27,7 +28,7 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
                 InShelterSince = DateTime.Now,
                 //Chip = false,
                 //SizeId = 1,
-                ImageSrc = "/img/pets/produkty-01.jpg",
+                ImageSrc = "/img/pets/peso1.jpg",
             });
 
             pets.Add(new Pet
@@ -38,7 +39,7 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
                 InShelterSince = DateTime.Now,
                 //Chip = true,
                 //SizeId = 2,
-                ImageSrc = "/img/pets/produkty-02.jpg",
+                ImageSrc = "/img/pets/peso2.jpg",
             });
 
             pets.Add(new Pet
@@ -47,7 +48,7 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
                 Name = "Kitty",
                 Birth = DateTime.Now,
                 //Chip = true,
-                ImageSrc = "/img/pets/produkty-03.jpg",
+                ImageSrc = "/img/pets/kocka1.jpg",
             });
             #endregion
 
@@ -127,7 +128,7 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
             roles.Add(roleAdmin);
             roles.Add(roleManager);
             roles.Add(roleCustomer);
-            
+
 
             return roles;
         }
@@ -223,6 +224,58 @@ namespace VanaKrizan.Utulek.Infrastructure.Database
             return (manager, managerUserRoles);
         }
 
+
+        public List<Size> GetSizes()
+        {
+            List<Size> sizes = new List<Size>();
+
+            #region Hardcoded adding sizes
+            sizes.Add(new Size
+            {
+                Id = -1,
+                Name = "Nezadáno",
+            });
+            sizes.Add(new Size
+            {
+                Id = 1,
+                Name = "malá",
+            });
+            sizes.Add(new Size
+            {
+                Id = 2,
+                Name = "střední",
+            });
+            sizes.Add(new Size
+            {
+                Id = 3,
+                Name = "velká",
+            });
+            #endregion
+
+            return sizes;
+        }
+
+        public List<UserHasPet> CreateUserWithPet()
+        {
+            List<UserHasPet> list = new List<UserHasPet>();
+
+            #region init data
+            list.Add(new UserHasPet
+            {
+                Id = 1,
+                UserId = 1,
+                PetId = 1,
+            });
+            list.Add(new UserHasPet
+            {
+                Id = 2,
+                UserId = 1,
+                PetId = 3,
+            });
+            #endregion
+
+            return list;
+        }
 
     }
 }
