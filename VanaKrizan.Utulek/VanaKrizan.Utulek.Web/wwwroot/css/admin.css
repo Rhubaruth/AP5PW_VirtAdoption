@@ -415,3 +415,101 @@ tr:hover {
 .datatable-container .datatable tbody tr .offline::before {
     background-color: var(--dt-status-offline-color);
 }
+
+
+/***********************/
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+
+    /* Force table to not be like tables anymore */
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+        /* Hide table headers (but not display: none;, for accessibility) */
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+    tr {
+        margin: 0 0 1rem 0;
+    }
+
+        tr:nth-child(odd) {
+            /*background: #ccc;*/
+        }
+
+    .ikony img {
+        width: 20px;
+        height: auto;
+        white-space: nowrap;
+    }
+
+    .ikony {
+        /*width: 10%;*/
+    }
+
+    table td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+    }
+
+.datatable-container .datatable,
+.datatable-container .datatable th,
+.datatable-container .datatable td {
+    padding: var(--dt-padding) var(--dt-padding);
+
+    .pad{
+        text-align:left;
+    }
+
+/*td:nth-of-type {
+    padding-right: 50px;
+}*/
+}
+
+        td:before {
+            /*position: absolute;*/
+            top: 0;
+            left: 6px;
+            /*width: 50%;*/
+            /*padding-left: 50%;*/
+            white-space: nowrap;
+        }
+
+
+td:nth-of-type(0):before {
+    content: "ID";
+}
+
+td:nth-of-type(1):before {
+    content: "USERNAME   ";
+    padding-right: 71px;/*31*/
+}
+
+td:nth-of-type(2):before {
+    content: "FIRSTNAME  ";
+    padding-right: 70px;
+}
+
+td:nth-of-type(3):before {
+    content: "LASTNAME   ";
+    padding-right: 75px;
+}
+
+td:nth-of-type(4):before {
+    content: "EMAIL      ";
+    padding-right: 108px;
+}
+
+td:nth-of-type(5):before {
+    content: "PHONENUMBER";
+    padding-right: 40px;
+}
+
+}

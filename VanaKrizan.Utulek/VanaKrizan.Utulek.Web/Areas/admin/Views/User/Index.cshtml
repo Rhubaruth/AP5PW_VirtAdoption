@@ -17,43 +17,43 @@
             <div class="datatable-container">
             <!--<div class="header-tools"> </div>-->
                 <!-- ======= Table ======= -->
-                <table class="datatable table table-striped custom-table">
+            <table class="datatable table table-striped custom-table" role="table">
                 @*tableAdmin*@
-                    <thead>
+                    <thead role="rowgroup">
                         <tr>
-                            <th scope="col">@nameof(IUser.Id)</th>
-                            <th scope="col">@nameof(IUser.UserName)</th>
-                            <th scope="col">@nameof(IUser.FirstName)</th>
-                            <th scope="col">@nameof(IUser.LastName)</th>
-                            <th scope="col">@nameof(IUser.Email)</th>
-                            <th scope="col">@nameof(IUser.PhoneNumber)</th>
+                            <th scope="col" role="columnheader">@nameof(IUser.Id)</th>
+                            <th scope="col" role="columnheader">@nameof(IUser.UserName)</th>
+                            <th scope="col" role="columnheader">@nameof(IUser.FirstName)</th>
+                            <th scope="col" role="columnheader">@nameof(IUser.LastName)</th>
+                            <th scope="col" role="columnheader">@nameof(IUser.Email)</th>
+                            <th scope="col" role="columnheader">@nameof(IUser.PhoneNumber)</th>
                             @if (User.IsInRole(nameof(Roles.Admin)))
                             {
-                            <th scope="col"> </th>
+                                <th scope="col" role="columnheader"> </th>
                             /*Delete */
-                                <th scope="col">  </th>
+                                <th scope="col" role="columnheader">  </th>
                             }
-                            <th scope="col">  </th>
+                            <th scope="col" role="columnheader">  </th>
                         </tr>
                     </thead>
 
-                    <tbody>
+                    <tbody role="rowgroup">
                         @for (int i = 0; i < Model.Count; i++)
                         {
-                            <tr>
-                                <th scope="row">@Model[i].Id</th>
-                                <td scope="row">@Model[i].UserName</td>
-                                <td scope="row">@Model[i].FirstName</td>
-                                <td scope="row">@Model[i].LastName</td>
-                                <td scope="row">@Model[i].Email</td>
-                                <td scope="row">@Model[i].PhoneNumber</td>
+                            <tr role="row">
+                                <th scope="row" class="pad">@Model[i].Id</th>
+                                <td scope="row" class="pad">@Model[i].UserName</td>
+                                <td scope="row" class="pad">@Model[i].FirstName</td>
+                                <td scope="row" class="pad">@Model[i].LastName</td>
+                                <td scope="row" class="pad">@Model[i].Email</td>
+                                <td scope="row" class="pad">@Model[i].PhoneNumber</td>
                                 @if (User.IsInRole(nameof(Roles.Admin)))
                                 {
-                                <td><a asp-action="Delete" asp-route-id="@Model[i].Id" onclick="return ConfirmDelete();" class="ikony"><img src="~/img/pets/delete-32.png"></a></td>
-                                <td><a asp-action="EditUser" asp-route-id="@Model[i].Id" class="ikony"><img src="~/img/pets/edit-3-32.png"></a></td>
+                                    <td scope="row"><a asp-action="Delete" asp-route-id="@Model[i].Id" onclick="return ConfirmDelete();" class="ikony"><img src="~/img/pets/delete-32.png"></a></td>
+                                    <td scope="row"><a asp-action="EditUser" asp-route-id="@Model[i].Id" class="ikony"><img src="~/img/pets/edit-3-32.png"></a></td>
                                 
                                 }
-                                <td><a asp-action="UsersPets" asp-route-id="@Model[i].Id" class="ikony"><img src="~/img/pets/paw-32.png"></a></td>
+                                <td scope="row"><a asp-action="UsersPets" asp-route-id="@Model[i].Id" class="ikony"><img src="~/img/pets/paw-32.png"></a></td>
                             </tr>
                         }
                     </tbody>
