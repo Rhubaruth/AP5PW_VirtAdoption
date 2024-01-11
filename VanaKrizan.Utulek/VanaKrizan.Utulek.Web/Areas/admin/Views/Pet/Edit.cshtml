@@ -28,7 +28,7 @@
         <textarea asp-for="PetObj.Info" class="form-control textar"></textarea>
 
         <label class="form-label" asp-for="PetObj.BreedId"> Plemeno: </label>
-        <select class="form-control" asp-for="PetObj.BreedId" asp-items="@(new SelectList(ViewBag.Breeds, "Id", "Name"))"></select>
+            <select class="form-control" asp-for="PetObj.BreedId" asp-items="@(new SelectList(ViewBag.Breeds, "Id", "Name"))"></select>
 
         <label class="form-label" asp-for="PetObj.SizeId"> Velikost: </label>
         <select class="form-control" asp-for="PetObj.SizeId" asp-items="@(new SelectList(ViewBag.Sizes, "Id", "Name"))"></select>

@@ -75,10 +75,12 @@
 
 .bbarva li {
     background-color: transparent;
+    /*background-color: #212529;*/
 }
 
 .ulp ul {
-    background-color: transparent;
+    /*background-color: transparent;*/
+    background-color: #212529;
 }
 
 .bbarva li:hover{
