@@ -33,6 +33,7 @@
 
 	<ItemGroup>
 		<Folder Include="wwwroot\img\carousel" />
+		<Folder Include="wwwroot\img\uploaded\" />
 	</ItemGroup>
 
 	<ProjectExtensions>
