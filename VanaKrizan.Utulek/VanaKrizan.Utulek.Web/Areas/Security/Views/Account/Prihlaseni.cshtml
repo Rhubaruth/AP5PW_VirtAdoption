@@ -12,7 +12,7 @@
 
 
 		<div class="mainLog">
-			<input type="checkbox" id="chk" aria-hidden="true">
+			<input type="checkbox" id="chk" @(Model.LoginFailed ? "checked" : "") />
 
 			<div class="signup">
 				<form asp-action="Prihlaseni" method="post">

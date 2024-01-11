@@ -10,8 +10,7 @@ namespace VanaKrizan.Utulek.Application.ViewModels
 	{
 		public RegisterViewModel? Register { get; set; }
 		public LoginViewModel? Login { get; set; }
-		public bool LoginFailed { get; set; }
-
+		public bool LoginFailed = false;
 
 	}
 }
