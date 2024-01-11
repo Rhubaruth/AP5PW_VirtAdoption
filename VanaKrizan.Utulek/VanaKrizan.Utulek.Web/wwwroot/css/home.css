@@ -67,7 +67,24 @@
     --bs-code-color: #d63384;
     --bs-highlight-bg: #fff4cc;
 }
+/***********************/
+.fmez{
+    padding-left:10px;
+}
 
+
+.bbarva li {
+    background-color: transparent;
+}
+
+.ulp ul {
+    background-color: transparent;
+}
+
+.bbarva li:hover{
+    padding-left:0px;
+}
+/**********************/
 .logo {
     
     position:relative;

@@ -33,17 +33,17 @@
                         }
                         else
                         {
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown ulp">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person"></i> @User.Identity.Name</a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li class="nav-item space"><a class="dropdown-item nav-link text-dark" asp-area="User" asp-controller="User" asp-action="MyPets">Moje Adopce</a> </li>
+                                <ul class="dropdown-menu bbarva" aria-labelledby="navbarDropdown">
+                                    <li class="nav-item space fmez"><a class="dropdown-item nav-link text-dark" asp-area="User" asp-controller="User" asp-action="MyPets">Moje Adopce</a> </li>
                                     @if (User.Identity.IsAuthenticated == true && (User.IsInRole(nameof(Roles.Admin)) || User.IsInRole(nameof(Roles.Manager))))
                                     {
-                                        <li class="nav-item space"> <a class="dropdown-item nav-link text-dark" asp-area="admin" asp-controller="Pet" asp-action="Index">Pet Admin</a> </li>
-                                        <li class="nav-item space"> <a class="dropdown-item nav-link text-dark" asp-area="admin" asp-controller="Breed" asp-action="Index">Breed Admin</a> </li>
-                                        <li class="nav-item space"> <a class="dropdown-item nav-link text-dark" asp-area="admin" asp-controller="User" asp-action="Index">User Admin</a> </li>
+                                        <li class="nav-item space fmez"> <a class="dropdown-item nav-link text-dark" asp-area="admin" asp-controller="Pet" asp-action="Index">Pet Admin</a> </li>
+                                        <li class="nav-item space fmez"> <a class="dropdown-item nav-link text-dark" asp-area="admin" asp-controller="Breed" asp-action="Index">Breed Admin</a> </li>
+                                        <li class="nav-item space fmez"> <a class="dropdown-item nav-link text-dark" asp-area="admin" asp-controller="User" asp-action="Index">User Admin</a> </li>
                                     }
-                                    <li class="nav-item"><a class="dropdown-item nav-link text-dark" asp-area="Security" asp-controller="Account" asp-action="Logout"><i class="bi bi-person-slash me-1"></i>Odhlásit se</a></li>
+                                    <li class="nav-item space fmez"><a class="dropdown-item nav-link text-dark" asp-area="Security" asp-controller="Account" asp-action="Logout"><i class="bi bi-person-slash me-1"></i>Odhlásit se</a></li>
                                 </ul>
                             </li>
                         }
