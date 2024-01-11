@@ -50,10 +50,11 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
                 var filePath = Path.Combine("wwwroot\\img\\uploaded", fileName);
 
                 // Copy the file to the target directory
-                using (var stream = new FileStream(filePath, FileMode.Create))
+                using (Stream fileStream = new FileStream(filePath, FileMode.Create))
                 {
-                    await petWithFile.ImageFile.CopyToAsync(stream);
+                    await petWithFile.ImageFile.CopyToAsync(fileStream);
                 }
+
 
                 petWithFile.PetObj.ImageSrc = "/img/uploaded/" + fileName;
             }
@@ -84,18 +85,17 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
         }
 
         [HttpPost]      // default atribut = "HttpGet"
-        public IActionResult Edit(PetFile updatedPet)
+        public async Task<IActionResult> Edit(PetFile updatedPet)
         {
-
             if(updatedPet.ImageFile != null) {
                 // Combine the target directory with the unique file name
                 var fileName = updatedPet.PetObj.Name.Replace(" ", "_") + updatedPet.PetObj.Id.ToString() + ".jpg";
                 var filePath = Path.Combine("wwwroot\\img\\uploaded", fileName);
 
                 // Copy the file to the target directory
-                using (var stream = new FileStream(filePath, FileMode.Create))
+                using (Stream fileStream = new FileStream(filePath, FileMode.Create))
                 {
-                    updatedPet.ImageFile.CopyToAsync(stream);
+                    await updatedPet.ImageFile.CopyToAsync(fileStream);
                 }
 
                 updatedPet.PetObj.ImageSrc = "/img/uploaded/" + fileName;
