@@ -18,14 +18,18 @@
                 <input type="hidden" asp-for="size.Id" />
                 <input type="hidden" asp-for="size.Name" />
                 <input type="hidden" asp-for="cost" />
-            <!-- <img src="https://seeklogo.com/images/V/VISA-logo-62D5B26FE1-seeklogo.com.png" class="logo-card"> -->
             <div class="col-md-12 col-sm-12 col-lg-12">
                 <p>Karta</p>
                 <label>Card number:</label>
                 <input id="user" type="text" class="input cardnumber" placeholder="1234 5678 9101 1121" required>
                 <div class="spodek">
-                    <label >Name:</label>
-                    <input class="input name" placeholder="Edgar Pérez" required>
+                        @* <label>Name:</label>*@
+                        <label>Expiry date:</label>
+                        <div class="dateF ">
+                            <input class="date_value name input" placeholder="MM / YYYY" required>
+                        </div>
+                        @* <input class="date_value name" placeholder="MM / YYYY" required>
+                    <div class="date "><span class="date_value name" required>MM / YYYY</span></div>*@
                     <label class="toleft right">CCV:</label>
                     <input class="input toleft ccv" placeholder="321" required>
                 </div>
@@ -54,6 +58,8 @@
 }
 @section Styles {
     <link rel="stylesheet" href="~/css/platba.css" asp-append-version="true" />
-    @*  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">*@
+}
+
+@section Scripts {
+    <script src="~/js/platba.js"></script>
 }

@@ -9,6 +9,27 @@ body {
     /* Thanks to uigradients :) */
 }
 
+.dateF {
+    color: #dbdce0;
+   /* &:after
+    {
+        content: 'MONTH / YEAR';
+        position: absolute;
+        display: block;
+        font-size: 7px;
+        margin-left: 20px;
+    }
+
+    &:before {
+        content: 'valid \a thru';
+        position: absolute;
+        display: block;
+        font-size: 8px;
+        white-space: pre;
+        margin-top: 8px;
+    }*/
+}
+
 .card-platba {
     background: #16181a;
     border-radius: 14px;
@@ -52,7 +73,7 @@ input {
     background: transparent;
     border: none;
     border-bottom: 1px solid transparent;
-    color: #dbdce0;
+    color: #dbdce0 !important;
     transition: border-bottom .4s;
 }
 
