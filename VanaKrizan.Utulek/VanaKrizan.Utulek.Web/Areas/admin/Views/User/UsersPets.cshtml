@@ -11,17 +11,24 @@
 </div>
 
 
-<div>
+<div class="down">
     <form asp-action="UsersPets" id="form" method="post" class="petEdit">
-        <div class="mb-3">
+        <div class="mb-3 inputy">
 
             <label class="form-label" asp-for="addPetId"> Přidat mazlíčka: </label>
-            <select class="form-control" asp-for="addPetId" asp-items="@(new SelectList(Model.otherPets, "Id", "Name"))"></select>
+            <div class="sel">
+                <select class="form-control" asp-for="addPetId" asp-items="@(new SelectList(Model.otherPets, "Id", "Name"))"></select>
+            </div>
 
             <label class="form-label" asp-for="removePetId"> Odebrat mazlíčka: </label>
-            <select class="form-control" asp-for="removePetId" asp-items="@(new SelectList(Model.adoptedPets, "Id", "Name"))"></select>
+            <div class="sel">
+                <select class="form-control" asp-for="removePetId" asp-items="@(new SelectList(Model.adoptedPets, "Id", "Name"))"></select>
+            </div>
+        </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="btnSub">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
 
             @* Hidden data from form *@
             <input type="hidden" asp-for="UserId" />
