@@ -7,7 +7,7 @@
     <h2>@ViewData["Title"]</h2>
 </div>
 
-<form asp-action="Create" method="post" class="pridaniPeso petEdit odsad" enctype="multipart/form-data" id="form">
+<form asp-action="Create" method="post" class="pridaniPeso petEdit odsad2" enctype="multipart/form-data" id="form">
     <div class="mb-3 inputy">
         <label class="form-label" asp-for="Name"> Name </label>
         <input class="form-control" asp-for="Name">
@@ -16,7 +16,11 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </form>
-
+<div class="cici">
+    <div class="content">
+        <div class="black-cat"></div>
+    </div>
+</div>
 
 @section Styles {
     <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />

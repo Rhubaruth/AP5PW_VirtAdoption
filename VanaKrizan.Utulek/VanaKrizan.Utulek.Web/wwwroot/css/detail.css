@@ -31,7 +31,6 @@ html, body {
     padding-left: 1%;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 2%;
     margin-bottom: 16rem;
     background-color: #EDF6F9;
     border-radius: 20px;
@@ -40,6 +39,7 @@ html, body {
 .info {
     position: relative;
     display: block;
+    margin-top: 10rem;
 }
 
 
