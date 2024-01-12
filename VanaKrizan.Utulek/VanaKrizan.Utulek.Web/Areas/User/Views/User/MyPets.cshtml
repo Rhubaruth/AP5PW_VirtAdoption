@@ -1,4 +1,4 @@
-﻿@model CarouselProductViewModel
+﻿@model CarouselPetViewModel
 
 @{
     ViewData["Title"] = "Uživatel - Moje Adopce";
@@ -11,7 +11,7 @@
             <h1>Tebou virtuálně adoptovaní</h1>
         </div>
 
-        @if(Model.Carousels.Count < 1)
+        @if(Model.PetsConj.Count < 1)
         {
             <div class="containerCat">
                 <p>Nemáte v adopci žádného mazlíčka</p>
@@ -24,22 +24,39 @@
             <section class="py-5 sdole">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    @foreach (var pet in Model.Carousels)
+                        @foreach (var petConj in Model.PetsConj)
                     {
                         <div class="col mb-5 col-sm-12 col-md-6 col-lg-4 mazlik">
                             <div class="mazlik">
                                 <div class="content">
                                     <div class="grid">
                                         <figure class="effect-julia boxik2">
-                                            <img class="card-img-top" src="@pet.ImageSrc" alt="@pet.Name" />
+                                            <img class="card-img-top" src="@petConj.pet.ImageSrc" alt="@petConj.pet.Name" />
 
                                             <figcaption>
-                                                <h2> @pet.Name</h2>
+                                                <h2> @petConj.pet.Name</h2>
                                                 <div>
-                                                    <p>Narození: @pet.Birth?.ToString("dd.MM.yyyy")</p>
-                                                    <p>Nějaké základní info...</p>
+                                                    @if (petConj.pet.Birth != null)
+                                                    {
+                                                        <p>Narození: @petConj.pet.Birth?.ToString("dd.MM.yyyy")</p>
+                                                    }
+                                                    @if (petConj.breed.Id != -1)
+                                                    {
+                                                        <p>Plemeno: @petConj.breed.Name</p>
+                                                    }
+                                                    @if (petConj.pet.Info != null)
+                                                    {
+                                                        @if (petConj.pet.Info.Length < 40)
+                                                        {
+                                                            <p>@petConj.pet.Info</p>
+                                                        }
+                                                        else
+                                                        {
+                                                            <p>@petConj.pet.Info.Substring(0, 40).Trim()...</p>
+                                                        }
+                                                    }
                                                 </div>
-                                                <a class="btn btn-outline-dark mt-auto" asp-area="Mazlicci" asp-controller="Mazlicci" asp-action="Detail" asp-route-id="@pet.Id">Detail</a>
+                                                <a class="btn btn-outline-dark mt-auto" asp-area="Mazlicci" asp-controller="Mazlicci" asp-action="Detail" asp-route-id="@petConj.pet.Id">Detail</a>
                                             </figcaption>
                                         </figure>
                                     </div>

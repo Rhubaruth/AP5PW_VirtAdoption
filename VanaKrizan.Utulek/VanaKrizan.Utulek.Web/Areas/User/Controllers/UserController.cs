@@ -28,11 +28,12 @@ namespace VanaKrizan.Utulek.Web.Controllers
         {
             var thisUser = _userManager.GetUserAsync(User).Result;
 
-            CarouselProductViewModel viewModel = new CarouselProductViewModel();
-            viewModel.Carousels = new List<Pet>();
+            CarouselPetViewModel viewModel = new CarouselPetViewModel();
+            viewModel.PetsConj = new List<PetConjoined>();
             if (thisUser != null)
             {
-                viewModel.Carousels = _petService.UserGetPetsAll(thisUser.Id);
+                var pets = _petService.UserGetPetsAll(thisUser.Id);
+                viewModel.PetsConj = _petService.PetMakeConjoined(pets);
             }
 
             return View(viewModel);

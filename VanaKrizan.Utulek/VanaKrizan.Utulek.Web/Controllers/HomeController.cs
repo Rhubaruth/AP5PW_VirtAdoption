@@ -20,8 +20,9 @@ namespace VanaKrizan.Utulek.Web.Controllers
 
         public IActionResult Index()
         {
-            CarouselProductViewModel viewModel = new CarouselProductViewModel();
-            viewModel.Pets = _petService.PetSelectAllOrderedDate().Take(3).ToList();
+            CarouselPetViewModel viewModel = new CarouselPetViewModel();
+            List<Pet> pets = _petService.PetSelectAllOrderedDate().Take(3).ToList();
+            viewModel.PetsConj = _petService.PetMakeConjoined(pets);
 
             return View(viewModel);
         }

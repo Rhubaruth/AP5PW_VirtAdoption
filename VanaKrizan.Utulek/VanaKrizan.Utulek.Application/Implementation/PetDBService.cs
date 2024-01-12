@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -74,6 +75,22 @@ namespace VanaKrizan.Utulek.Application.Implementation
             return list.Reverse().ToList();
         }
 
+        public IList<PetConjoined> PetMakeConjoined(IList<Pet> pets)
+        {
+            List<PetConjoined> petConjoineds = new List<PetConjoined>();
+            foreach (var pet in pets)
+            {
+                petConjoineds.Add(new PetConjoined
+                {
+                    pet = pet,
+                    breed = BreedSelectById(pet.BreedId),
+                    size = SizeSelectById(pet.SizeId),
+                });
+            }
+
+            return petConjoineds;
+        }
+
         public Pet? PetSelectById(int id)
         {
             return _utulekDbContext.Pets.Where(pet  => pet.Id == id).FirstOrDefault();
@@ -86,10 +103,14 @@ namespace VanaKrizan.Utulek.Application.Implementation
             return _utulekDbContext.Sizes.ToList();
         }
 
-        public Size? SizeSelectById(int? id)
+        public Size SizeSelectById(int? id)
         {
-            if (id == null) return new Size { Id = -1, Name = "Nedefinováno"};
-            return _utulekDbContext.Sizes.Where(size => size.Id == id).FirstOrDefault();
+            Size nonDefined = new Size { Id = -1, Name = "Nedefinováno" };
+            if (id == null) return nonDefined;
+
+            Size? result = _utulekDbContext.Sizes.Where(size => size.Id == id).FirstOrDefault();
+            if (result != null) return result;
+            return nonDefined;
         }
         #endregion
 
@@ -99,10 +120,14 @@ namespace VanaKrizan.Utulek.Application.Implementation
             return _utulekDbContext.Breeds.ToList();
         }
 
-        public Breed? BreedSelectById(int? id)
+        public Breed BreedSelectById(int? id)
         {
-            if (id == null) return new Breed { Id = -1, Name = "Nedefinováno"};
-            return _utulekDbContext.Breeds.Where(size => size.Id == id).FirstOrDefault();
+            Breed nonDefined = new Breed { Id = -1, Name = "Nedefinováno" };
+            if (id == null) return nonDefined;
+
+            Breed? result = _utulekDbContext.Breeds.Where(size => size.Id == id).FirstOrDefault();
+            if (result != null) return result;
+            return nonDefined;
         }
 
         public void BreedCreate(Breed breed)

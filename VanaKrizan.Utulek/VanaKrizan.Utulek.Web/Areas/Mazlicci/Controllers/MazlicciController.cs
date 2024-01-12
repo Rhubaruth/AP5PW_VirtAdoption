@@ -26,16 +26,15 @@ namespace VanaKrizan.Utulek.Web.Areas.Mazlicci.Controllers
             _userManager = userManager;
         }
 
-       
+
         public IActionResult Index()
         {
-            CarouselProductViewModel viewModel = _homeService.GetHomeIndexViewModel(_petService);
+            CarouselPetViewModel viewModel = new CarouselPetViewModel();
 
-            var user = _userManager.GetUserAsync(User).Result;
-            if (user != null)
-            {
-                viewModel.Carousels = _petService.UserGetPetsAll(user.Id);
-            }
+            //var user = _userManager.GetUserAsync(User).Result;
+
+            var allPets = _petService.PetSelectAll();
+            viewModel.PetsConj = _petService.PetMakeConjoined(allPets);
 
             return View(viewModel);
         }

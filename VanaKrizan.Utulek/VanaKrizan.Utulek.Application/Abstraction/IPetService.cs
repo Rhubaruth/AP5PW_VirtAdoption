@@ -14,6 +14,7 @@ namespace VanaKrizan.Utulek.Application.Abstraction
         #region Pet
         IList<Pet> PetSelectAll();
         IList<Pet> PetSelectAllOrderedDate();
+        IList<PetConjoined> PetMakeConjoined(IList<Pet> pets);
         Pet? PetSelectById(int id);
         void PetCreate(Pet pet);
         bool PetDelete(int id);
