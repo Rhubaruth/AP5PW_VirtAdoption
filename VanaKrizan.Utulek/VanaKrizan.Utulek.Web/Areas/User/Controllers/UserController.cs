@@ -2,22 +2,21 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using VanaKrizan.Utulek.Application.Abstraction;
-using VanaKrizan.Utulek.Application.Implementation;
 using VanaKrizan.Utulek.Application.ViewModels;
 using VanaKrizan.Utulek.Domain.Entities;
-using VanaKrizan.Utulek.Infrastructure.Identity;
 using VanaKrizan.Utulek.Web.Models;
+using VanaKrizan.Utulek.Infrastructure.Identity;
 
-namespace VanaKrizan.Utulek.Web.Controllers
+namespace VanaKrizan.Utulek.Web.Areas.User.Controllers
 {
     [Area("User")]
     public class UserController : Controller
     {
         IHomeService _homeService;
         private IPetService _petService;
-        UserManager<User> _userManager;
+        UserManager<Infrastructure.Identity.User> _userManager;
 
-        public UserController(IHomeService homeService, IPetService petService, UserManager<User> userManager)
+        public UserController(IHomeService homeService, IPetService petService, UserManager<Infrastructure.Identity.User> userManager)
         {
             _homeService = homeService;
             _petService = petService;

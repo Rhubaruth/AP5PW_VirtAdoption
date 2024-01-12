@@ -553,9 +553,10 @@ tr:hover {
     outline: 10px red;
     border: 0;
     box-shadow: none;
-     Personalize 
+     Personalize
     flex: 1;
     padding: 0 1em;
+    padding-left: 0;
     color: #f39c12;
     background-image: none;
     background-color: #3c373e;

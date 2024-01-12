@@ -22,6 +22,10 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
         public IActionResult Index()
         {
             IList<Pet> pets = _petService.PetSelectAll();
+
+            ViewBag.Sizes = _petService.SizeSelectAll();
+            ViewBag.Breeds = _petService.BreedSelectAll();
+
             return View(pets);
         }
 

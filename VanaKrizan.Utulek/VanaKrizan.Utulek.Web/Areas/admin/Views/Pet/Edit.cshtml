@@ -1,7 +1,7 @@
 ﻿@model PetFile
 
 @{
-    ViewData["Title"] = /* "[" + Model.Id + "]" + */ Model.PetObj.Name + " edit";
+    ViewData["Title"] = "[" + Model.PetObj.Id + "] " + Model.PetObj.Name + " edit";
 }
 <div class="titulEdit">
     <h2>@ViewData["Title"]</h2>
@@ -28,22 +28,26 @@
         <textarea asp-for="PetObj.Info" class="form-control textar"></textarea>
 
         <label class="form-label" asp-for="PetObj.BreedId"> Plemeno: </label>
-            <select class="form-control" asp-for="PetObj.BreedId" asp-items="@(new SelectList(ViewBag.Breeds, "Id", "Name"))"></select>
+        <div class="sel">
+            <select class="sel-control" asp-for="PetObj.BreedId" asp-items="@(new SelectList(ViewBag.Breeds, "Id", "Name"))"
+                    onfocus="this.size=@Math.Min(ViewBag.Breeds.Count, 3);" onblur="this.size=0" onchange="this.size=1; this.blur()"></select>
+        </div>
 
         <label class="form-label" asp-for="PetObj.SizeId"> Velikost: </label>
-        <select class="form-control" asp-for="PetObj.SizeId" asp-items="@(new SelectList(ViewBag.Sizes, "Id", "Name"))"></select>
-
-
-        <div class="inobr">
-            <label asp-for="ImageFile"></label>
-            <input asp-for="ImageFile" type="file"> 
-
+        <div class="sel">
+            <select class="sel-control" asp-for="PetObj.SizeId" asp-items="@(new SelectList(ViewBag.Sizes, "Id", "Name"))"
+                    onfocus="this.size=@Math.Min(ViewBag.Sizes.Count, 3);" onblur="this.size=0" onchange="this.size=1; this.blur()"></select>
         </div>
+
+
+        <label asp-for="ImageFile"></label>
+        <input asp-for="ImageFile" type="file"> 
+
         @* <span asp-validation-for="ImageFile"></span> *@
-        <div class="zmis">
+@*         <div class="zmis">
             <label class="form-label" asp-for="PetObj.ImageSrc"> Zdroj obrázku: </label>
             <input class="form-control" asp-for="PetObj.ImageSrc">
-        </div>
+        </div> *@
     </div>
     <div class="btnSub">
         <button type="submit" class="btn btn-primary">Submit</button>

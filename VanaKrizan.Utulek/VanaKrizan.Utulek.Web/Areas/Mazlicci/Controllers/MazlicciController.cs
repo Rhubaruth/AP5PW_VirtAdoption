@@ -15,11 +15,11 @@ namespace VanaKrizan.Utulek.Web.Areas.Mazlicci.Controllers
     {
         IHomeService _homeService;
         IPetService _petService;
-        UserManager<User> _userManager;
+        UserManager<Infrastructure.Identity.User> _userManager;
 
         public MazlicciController(IHomeService homeService, 
             IPetService petService, 
-            UserManager<User> userManager) 
+            UserManager<Infrastructure.Identity.User> userManager) 
         { 
             _homeService = homeService;
             _petService = petService;

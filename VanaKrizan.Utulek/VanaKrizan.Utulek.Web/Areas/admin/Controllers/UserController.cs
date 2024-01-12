@@ -18,9 +18,9 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
     public class UserController : Controller
     {
         IPetService _petService;
-        UserManager<User> _userManager;
+        UserManager<Infrastructure.Identity.User> _userManager;
 
-        public UserController(IPetService petService, UserManager<User> userManager)
+        public UserController(IPetService petService, UserManager<Infrastructure.Identity.User> userManager)
         {
             _petService = petService;
             _userManager = userManager;
@@ -29,7 +29,7 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
 
         public IActionResult Index()
         {
-            IList<User> users = _petService.UserSelectAll();
+            IList<Infrastructure.Identity.User> users = _petService.UserSelectAll();
             return View(users);
         }
 
@@ -61,7 +61,7 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
         [HttpGet]
         public IActionResult EditUser(int id)
         {
-            User? user = _petService.UserSelectById(id);
+            Infrastructure.Identity.User? user = _petService.UserSelectById(id);
             if (user == null)
                 return NotFound();
 
@@ -116,7 +116,7 @@ namespace VanaKrizan.Utulek.Web.Areas.admin.Controllers
         [HttpGet]
         public IActionResult UsersPets(int id)
         {
-            User? user = _petService.UserSelectById(id);
+            Infrastructure.Identity.User? user = _petService.UserSelectById(id);
             if (user == null)
                 return NotFound();
 

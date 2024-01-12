@@ -21,17 +21,14 @@
             <div class="col-md-12 col-sm-12 col-lg-12">
                 <p>Karta</p>
                 <label>Card number:</label>
-                <input id="user" type="text" class="input cardnumber" placeholder="1234 5678 9101 1121" required>
+                <input id="user" type="number" oninput="this.value = this.value.slice(0, 12)" class="input cardnumber" placeholder="1234 5678 9101 1121" required />
                 <div class="spodek">
-                        @* <label>Name:</label>*@
                         <label>Expiry date:</label>
                         <div class="dateF ">
-                            <input class="date_value name input" placeholder="MM / YYYY" required>
+                            <input class="date_value expire name input" placeholder="MM / YYYY" required />
                         </div>
-                        @* <input class="date_value name" placeholder="MM / YYYY" required>
-                    <div class="date "><span class="date_value name" required>MM / YYYY</span></div>*@
                     <label class="toleft right">CCV:</label>
-                    <input class="input toleft ccv" placeholder="321" required>
+                    <input type="number" oninput="this.value = this.value.slice(0, 3)" class="input toleft ccv" placeholder="321" required />
                 </div>
             </div>
         </form>
@@ -46,7 +43,7 @@
                 </div>
                 <div class="col">
                     <div class="nazev"> <p>Mazlíček:</p></div>
-                    <div class="rovne2">  <h2 class="bought-items">@Model.pet.Name sometrk</h2> </div>
+                    <div class="rovne2">  <h2 class="bought-items">@Model.pet.Name</h2> </div>
                 </div><br>
             </div>
             <div class="text ">
@@ -56,6 +53,7 @@
         </div>
     </div>
 }
+
 @section Styles {
     <link rel="stylesheet" href="~/css/platba.css" asp-append-version="true" />
 }

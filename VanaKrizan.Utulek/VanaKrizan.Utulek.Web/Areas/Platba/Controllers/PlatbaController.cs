@@ -5,16 +5,17 @@ using VanaKrizan.Utulek.Application.Abstraction;
 using VanaKrizan.Utulek.Application.ViewModels;
 using VanaKrizan.Utulek.Domain.Entities;
 using VanaKrizan.Utulek.Infrastructure.Identity;
+using VanaKrizan.Utulek.Web.Areas.User.Controllers;
 
 namespace VanaKrizan.Utulek.Web.Areas.Mazlicci.Controllers
 {
     [Area("Platba")]
     public class PlatbaController : Controller
     {
-        UserManager<User> _userManager;
+        UserManager<Infrastructure.Identity.User> _userManager;
         IPetService _petService;
 
-        public PlatbaController(UserManager<User> userManager, IPetService petService) 
+        public PlatbaController(UserManager<Infrastructure.Identity.User> userManager, IPetService petService) 
         {
             _userManager = userManager;
             _petService = petService;
@@ -41,7 +42,7 @@ namespace VanaKrizan.Utulek.Web.Areas.Mazlicci.Controllers
             if (!_petService.UserAdoptPet(petConj.pet.Id, thisUser.Id))
                 return BadRequest();
 
-            return RedirectToAction(nameof(MazlicciController.Index), "Mazlicci", new {area = "Mazlicci"});
+            return RedirectToAction(nameof(UserController.MyPets), "User", new {area = "User"});
         }
     }
 }
