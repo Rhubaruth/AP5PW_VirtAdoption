@@ -73,9 +73,10 @@ namespace VanaKrizan.Utulek.Tests.Security.Account
             var mockPetService = new Mock<IPetService>();
             var controller = new PetController(mockPetService.Object);
             var pet = new Pet { Name = "Test Pet" };
+            var petFile = new PetFile { PetObj = pet, ImageFile = null };
 
             // Act
-            var result = await controller.Create(pet);
+            var result = await controller.Create(petFile);
 
             // Assert
             var redirectResult = Assert.IsType<RedirectToActionResult>(result);
@@ -89,14 +90,16 @@ namespace VanaKrizan.Utulek.Tests.Security.Account
             var mockPetService = new Mock<IPetService>();
             var controller = new PetController(mockPetService.Object);
             var pet = new Pet { Name = "" };
+            var petFile = new PetFile { PetObj = pet, ImageFile = null };
+
             controller.ModelState.AddModelError("Name", "Name is required");
 
             // Act
-            var result = await controller.Create(pet);
+            var result = await controller.Create(petFile);
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
-            Assert.Equal(pet, viewResult.Model);
+            Assert.Equal(petFile, viewResult.Model);
         }
         #endregion
 
@@ -127,52 +130,59 @@ namespace VanaKrizan.Utulek.Tests.Security.Account
             Assert.Contains("Sizes", viewResult.ViewData.Keys);
             Assert.Contains("Breeds", viewResult.ViewData.Keys);
             
-            var model = Assert.IsAssignableFrom<Pet>(viewResult.Model);
+            var model = Assert.IsAssignableFrom<PetFile>(viewResult.Model);
+            Assert.Equal(testData, model.PetObj);
         }
 
         [Fact]
         public async Task Pet_EditGet_Invalid()
         {
             // Arrange
-            var testData = new Pet
+            var pet = new Pet
             {
                 Id = 1,
                 BreedId = -1,
             };
+            var testData = new PetFile
+            {
+                PetObj = pet,
+                ImageFile = null,
+            };
 
             var mockPetService = new Mock<IPetService>();
-            mockPetService.Setup(repo => repo.PetSelectById(testData.Id))
-                .Returns(testData);
+            mockPetService.Setup(repo => repo.PetSelectById(testData.PetObj.Id))
+                .Returns(testData.PetObj);
 
             var controller = new PetController(mockPetService.Object);
             controller.ModelState.AddModelError("Name", "Name is required");
 
             // Act
-            var result = controller.Edit(testData.Id);
+            var result = controller.Edit(testData.PetObj.Id);
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
-            Assert.Equal(testData, viewResult.Model);
+            Assert.IsType<PetFile>(viewResult.Model);
         }
 
         [Fact]
         public async Task Pet_EditPost_Valid()
         {
             // Arrange
-            var testData = new Pet
+            var pet = new Pet
             {
                 Id = 1,
                 Name = "Test",
                 BreedId = -1,
             };
+            var testData = new PetFile { PetObj = pet, ImageFile = null };
 
             var mockPetService = new Mock<IPetService>();
-            mockPetService.Setup(repo => repo.PetEdit(testData))
+            mockPetService.Setup(repo => repo.PetEdit(testData.PetObj))
                 .Returns(true);
             var controller = new PetController(mockPetService.Object);
 
             // Act
-            var result = controller.Edit(testData);
+            var result = await controller.Edit(testData);
 
             // Assert
             RedirectToActionResult redirect = Assert.IsType<RedirectToActionResult>(result);
@@ -184,20 +194,22 @@ namespace VanaKrizan.Utulek.Tests.Security.Account
         public async Task Pet_EditPost_Invalid()
         {
             // Arrange
-            var testData = new Pet
+            var pet = new Pet
             {
                 Id = 1,
                 Name = "Test",
                 BreedId = -1,
             };
+            var testData = new PetFile { PetObj = pet, ImageFile = null };
+
 
             var mockPetService = new Mock<IPetService>();
-            mockPetService.Setup(repo => repo.PetEdit(testData))
+            mockPetService.Setup(repo => repo.PetEdit(testData.PetObj))
                 .Returns(false);
             var controller = new PetController(mockPetService.Object);
 
             // Act
-            var result = controller.Edit(testData);
+            var result = await controller.Edit(testData);
 
             // Assert
             var viewResult = Assert.IsType<NotFoundResult>(result);
@@ -227,8 +239,8 @@ namespace VanaKrizan.Utulek.Tests.Security.Account
 
             // Assert
             RedirectToActionResult redirect = Assert.IsType<RedirectToActionResult>(result);
-            Assert.Matches(nameof(PetController.Index), redirect.ActionName);
-            Assert.Matches(nameof(PetController).Replace(nameof(Controller), String.Empty), redirect.ControllerName);
+            Assert.Matches(nameof(UserController.Index), redirect.ActionName);
+            Assert.Matches(nameof(UserController).Replace(nameof(Controller), String.Empty), redirect.ControllerName);
         }
 
         [Fact]

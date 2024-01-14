@@ -455,7 +455,7 @@ tr:hover {
         }
 
 .user {
-    td: nth-of-type(0):before
+    td:nth-of-type(0):before
     {
         content: "ID";
     }
@@ -488,7 +488,7 @@ tr:hover {
 }
 
 .petind {
-    td: nth-of-type(0):before
+    td:nth-of-type(0):before
     {
         content: "ID";
     }
@@ -516,7 +516,7 @@ tr:hover {
 }
 
 .breed {
-    td: nth-of-type(0):before
+    td:nth-of-type(0):before
     {
         content: "ID";
     }
